@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Appointments Page</title>
+
+  <!-- Latest compiled and minified CSS & JS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="demo.css">
+	<link rel="stylesheet" href="appointment-picker.css">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.2.20171210/classList.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="time.js"></script>
+  <script src="date.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="jumbotron">
+      <h1 class="text-center"><span class="fa fa-fire"></span>7health</h1>
+      <!-- <hr> -->
+      <!-- <h2 class="text-center">Available Appointments</h2>
+      <br> -->
+
+      <!-- <div class="text-center">
+        <a href="/reserve"><button class="btn btn-lg btn-danger"><span class="fa fa-credit-card"></span> Make Reservation</button></a>
+        <a href="/"><button class="btn btn-lg btn-default"><span class="fa fa-home"></span></button></a>
+      </div> -->
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12">
+
+        <!-- Current Available Appointments -->
+        <div class="card">
+          <div class="card-header">
+            <h4>Schedule Your Appointment Below</h4>
+          </div>
+          <div class="card-body">
+            <ul id="apptList" class="list-group"></ul>
+            <div class="card-body">
+                <form action="#" method="GET">
+                    <p>
+                      <!-- Date -->
+                      <label for="date-form">Date</label>
+                      <input id="start_dt" class='datepicker' size='11' title='DD-MM-YYYY' />
+                      <!-- Time -->
+                      <label for="time-form">Time</label>
+                      <input id="time-form" type="text" name="time-form" value="" aria-live="assertive" autocomplete="off" aria-label="Use up or down arrow keys to change time" required>
+                    </p>
+                  </form>              
+              <form role="form">
+                <div class="form-group">
+                  <label for="reserve-name">Name</label>
+                  <input type="text" class="form-control" id="reserve-name">
+                </div>
+                <div class="form-group">
+                  <label for="reserve-phone">Phone Number</label>
+                  <input type="text" class="form-control" id="reserve-phone">
+                </div>
+                <div class="form-group">
+                  <label for="reserve-email">Email</label>
+                  <input type="text" class="form-control" id="reserve-email">
+                </div>
+                <button type="submit" class="btn btn-primary submit">Submit</button>
+              </form>
+              </script>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+
+<!-- BELOW CODE IS CRITICAL. IT HANDLES HOW FORM DATA IS LOADED FROM OUR SERVER -->
+<script type="text/javascript">
+
+  new AppointmentPicker(document.getElementById('time-form'), {
+    interval: 30,
+    mode: '12h',
+    startTime: 9,
+    endTime: 18,
+    minTime: 13,
+    maxTime: 17,
+    disabled: ['4:00 pm', '4:30 pm'],
+    allowReset: false,
+    large: true
+  });
+  
+    // In this code, jQuery is used to "download" the data from our server
+    // We then dynamically display this content in our table. This is very similar to the group projects you just completed.
+    // It's also very similar to the NYT search application. In fact, I copied a ton of code from there.
+  
+    function runApptQuery() {
+      // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
+      $.ajax({ url: "/api/tables", method: "GET" })
+        .then(function(apptData) {
+  
+          // Here we then log the tableData to console, where it will show up as an object.
+          console.log(apptData);
+          console.log("------------------------------------");
+  
+          // Loop through and display each of the customers
+          for (var i = 0; i < apptData.length; i++) {
+  
+            // Get a reference to the tableList element and populate it with tables
+            var apptList = $("#apptList");
+  
+            // Then display the fields in the HTML (Section Name, Date, URL)
+            var listItem = $("<li class='list-group-item mt-4'>");
+  
+            listItem.append(
+              // $("<h2>").text("Table #" + (i + 1)),
+              $("<hr>"),
+              $("<h2>").text("Date & Time: " + apptData[i].apptDate + "&" + tableData[i].apptTime),
+              $("<h2>").text("Name: " + apptData[i].patientName),
+              $("<h2>").text("Email: " + apptData[i].patientEmail),
+              $("<h2>").text("Phone: " + apptData[i].phoneNumber),
+              
+            );
+  
+            apptList.append(listItem);
+            console.log(listItem);
+          }
+        });
+        
+    }
+  
+    // This function resets all of the data in our tables. This is intended to let you restart a demo.
+    function clearTable() {
+      alert("Clearing...");
+  
+      // Clear the tables on the server and then empty the elements on the client
+      $.ajax({ url: "/api/clear", method: "POST" }).then(function() {
+        $("#apptList").empty();
+      });
+    }
+  
+    $("#clear").on("click", clearTable);
+  
+  
+    // Run Queries!
+    // ==========================================
+    runApptQuery();
+    
+  
+</script>
+
+</html>

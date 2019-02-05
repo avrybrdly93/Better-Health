@@ -32,10 +32,18 @@
         <label class="uk-form-label" for="form-horizontal-select">City:</label>
         <input class="uk-input" type="text" id="cityInput" placeholder="Riverside">
     </div>
-        <div class="uk-width-1-4@s">
+     {{!--   <div class="uk-width-1-4@s">
         <label class="uk-form-label" for="form-horizontal-select">Phone:</label>
         <input class="uk-input" type="text" id="phoneInput" placeholder="(909)665-8732">
+    </div> --}}
+
+    <div class="uk-width-1-4@s">
+        <label class="uk-form-label" for="form-horizontal-select">Phone Number:</label>
+        <input class="uk-input phoneInput" type="text" maxlength="3" id="areaCode" placeholder="909">
+        <input class="uk-input phoneInput" type="text" maxlength="3" id="phonePrefix" placeholder="665">
+        <input class="uk-input phoneInput" type="text" maxlength="4" id="phoneLineNumber" placeholder="8732">
     </div>
+
     <div class="uk-width-1-4@s">
         <div class="uk-margin">
             <label class="uk-form-label" for="form-horizontal-select">State:</label>

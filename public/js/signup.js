@@ -1,5 +1,20 @@
 $(document).ready(function () {
 
+
+  let phoneVals = '';
+  let userPhoneNum = '';
+  $(".phoneInput").keyup(function () {
+    if (this.value.length == this.maxLength) {
+        $(this).next('.phoneInput').focus();
+        phoneVals += $(this)[0].value;
+  }
+    if(phoneVals.length === 10) {
+      userPhoneNum = phoneVals;
+    }
+  });
+
+
+
 let selectedState;
 
 $("select.uk-select").change(function(){
@@ -18,7 +33,7 @@ $("#submitBtn").on("click", function (event) {
     "state": selectedState,
     "zip": $("#zipInput").val().trim(),
     "email": $("#emailInput").val().trim(),
-    "phone": $("#phoneInput").val().trim(),
+    "phone": userPhoneNum,
     "isPatient": true,
     "account_key": $("#passwordInput").val().trim()
   };

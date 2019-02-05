@@ -3,6 +3,8 @@ $(document).ready(function () {
   let phoneVals = '';
   let userPhoneNum = '';
   let password = '';
+  let selectedState;
+  
   $(".phoneInput").keyup(function () {
     if (this.value.length == this.maxLength) {
         $(this).next('.phoneInput').focus();
@@ -28,8 +30,6 @@ $(document).ready(function () {
 }
    $("#passwordInputConfirm").keyup(checkPasswordMatch);
 
-
-let selectedState;
 
 $("select.uk-select").change(function(){
     selectedState = $(this).children("option:selected").val();

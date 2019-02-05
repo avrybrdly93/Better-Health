@@ -1,8 +1,16 @@
+<style>
+    #msg{
+        overflow: scroll !important;
+        height: 35%;
+    }
+    #msg::-webkit-scrollbar { width: 0 !important }
+</style>
+
 <div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
     <nav class="uk-navbar-container uk-margin" uk-navbar>
         <div class="uk-navbar-left">
 
-            <a class="uk-navbar-item uk-logo" href="#">betterHealth</a>
+            <a class="uk-navbar-item uk-logo" href="/dashboard">betterHealth</a>
 
             <ul class="uk-navbar-nav">
                 <li>
@@ -46,15 +54,11 @@
 
         <ul class="uk-nav uk-nav-default">
             <li class="uk-parent">
-            <li class="uk-active"><a href="#">Overview</a></li>
-            <ul class="uk-nav-sub">
-                <li><a href="#">Book Appointment</a></li>
-                <li><a href="#">View Medical Record</a></li>
-            </ul>
+            <li class="uk-active"><a href="/dashboard">Dashboard</a></li>
             </li>
             <li class="uk-nav-header">More</li>
-            <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: heart"></span> Holistics</a></li>
-            <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: commenting"></span> Messages</a></li>
+            <li><a href="/holistics"><span class="uk-margin-small-right" uk-icon="icon: heart"></span> Holistics</a></li>
+            <li><a href="/messages"><span class="uk-margin-small-right" uk-icon="icon: commenting"></span> Messages</a></li>
             <li class="uk-nav-divider"></li>
             <li><a href="/profile" class="usrNav"><img class="uk-border-circle" width="40" height="40" src="https://bestoftool.com/wp-content/uploads/2018/06/Anonymous-Whatsapp-profile-picture-1.jpg">
                     Profile</a></li>
@@ -73,40 +77,40 @@
 
                 <ul class="uk-slider-items uk-grid">
                     <li>
-                        <a href="" uk-toggle="target: #msg1"><img class="uk-border-circle" width="120" height="120" src="https://www.anthonygold.co.uk/wp-content/uploads/2017/06/Lauren-McKie-BW-3-cropped.jpg"></a>
+                        <a href="" uk-toggle="target: #msg"><img class="uk-border-circle" width="120" height="120" src="https://www.anthonygold.co.uk/wp-content/uploads/2017/06/Lauren-McKie-BW-3-cropped.jpg"></a>
                     </li>
                     <li>
-                        <a href="" uk-toggle="target: #msg1"><img class="uk-border-circle" width="120" height="120" src="https://www.faceplusplus.com/images/comparing/left_pic_three.jpg"></a>
+                        <a href="" uk-toggle="target: #msg"><img class="uk-border-circle" width="120" height="120" src="https://www.faceplusplus.com/images/comparing/left_pic_three.jpg"></a>
                     </li>
                     <li>
-                        <a href="" uk-toggle="target: #msg1"><img class="uk-border-circle" width="120" height="120" src="https://do7nu6l5erzu3.cloudfront.net/wp-content/uploads/2018/02/06121555/Final_McCarthy.Steve_6170.jpg"></a>
+                        <a href="" uk-toggle="target: #msg"><img class="uk-border-circle" width="120" height="120" src="https://do7nu6l5erzu3.cloudfront.net/wp-content/uploads/2018/02/06121555/Final_McCarthy.Steve_6170.jpg"></a>
                     </li>
                     <li>
-                        <a href="" uk-toggle="target: #msg1"><img class="uk-border-circle" width="120" height="120" src="https://static1.squarespace.com/static/557ad98ae4b0ab127fdc5578/55db0d53e4b0d2c6e6e49370/55db0d54e4b035628e25ccee/1440419770528/celeb+junot+diaz.jpg?format=500w"></a>
+                        <a href="" uk-toggle="target: #msg"><img class="uk-border-circle" width="120" height="120" src="https://static1.squarespace.com/static/557ad98ae4b0ab127fdc5578/55db0d53e4b0d2c6e6e49370/55db0d54e4b035628e25ccee/1440419770528/celeb+junot+diaz.jpg?format=500w"></a>
 
                     </li>
                     <li>
-                        <a href="" uk-toggle="target: #msg1"><img class="uk-border-circle" width="120" height="120" src="https://static1.squarespace.com/static/557ad98ae4b0ab127fdc5578/55db0d53e4b0d2c6e6e49370/55db0d54e4b01430023945c0/1440419733335/celeb+aziz+ansari.jpg?format=500w"></a>
+                        <a href="" uk-toggle="target: #msg"><img class="uk-border-circle" width="120" height="120" src="https://static1.squarespace.com/static/557ad98ae4b0ab127fdc5578/55db0d53e4b0d2c6e6e49370/55db0d54e4b01430023945c0/1440419733335/celeb+aziz+ansari.jpg?format=500w"></a>
 
                     </li>
                     <li>
-                        <a href="" uk-toggle="target: #msg1"><img class="uk-border-circle" width="120" height="120" src="https://content.thriveglobal.com/wp-content/uploads/2018/11/145tjWrgMIkGlCER4qmIbpw.jpeg"></a>
+                        <a href="" uk-toggle="target: #msg"><img class="uk-border-circle" width="120" height="120" src="https://content.thriveglobal.com/wp-content/uploads/2018/11/145tjWrgMIkGlCER4qmIbpw.jpeg"></a>
 
                     </li>
                     <li>
-                        <a href="" uk-toggle="target: #msg1"><img class="uk-border-circle" width="120" height="120" src="https://www.landfood.ubc.ca/files/2018/04/sumeet-gulati-square-crop.jpg"></a>
+                        <a href="" uk-toggle="target: #msg"><img class="uk-border-circle" width="120" height="120" src="https://www.landfood.ubc.ca/files/2018/04/sumeet-gulati-square-crop.jpg"></a>
 
                     </li>
                     <li>
-                        <a href="" uk-toggle="target: #msg1"><img class="uk-border-circle" width="120" height="120" src="https://www.thepolyglotgroup.com.au/wp-content/uploads/2018/05/Noemie.jpg"></a>
+                        <a href="" uk-toggle="target: #msg"><img class="uk-border-circle" width="120" height="120" src="https://www.thepolyglotgroup.com.au/wp-content/uploads/2018/05/Noemie.jpg"></a>
 
                     </li>
                     <li>
-                        <a href="" uk-toggle="target: #msg1"><img class="uk-border-circle" width="120" height="120" src="https://66.media.tumblr.com/2127e50b59be022677be2c64986a2d79/tumblr_inline_oh8lj0LaG81r5wc9c_500.jpg"></a>
+                        <a href="" uk-toggle="target: #msg"><img class="uk-border-circle" width="120" height="120" src="https://66.media.tumblr.com/2127e50b59be022677be2c64986a2d79/tumblr_inline_oh8lj0LaG81r5wc9c_500.jpg"></a>
 
                     </li>
                     <li>
-                        <a href="" uk-toggle="target: #msg1"><img class="uk-border-circle" width="120" height="120" src="https://www.seattleu.edu/academics/DoQuyenPortrait_500x500.jpg"></a>
+                        <a href="" uk-toggle="target: #msg"><img class="uk-border-circle" width="120" height="120" src="https://www.seattleu.edu/academics/DoQuyenPortrait_500x500.jpg"></a>
 
                     </li>
                 </ul>
@@ -122,16 +126,112 @@
             <hr class="uk-divider-small">
         </div>
         <div class="row">
-            <div class="col-xl-3 col-md-3 col-sm-0"></div>
-            <div class="col-xl-3 col-md-3 col-sm-0">
-                <div id="msg1">
-                    <p>What's up?</p>
-                    <p>Hey Doc</p>
-                    <p>Your new x-rays came in today, book an appointment so we can talk more in depth about them.</p>
-                    <p>Okay, thank you for the update.</p>
-                </div>
+            <div class="col-xl-6 col-md-6 col-sm-6">
+                
             </div>
-            <div class="col-xl-3 col-md-3 col-sm-0"></div>
+            <div class="col-xl-6 col-md-6 col-sm-6">
+                <ul class="uk-comment-list" id="msg">
+                    <li>
+                        <article class="uk-comment uk-visible-toggle" tabindex="-1">
+                            <header class="uk-comment-header uk-position-relative">
+                                <div class="uk-grid-medium uk-flex-middle" uk-grid>
+                                    <div class="uk-width-auto">
+                                        <img class="uk-comment-avatar" src="https://www.anthonygold.co.uk/wp-content/uploads/2017/06/Lauren-McKie-BW-3-cropped.jpg"
+                                            width="80" height="80" alt="">
+                                    </div>
+                                    <div class="uk-width-expand">
+                                        <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="#">Dr.
+                                                Smith</a></h4>
+                                        <p class="uk-comment-meta uk-margin-remove-top"><a class="uk-link-reset" href="#">12
+                                                days ago</a></p>
+                                    </div>
+                                </div>
+                                <div class="uk-position-top-right uk-position-small uk-hidden-hover"><a class="uk-link-muted"
+                                        href="#reply">Reply</a></div>
+                            </header>
+                            <div class="uk-comment-body">
+                                <p>What's up?</p>
+                            </div>
+                        </article>
+                        <ul>
+                            <li>
+                                <article class="uk-comment uk-comment-primary uk-visible-toggle" tabindex="-1">
+                                    <header class="uk-comment-header uk-position-relative">
+                                        <div class="uk-grid-medium uk-flex-middle" uk-grid>
+                                            <div class="uk-width-auto">
+                                                <img class="uk-comment-avatar" src="https://bestoftool.com/wp-content/uploads/2018/06/Anonymous-Whatsapp-profile-picture-1.jpg"
+                                                    width="80" height="80" alt="">
+                                            </div>
+                                            <div class="uk-width-expand">
+                                                <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset"
+                                                        href="#">Me</a></h4>
+                                                <p class="uk-comment-meta uk-margin-remove-top"><a class="uk-link-reset"
+                                                        href="#">12 days ago</a></p>
+                                            </div>
+                                        </div>
+                                        <div class="uk-position-top-right uk-position-small uk-hidden-hover"><a class="uk-link-muted"
+                                                href="#reply">Reply</a></div>
+                                    </header>
+                                    <div class="uk-comment-body">
+                                        <p>Hey, Doc.</p>
+                                    </div>
+                                </article>
+                            </li>
+                            <li>
+                                <article class="uk-comment uk-visible-toggle" tabindex="-1">
+                                    <header class="uk-comment-header uk-position-relative">
+                                        <div class="uk-grid-medium uk-flex-middle" uk-grid>
+                                            <div class="uk-width-auto">
+                                                <img class="uk-comment-avatar" src="https://www.anthonygold.co.uk/wp-content/uploads/2017/06/Lauren-McKie-BW-3-cropped.jpg"
+                                                    width="80" height="80" alt="">
+                                            </div>
+                                            <div class="uk-width-expand">
+                                                <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset"
+                                                        href="#">Dr. Smith</a></h4>
+                                                <p class="uk-comment-meta uk-margin-remove-top"><a class="uk-link-reset"
+                                                        href="#">12 days ago</a></p>
+                                            </div>
+                                        </div>
+                                        <div class="uk-position-top-right uk-position-small uk-hidden-hover"><a class="uk-link-muted"
+                                                href="#reply">Reply</a></div>
+                                    </header>
+                                    <div class="uk-comment-body">
+                                        <p>Your updated X-Rays came in today. Book an appointment so we can talk
+                                            more
+                                            in depth.</p>
+                                    </div>
+                                </article>
+                            </li>
+                            <li>
+                                <article class="uk-comment uk-comment-primary uk-visible-toggle" tabindex="-1">
+                                    <header class="uk-comment-header uk-position-relative">
+                                        <div class="uk-grid-medium uk-flex-middle" uk-grid>
+                                            <div class="uk-width-auto">
+                                                <img class="uk-comment-avatar" src="https://bestoftool.com/wp-content/uploads/2018/06/Anonymous-Whatsapp-profile-picture-1.jpg"
+                                                    width="80" height="80" alt="">
+                                            </div>
+                                            <div class="uk-width-expand">
+                                                <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset"
+                                                        href="#">Me</a></h4>
+                                                <p class="uk-comment-meta uk-margin-remove-top"><a class="uk-link-reset"
+                                                        href="#">12 days ago</a></p>
+                                            </div>
+                                        </div>
+                                        <div class="uk-position-top-right uk-position-small uk-hidden-hover"><a class="uk-link-muted"
+                                                href="#reply">Reply</a></div>
+                                    </header>
+                                    <div class="uk-comment-body">
+                                        <p>Ok, thank you for the update.</p>
+                                    </div>
+                                </article>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="uk-search uk-search-large">
+                    <input id="#reply" class="uk-search-input" type="input" placeholder="Type in message...">
+                </form>
+            </div>
         </div>
     </div>
 

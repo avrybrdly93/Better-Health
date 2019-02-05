@@ -48,7 +48,7 @@ module.exports = function(sequelize,DataTypes){
     });
 
     Record.associate = function(models){
-        Record.belongsTo(models.User,{
+        Record.belongsTo(models.Patient,{
             foreignKey: {
                 allowNull: false
             }

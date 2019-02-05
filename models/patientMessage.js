@@ -1,7 +1,7 @@
 var uuidv1 = require("uuid/v1");
 
 module.exports = function(sequelize,DataTypes){
-    var Message = sequelize.define("Message",{
+    var pMessage = sequelize.define("pMessage",{
         title:{
             type: DataTypes.STRING,
             allowNull: false,
@@ -21,13 +21,13 @@ module.exports = function(sequelize,DataTypes){
         }
     });
 
-    Message.associate = function(models){
-        Message.belongsTo(models.User,{
+    pMessage.associate = function(models){
+        pMessage.belongsTo(models.Patient,{
             foreignKey: {
                 allowNull: false
             }
         });
     }
 
-    return Message;
+    return pMessage;
 }

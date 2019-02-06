@@ -51,7 +51,7 @@ $("#submitBtn").on("click", function (event) {
       "phone": userPhoneNum,
       "account_key": password
     };
-    console.log(newUsr);
+    //console.log(newUsr);
     $.post("/signup", newUsr, function (data, status, xhr) {
       console.log(data);
       console.log(status);

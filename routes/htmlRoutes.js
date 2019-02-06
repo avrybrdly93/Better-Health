@@ -186,6 +186,10 @@ module.exports = function (app) {
 
   });
 
+  app.get("/messages", function (req, res) {
+    res.render("messages");
+  })
+
   app.get("/admin/dashboard", function (req, res) {
     console.log("%%%%%%%%% is logged in: " + req.isAuthenticated());
     if (req.isAuthenticated()) {
@@ -213,42 +217,46 @@ module.exports = function (app) {
 
   });
 
-  app.get("/appointment", function(req, res) {
+  app.get("/profile", function(req, res) {
+    res.render("profile");
+  });
+
+  app.get("/appointment", function (req, res) {
     res.render("appointment");
   })
 
   app.get("/signup", function (req, res) {
-    if(req.isAuthenticated()){
+    if (req.isAuthenticated()) {
       res.redirect("/dashboard");
     }
-    else{
+    else {
       res.render("signup");
     }
   });
 
   app.get("/login", function (req, res) {
-    if(req.isAuthenticated()){
+    if (req.isAuthenticated()) {
       res.redirect("/dashboard");
     }
-    else{
+    else {
       res.render("login");
     }
   });
 
   app.get("/admin/signup", function (req, res) {
-    if(req.isAuthenticated()){
+    if (req.isAuthenticated()) {
       res.redirect("/dashboard");
     }
-    else{
+    else {
       res.render("adminsignup");
     }
   });
 
   app.get("/admin/login", function (req, res) {
-    if(req.isAuthenticated()){
+    if (req.isAuthenticated()) {
       res.redirect("/dashboard");
     }
-    else{
+    else {
       res.render("adminlogin");
     }
   });
@@ -370,7 +378,7 @@ module.exports = function (app) {
     })(req, res, next);
   });
 
-  app.post("/admin/message",function(req,res){
+  app.post("/admin/message", function (req, res) {
     db.Message.create({
       title: req.body.title,
       body: req.body.body,
@@ -383,7 +391,7 @@ module.exports = function (app) {
 
   });
 
-  app.post("/message",function(req,res){
+  app.post("/message", function (req, res) {
     db.pMessage.create({
       title: req.body.title,
       body: req.body.body,
@@ -395,7 +403,7 @@ module.exports = function (app) {
     res.send("Message Sent!");
   });
 
-  app.post("/record",function(req,res){
+  app.post("/record", function (req, res) {
     db.Record.create({
       event: req.body.event,
       description: req.body.description,

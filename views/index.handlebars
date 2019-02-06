@@ -1,142 +1,247 @@
-<nav class="uk-navbar-container uk-margin" uk-navbar>
-  <div class="uk-navbar-left">
+<style>
+    #icon {
+        text-align: right;
+    }
 
-    <a class="uk-navbar-item uk-logo" href="#">betterHealth</a>
+    body {
+        background-color: #EBEBEB;
+    }
 
-    <ul class="uk-navbar-nav">
-      <li>
-        <a href="#">
-          <span class="uk-icon uk-margin-small-right" uk-icon="icon: table" uk-toggle="target: #offcanvas-nav"></span>
-        </a>
-      </li>
-    </ul>
+    .accent {
+        color: orange;
+    }
 
-    <div class="uk-navbar-right">
-      <form class="uk-search uk-search-default">
-        <span class="uk-search-icon-flip" uk-search-icon></span>
-        <input class="uk-search-input" type="search" placeholder="Search...">
-      </form>
+    .accent:hover {
+        color: grey;
+        text-decoration: transparent;
+    }
+
+    .link {
+        background-color: orange !important;
+        color: white !important;
+    }
+
+    .login {
+        color: black !important;
+    }
+</style>
+
+<div class="uk-position-relative">
+    <img src="https://happytoothnc.com/wp-content/uploads/2017/11/Happy-Tooth-Dental.jpg" alt="">
+    <div class="uk-position-top">
+        <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
+            <div class="uk-navbar-left">
+                <ul class="uk-navbar-nav">
+                    <li class="uk-active"><a href="/">LOGO_HERE</a></li>
+                    <li><a href="#">Item</a></li>
+                    <li>
+                        <a href="#">Parent</a>
+                        <div class="uk-navbar-dropdown">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li class="uk-active"><a href="#">Active</a></li>
+                                <li><a href="#">Item</a></li>
+                                <li class="uk-nav-header">Header</li>
+                                <li><a href="#">Item</a></li>
+                                <li><a href="#">Item</a></li>
+                                <li class="uk-nav-divider"></li>
+                                <li><a href="#">Item</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="uk-navbar-right">
+                <ul class="uk-navbar-nav">
+                    <li><a class="uk-button uk-button-secondary link" href="/signup">Get Started</a></li>
+                    <li><a class="login" href="/login">Login</a></li>
+                </ul>
+            </div>
+        </nav>
     </div>
-
-  </div>
-  <div class="uk-navbar-right">
-    <div class="uk-navbar-item">
-      <div>Some <a href="#">Link</a></div>
-    </div>
-
-  </div>
-</nav>
-
-<div id="offcanvas-nav" uk-offcanvas="overlay: true">
-  <div class="uk-offcanvas-bar">
-
-    <ul class="uk-nav uk-nav-default">
-      <li class="uk-active"><a href="#">Active</a></li>
-      <li class="uk-parent">
-        <a href="#">Parent</a>
-        <ul class="uk-nav-sub">
-          <li><a href="#">Sub item</a></li>
-          <li><a href="#">Sub item</a></li>
-        </ul>
-      </li>
-      <li class="uk-nav-header">Header</li>
-      <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: table"></span> Item</a></li>
-      <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: thumbnails"></span> Item</a></li>
-      <li class="uk-nav-divider"></li>
-      <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: trash"></span> Item</a></li>
-    </ul>
-
-  </div>
 </div>
+
+<br><br>
 
 <div class="container-fluid">
-  <!-- Icon Cards-->
-  <div class="row">
-    <div class="col-xl-3 col-sm-6 mb-3">
-      <div class="uk-card uk-card-default">
-        <div class="uk-card-body">
-          <i class="fas fa-fw fa-comments fa-2x"></i>
-          <p>Alerts:</p>
-          <p class="uk-text-meta uk-margin-remove-top">You have 1 unread alert!</p>
+    <div class="row">
+        <div class="col-xl-1"></div>
+        <div class="col-xl-5">
+            <h2>Do more of what you love...</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus euismod velit enim, in tincidunt libero
+                iaculis finibus. Nam id rutrum tortor, in tristique eros. In tristique eros augue, nec ornare felis
+                suscipit a. Sed efficitur tellus eget sapien eleifend aliquam. Cras blandit commodo leo. Curabitur sed
+                imperdiet purus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                Praesent lobortis eu mi in tempus. Curabitur sed finibus mauris. Fusce aliquet dictum iaculis. Fusce
+                feugiat nec leo nec bibendum.</p>
+            <a href="" class="accent">> look further</a>
         </div>
-        <div class="uk-card-footer">
-          <a href="#" class="uk-button uk-button-text">Read more</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-xl-3 col-sm-6 mb-3">
-      <div class="uk-card uk-card-default">
-        <div class="uk-card-body">
-          <i class="fas fa-fw fa-comments fa-2x"></i>
-          <p>Hollistic:</p>
-          <p class="uk-text-meta uk-margin-remove-top">View diet plans.</p>
-        </div>
-        <div class="uk-card-footer">
-          <a href="#" class="uk-button uk-button-text">Read more</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-xl-3 col-sm-6 mb-3">
-      <div class="uk-card uk-card-default">
-        <div class="uk-card-body">
-          <i class="fas fa-fw fa-comments fa-2x"></i>
-          <p>Next appointment:</p>
-          <p class="uk-text-meta uk-margin-remove-top"><time datetime="2016-04-01T19:00">April 01, 2016</time></p>
-        </div>
-        <div class="uk-card-footer">
-          <a href="#" class="uk-button uk-button-text">Read more</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-xl-3 col-sm-6 mb-3">
-      <div class="uk-card uk-card-default">
-        <div class="uk-card-body">
-          <i class="fas fa-fw fa-comments fa-2x"></i>
-          <p>Messages:</p>
-          <p class="uk-text-meta uk-margin-remove-top">7 unread messages</p>
-        </div>
-        <div class="uk-card-footer">
-          <a href="#" class="uk-button uk-button-text">Read more</a>
-        </div>
-      </div>
-    </div>
-  </div>
+        <div class="col-xl-5">
+            <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="center: true">
 
-  <!-- Book appointment -->
-  <div class="row">
-    <div class="col-12">
-      <div class="uk-card uk-card-default uk-card-body" uk-scrollspy="cls: uk-animation-slide-left; repeat: true">
-        <h3 class="uk-card-title">Book Appointment</h3>
-        <p>Fill out the form below to book your next appointment.</p>
+                <ul class="uk-slider-items uk-grid">
+                    <li class="uk-width-3-4">
+                        <div class="uk-panel">
+                            <img src="https://images.pexels.com/photos/346885/pexels-photo-346885.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                                alt="">
+                            <div class="uk-position-center uk-panel">
+                                <h1>Explore</h1>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="uk-width-3-4">
+                        <div class="uk-panel">
+                            <img src="https://images.pexels.com/photos/368893/pexels-photo-368893.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                                alt="">
+                            <div class="uk-position-center uk-panel">
+                                <h1>Photography</h1>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="uk-width-3-4">
+                        <div class="uk-panel">
+                            <img src="https://images.pexels.com/photos/1268558/pexels-photo-1268558.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                                alt="">
+                            <div class="uk-position-center uk-panel">
+                                <h1>Food</h1>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="uk-width-3-4">
+                        <div class="uk-panel">
+                            <img src="https://images.pexels.com/photos/219014/pexels-photo-219014.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                                alt="">
+                            <div class="uk-position-center uk-panel">
+                                <h1>Travel</h1>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="uk-width-3-4">
+                        <div class="uk-panel">
+                            <img src="https://images.pexels.com/photos/1257110/pexels-photo-1257110.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                                alt="">
+                            <div class="uk-position-center uk-panel">
+                                <h1>Family</h1>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
 
-        <form class="uk-grid-small" uk-grid>
-          <div class="uk-width-1-1">
-            <label class="uk-form-label" for="form-horizontal-select">Pick a Date:</label>
-            <input type="text" data-uk-datepicker="{format:'DD.MM.YYYY'}">
-          </div>
-          <div class="uk-margin">
-            <label class="uk-form-label" for="form-horizontal-select">What is your appointment for?</label>
-            <div uk-form-custom="target: > * > span:first-child">
-              <select>
-                <option value="">Please select...</option>
-                <option value="1">Checkup</option>
-                <option value="2">Physical</option>
-                <option value="3">Blood Test</option>
-                <option value="4">Pain</option>
-              </select>
-              <button class="uk-button uk-button-default" type="button" tabindex="-1">
-                <span></span>
-                <span uk-icon="icon: chevron-down"></span>
-              </button>
+                <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous
+                    uk-slider-item="previous"></a>
+                <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next
+                    uk-slider-item="next"></a>
+
             </div>
-          </div>
-          <div class="uk-width-1-1">
-            <textarea class="uk-textarea" rows="5" placeholder="Additional comments"></textarea>
-          </div>
-          <p style="text-align: center;"><button class="uk-button uk-button-primary">Submit</button></p>
-        </form>
-      </div>
+        </div>
+
+        <div class="col-xl-1"></div>
     </div>
-  </div>
-</div>
-<script src="/js/index.js"></script>
+
+    <br><br>
+
+    <h3 class="uk-heading-primary" style="text-align: center;">Better Health Starts Here.</h3>
+
+    <br><br>
+
+    <div class="row">
+        <div class="col-4">
+            <div class="uk-child-width-1-1@m" uk-grid>
+                <div>
+                    <div class="uk-card uk-card-default">
+                        <div class="uk-card-media-top">
+                            <img src="https://images.pexels.com/photos/721166/pexels-photo-721166.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                                alt="">
+                        </div>
+                        <div class="uk-card-body">
+                            <h3 class="uk-card-title">Alerts</h3>
+                            <p>View instant updates in your medical record, no longer wait until your next visit.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="uk-child-width-1-1@m" uk-grid>
+                <div>
+                    <div class="uk-card uk-card-default">
+                        <div class="uk-card-body">
+                            <h3 class="uk-card-title">Private Messaging</h3>
+                            <p>Contact your Physician and Nurse's instantly with our user friendly private messaging.</p>
+                        </div>
+                        <div class="uk-card-media-bottom">
+                            <img src="https://images.pexels.com/photos/1549001/pexels-photo-1549001.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                                alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="uk-child-width-1-1@m" uk-grid>
+                <div>
+                    <div class="uk-card uk-card-default">
+                        <div class="uk-card-media-top">
+                            <img src="https://images.pexels.com/photos/1020323/pexels-photo-1020323.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                                alt="">
+                        </div>
+                        <div class="uk-card-body">
+                            <h3 class="uk-card-title">Book Appointments</h3>
+                            <p>Feeling under the weather? Book your next visit with a few easy clicks.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="uk-section-default">
+        <div class="uk-section uk-light uk-background-cover" style="background-image: url(https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
+            <div class="uk-container">
+
+                <h3>Section with Images</h3>
+
+                <div class="uk-grid-match uk-child-width-1-3@m" uk-grid>
+                    <div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+                    </div>
+                    <div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+                    </div>
+                    <div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="Team">
+            <h2>Team</h2>
+        </div>
+        <div class="info">
+            this will hold A bunch of info not sure what? Maybe info about us? Maybe something else. Not really
+            sure.
+        </div>
+
+        <div class="uk-section uk-section-muted">
+            <div class="uk-container">
+
+                <h3>Section</h3>
+
+                <div class="uk-grid-match uk-child-width-1-3@m" uk-grid>
+                    <div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+                    </div>
+                    <div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+                    </div>
+                    <div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>

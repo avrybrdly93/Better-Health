@@ -41,6 +41,7 @@ $(document).ready(function () {
     if (checkPasswordMatch()) {
       var newUsr = {
         "first_name": $("#fNameInput").val().trim(),
+        "username": $("#userName").val().trim(),
         "last_name": $("#lNameInput").val().trim(),
         "address": $("#addressInput").val().trim(),
         "city": $("#cityInput").val().trim(),
@@ -48,7 +49,6 @@ $(document).ready(function () {
         "zip": $("#zipInput").val().trim(),
         "email": $("#emailInput").val().trim(),
         "phone": userPhoneNum,
-        "isPatient": true,
         "account_key": password
       };
       console.log(newUsr);

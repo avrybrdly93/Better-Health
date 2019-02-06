@@ -12,61 +12,110 @@ $(document).ready(function(){
       large: true
     });
     
-      // In this code, jQuery is used to "download" the data from our server
-      // We then dynamically display this content in our table. This is very similar to the group projects you just completed.
-      // It's also very similar to the NYT search application. In fact, I copied a ton of code from there.
+
+// This is going to be to hold the user information enterered -- hopefully
+
+$("#submitBtn").on("click",function(event){
+  // event.preventDefault();
+
+  var userInput= {
+      "date": $("date-form").val.trim(),
+      "time": $("time-form").val.trim(),
+      "reason": $("apptReason").val.trim(),
+      "name": $("nameInput").val.trim(),
+      "number": $("numberInput").val.trim(),
+      "email": $("emailInput").val.trim()
+      }
+
+      console.log(userInput);
+
+  $.post("/appointment",userInput,function(data,status,xhr){
+      console.log(data);
+      
+      console.log(status);
+      console.log(xhr);
+      $("#appointmentForm")[0].reset();
+      
+      switch(xhr.status){
+          case 200:{
+              window.location.href="/dashboard";
+              break;
+          }
+          case 401:{
+              window.location.href="/login";
+              break;
+          }
+          case 404:{
+              window.location.href="*";
+              break;
+          }
+          case 500: {
+              alert("Refresh Page!");
+              break;
+          }
+      }
+  });
+});
+
+
+
+
+
+      // // In this code, jQuery is used to "download" the data from our server
+      // // We then dynamically display this content in our table. This is very similar to the group projects you just completed.
+      // // It's also very similar to the NYT search application. In fact, I copied a ton of code from there.
     
-      function runApptQuery() {
-        // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
-        $.ajax({ url: "/api/tables", method: "GET" })
-          .then(function(apptData) {
+      // function runApptQuery() {
+      //   // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
+      //   $.ajax({ url: "/api/tables", method: "GET" })
+      //     .then(function(apptData) {
     
-            // Here we then log the tableData to console, where it will show up as an object.
-            console.log(apptData);
-            console.log("------------------------------------");
+      //       // Here we then log the tableData to console, where it will show up as an object.
+      //       console.log(apptData);
+      //       console.log("------------------------------------");
     
-            // Loop through and display each of the customers
-            for (var i = 0; i < apptData.length; i++) {
+      //       // Loop through and display each of the customers
+      //       for (var i = 0; i < apptData.length; i++) {
     
-              // Get a reference to the tableList element and populate it with tables
-              var apptList = $("#apptList");
+      //         // Get a reference to the tableList element and populate it with tables
+      //         var apptList = $("#apptList");
     
-              // Then display the fields in the HTML (Section Name, Date, URL)
-              var listItem = $("<li class='list-group-item mt-4'>");
+      //         // Then display the fields in the HTML (Section Name, Date, URL)
+      //         var listItem = $("<li class='list-group-item mt-4'>");
     
-              listItem.append(
-                // $("<h2>").text("Table #" + (i + 1)),
-                $("<hr>"),
-                $("<h2>").text("Date & Time: " + apptData[i].apptDate + "&" + tableData[i].apptTime),
-                $("<h2>").text("Name: " + apptData[i].patientName),
-                $("<h2>").text("Email: " + apptData[i].patientEmail),
-                $("<h2>").text("Phone: " + apptData[i].phoneNumber),
+      //         listItem.append(
+      //           // $("<h2>").text("Table #" + (i + 1)),
+      //           $("<hr>"),
+      //           $("<h2>").text("Date & Time: " + apptData[i].apptDate + "&" + tableData[i].apptTime),
+      //           $("<h2>").text("Name: " + apptData[i].patientName),
+      //           $("<h2>").text("Email: " + apptData[i].patientEmail),
+      //           $("<h2>").text("Phone: " + apptData[i].phoneNumber),
                 
-              );
+      //         );
     
-              apptList.append(listItem);
-              console.log(listItem);
-            }
-          });
+      //         apptList.append(listItem);
+      //         console.log(listItem);
+      //       }
+      //     });
           
-      }
+      // }
     
-      // This function resets all of the data in our tables. This is intended to let you restart a demo.
-      function clearTable() {
-        alert("Clearing...");
+      // // This function resets all of the data in our tables. This is intended to let you restart a demo.
+      // function clearTable() {
+      //   alert("Clearing...");
     
-        // Clear the tables on the server and then empty the elements on the client
-        $.ajax({ url: "/api/clear", method: "POST" }).then(function() {
-          $("#apptList").empty();
-        });
-      }
+      //   // Clear the tables on the server and then empty the elements on the client
+      //   $.ajax({ url: "/api/clear", method: "POST" }).then(function() {
+      //     $("#apptList").empty();
+      //   });
+      // }
     
-      $("#clear").on("click", clearTable);
+      // $("#clear").on("click", clearTable);
     
     
-      // Run Queries!
-      // ==========================================
-      runApptQuery();
+      // // Run Queries!
+      // // ==========================================
+      // runApptQuery();
       
   });
   

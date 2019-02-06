@@ -38,8 +38,9 @@ $("select.uk-select").change(function(){
 $("#submitBtn").on("click", function (event) {
   event.preventDefault();
 
-  if(checkPasswordMatch()) {
+  if(checkPasswordMatch() && password.length > 7) {
     var newUsr = {
+      "username": $("#userName").val().trim(),
       "first_name": $("#fNameInput").val().trim(),
       "last_name": $("#lNameInput").val().trim(),
       "address": $("#addressInput").val().trim(),
@@ -48,10 +49,9 @@ $("#submitBtn").on("click", function (event) {
       "zip": $("#zipInput").val().trim(),
       "email": $("#emailInput").val().trim(),
       "phone": userPhoneNum,
-      "isPatient": true,
       "account_key": password
     };
-    console.log(newUsr);
+    //console.log(newUsr);
     $.post("/signup", newUsr, function (data, status, xhr) {
       console.log(data);
       console.log(status);

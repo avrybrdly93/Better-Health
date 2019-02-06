@@ -120,9 +120,16 @@
         <p>Fill out the form below to book your next appointment.</p>
 
         <form class="uk-grid-small" uk-grid>
-          <div class="uk-width-1-1">
-            <label class="uk-form-label" for="form-horizontal-select">Pick a Date:</label>
-            <input type="text" data-uk-datepicker="{format:'DD.MM.YYYY'}">
+          <div class="uk-width-1-1"> 
+           
+                      <!-- Date -->
+                      <label for="date-form">Pick a Date:</label>
+                      <input id="start_dt" class='datepicker' size='11' title='DD-MM-YYYY' />
+                      <!-- Time -->
+                      <label for="time-form">Pick a Time:</label>
+                      <input id="time-form" type="text" name="time-form" value="" aria-live="assertive" autocomplete="off" aria-label="Use up or down arrow keys to change time" required>
+                    
+
           </div>
           <div class="uk-margin">
             <label class="uk-form-label" for="form-horizontal-select">What is your appointment for?</label>
@@ -149,4 +156,5 @@
   </div>
   <a href="/dashboard" uk-totop uk-scroll></a>
 </div>
+</script>
 <script src="/js/dashboard.js"></script>

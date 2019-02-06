@@ -87,18 +87,18 @@
         "account_key": $("#passwordInput").val().trim()
       };
       
-      $.post("/admin/signup", newStaff, function (data, status, xhr) {
+      $.post("/staff/signup", newStaff, function (data, status, xhr) {
         console.log(data);
         console.log(status);
         console.log(xhr);
         
         switch (xhr.status) {
           case 200: {
-            window.location.href = "/dashboard";
+            window.location.href = "/staff/dashboard";
             break;
           }
           case 401: {
-            window.location.href = "/admin/signup";
+            window.location.href = "/staff/signup";
             break;
           }
           case 404: {

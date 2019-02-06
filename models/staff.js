@@ -123,5 +123,11 @@ module.exports=function(sequelize,DataTypes){
         });
     }
 
+    Staff.associate=function(models){
+        Staff.hasMany(models.sAppt,{
+            onDelete: "cascade"
+        });
+    }
+
     return Staff;
 }

@@ -97,6 +97,12 @@ module.exports=function(sequelize,DataTypes){
         return bcrypt.compareSync(password, this.account_key);
     };
 
+    Patient.prototype.findDoctor=function(){
+        models.Staff.findAll({}).then(function(user){
+            return user[0].uuid;
+        });
+    };
+
     Patient.associate = function(models){
         Patient.belongsTo(models.Staff,{
             foreignKey: {

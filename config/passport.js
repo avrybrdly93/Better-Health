@@ -5,8 +5,6 @@ var db = require("../models");
 module.exports = function (passport) {
     passport.serializeUser(function (entity, done) {
         done(null, entity);
-        // console.log("THIS IS USER HERE");
-        // console.log(user);
     });
 
     passport.deserializeUser(function (obj, done) {
@@ -29,7 +27,7 @@ module.exports = function (passport) {
                         done(null, user.get());
                     }
                     else {
-                        done(user.errors, null)
+                        done(user.errors, null);
                     }
                 });
 
@@ -73,7 +71,7 @@ module.exports = function (passport) {
                         zip: req.body.zip,
                         email: req.body.email,
                         phone: req.body.phone,
-                        StaffUuid: req.body.StaffUuid,
+                        StaffUuid: db.Patient.findDoctor(),
                         type: "Patient",
                         account_key: db.Patient.generateHash(account_key)
                     }).then(function (dbUser) {

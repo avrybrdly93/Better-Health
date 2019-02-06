@@ -13,7 +13,7 @@ module.exports=function(sequelize,DataTypes){
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [1,10]
+                len: [3,15]
             }
         },
         first_name: {
@@ -48,7 +48,7 @@ module.exports=function(sequelize,DataTypes){
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [1,2]
+                len: [2]
             }
         },
         zip: {
@@ -62,7 +62,8 @@ module.exports=function(sequelize,DataTypes){
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [1,100]
+                len: [1,100],
+                isEmail: true
             }
         },
         phone: {
@@ -82,9 +83,6 @@ module.exports=function(sequelize,DataTypes){
         account_key:{
             type: DataTypes.STRING,
             required: true,
-            validate: {
-                len: [8]
-            }
         }
     });
 

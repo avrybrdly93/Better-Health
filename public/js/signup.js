@@ -38,7 +38,7 @@ $("select.uk-select").change(function(){
 $("#submitBtn").on("click", function (event) {
   event.preventDefault();
 
-  if(checkPasswordMatch()) {
+  if(checkPasswordMatch() && password.length > 7) {
     var newUsr = {
       "username": $("#userName").val().trim(),
       "first_name": $("#fNameInput").val().trim(),

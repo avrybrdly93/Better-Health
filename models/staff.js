@@ -13,7 +13,7 @@ module.exports=function(sequelize,DataTypes){
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [1,10]
+                len: [1,15]
             }
         },
         first_name: {
@@ -62,7 +62,7 @@ module.exports=function(sequelize,DataTypes){
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [1,2]
+                len: [2]
             }
         },
         zip: {
@@ -76,14 +76,15 @@ module.exports=function(sequelize,DataTypes){
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [1,100]
+                len: [1,100],
+                isEmail: true
             }
         },
         phone: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [12]
+                len: [10]
             }
         },
         type: {
@@ -97,7 +98,7 @@ module.exports=function(sequelize,DataTypes){
             type: DataTypes.STRING,
             required: true,
             validate: {
-                len: [8]
+                len: [8,30]
             }
         }
     });
@@ -112,7 +113,7 @@ module.exports=function(sequelize,DataTypes){
     };
 
     Staff.associate = function(models){
-        Staff.hasMany(models.Message,{
+        Staff.hasMany(models.sMessage,{
             onDelete: "cascade"
         });
     };
@@ -120,6 +121,12 @@ module.exports=function(sequelize,DataTypes){
     Staff.associate = function(models){
         Staff.hasMany(models.Patient,{
             onDelete: "no action",
+        });
+    }
+
+    Staff.associate=function(models){
+        Staff.hasMany(models.sAppt,{
+            onDelete: "cascade"
         });
     }
 

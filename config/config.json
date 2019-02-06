@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "Niana3132!2018",
+    "password": "root",
     "database": "medApp",
     "host": "localhost",
     "dialect": "mysql"

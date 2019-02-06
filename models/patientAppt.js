@@ -1,35 +1,22 @@
 module.exports = function(sequelize,DataTypes){
-    var patientAppt = sequelize.define("patientAppt",{
-        date: {
+    var pAppt = sequelize.define("pAppt",{
+        reason:{
             type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [1,100]
-            }
-        },
-        time: {
-            type: DataTypes.TEXT,
             allowNull: false,
             validate: {
                 len: [1]
             }
-        },
-        doctor: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [1,]
-            }
         }
+        
     });
 
-    patientAppt.associate = function(models){
-        patientAppt.belongsTo(models.User,{
+    pAppt.associate = function(models){
+        pAppt.belongsTo(models.Patient,{
             foreignKey: {
                 allowNull: false
             }
         });
     }
 
-    return patientAppt;
+    return pAppt;
 }

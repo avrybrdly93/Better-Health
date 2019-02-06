@@ -113,7 +113,7 @@ module.exports=function(sequelize,DataTypes){
     };
 
     Staff.associate = function(models){
-        Staff.hasMany(models.Message,{
+        Staff.hasMany(models.sMessage,{
             onDelete: "cascade"
         });
     };

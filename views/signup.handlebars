@@ -125,16 +125,30 @@
         <label class="uk-form-label" for="form-horizontal-select">Zip code:</label>
         <input class="uk-input" id="zipInput" type="text" placeholder="92501">
     </div>
-    <div class="uk-margin">
-        <p style="text-align: center;"><button class="uk-button uk-button-primary">Submit</button></p>
-        <script>
-            var subBtn = $(".uk-button");
+    {{!-- <div class="uk-margin">
+        <label class="uk-form-label" for="form-horizontal-select">What is your appointment for?</label>
+        <div uk-form-custom="target: > * > span:first-child">
+            <select>
+                <option value="">Please select...</option>
+                <option value="1">Checkup</option>
+                <option value="2">Physical</option>
+                <option value="3">Blood Test</option>
+                <option value="4">Pain</option>
+            </select>
+            <button class="uk-button uk-button-default" type="button" tabindex="-1">
+                <span></span>
+                <span uk-icon="icon: chevron-down"></span>
+            </button>
+        </div>
+    </div> --}}
 
-            subBtn.on("click", function () {
-                var element = $('#form-horizontal-select option:selected').text();
-                alert(element);
-            });
-        </script>
-    </div>
-    </div>
+    <button class="btn btn-primary" id="submitBtn">
+    Submit
+    </button>
 </form>
+
+<div class="errorPlace">
+    {{message}}
+</div>
+
+<script type="text/javascript" src="js/signup.js"></script>

@@ -80,6 +80,10 @@ module.exports = function (app) {
     }
 
   });
+
+  app.get ("/holistic", function(req, res) {
+    res.render("choice");
+  });
   //END OF PATIENT GET ROUTES
 
   //STAFF GET ROUTES

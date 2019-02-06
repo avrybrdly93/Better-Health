@@ -81,11 +81,31 @@ module.exports = function (app) {
 
   });
 
-  app.get("/messages", function (req, res) {
-    res.render("messages");
-  })
+  app.get ("/holistic", function(req, res) {
+    res.render("choice");
+  });
+  //END OF PATIENT GET ROUTES
 
-  app.get("/admin/dashboard", function (req, res) {
+  //STAFF GET ROUTES
+  app.get("/staff/signup", function (req, res) {
+    if (req.isAuthenticated()) {
+      res.redirect("/staff/dashboard");
+    }
+    else {
+      res.render("staffsignup");
+    }
+  });
+
+  app.get("/staff/login", function (req, res) {
+    if (req.isAuthenticated()) {
+      res.redirect("/staff/dashboard");
+    }
+    else {
+      res.render("stafflogin");
+    }
+  });
+
+  app.get("/staff/dashboard", function (req, res) {
     console.log("%%%%%%%%% is logged in: " + req.isAuthenticated());
     if (req.isAuthenticated()) {
 
@@ -113,50 +133,57 @@ module.exports = function (app) {
   });
   //END OF STAFF GET ROUTES
 
-  app.get("/profile", function(req, res) {
-    res.render("profile");
+  //PATIENT POST ROUTES
+  app.post("/signup", function (req, res, next) {
+    passport.authenticate('local-signup-patients', function (err, usr, info) {
+      console.log("info", info);
+      if (err) {
+        console.log("Passport Error: " + err);
+        return next(err);
+      }
+      if (!usr) {
+        console.log("user error " + usr);
+        return res.send({ success: false, message: 'Authentication Failed' });
+      }
+
+      req.login(usr, loginErr => {
+        if (loginErr) {
+          console.log("Login Error " + loginErr);
+          return next(loginErr);
+        }
+        console.log('redirecting....');
+        res.cookie('first_name', usr.first_name);
+        res.cookie('user_id', usr.uuid);
+        res.status(200);
+        res.send("Signed Up!");
+      });
+    })(req, res, next);
   });
 
-  app.get("/appointment", function (req, res) {
-    res.render("appointment");
-  })
 
-  app.get("/signup", function (req, res) {
-    if (req.isAuthenticated()) {
-      res.redirect("/dashboard");
-    }
-    else {
-      res.render("signup");
-    }
-  });
+  app.post('/login', function (req, res, next) {
+    passport.authenticate('local-login-patients', function (err, usr, info) {
+      console.log("\n\n\n########userrrr", usr)
+      if (err) {
+        console.log("passport err", err);
+        return next(err); // will generate a 500 error
+      }
+      if (!usr) {
 
-  app.get("/login", function (req, res) {
-    if (req.isAuthenticated()) {
-      res.redirect("/dashboard");
-    }
-    else {
-      res.render("login");
-    }
-  });
+        return res.send({ success: false, message: 'Authentication Failed' });
+      }
+      req.login(usr, loginErr => {
+        if (loginErr) {
+          console.log("loginerr", loginErr);
+          return next(loginErr);
+        }
 
-  app.get("/admin/signup", function (req, res) {
-    if (req.isAuthenticated()) {
-      res.redirect("/dashboard");
-    }
-    else {
-      res.render("adminsignup");
-    }
-  });
+        console.log('redirecting....');
+        res.cookie('first_name', usr.first_name);
+        res.cookie('user_id', usr.uuid);
 
-  app.get("/login", function(req, res){
-    res.render("login");
-  });
-
-  // Load example page and pass in an example by id
-  app.get("/example/:id", function(req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.render("example", {
-        example: dbExample
+        res.status(200);
+        res.send("Go Ahead");
       });
     })(req, res, next);
   });
@@ -215,47 +242,7 @@ module.exports = function (app) {
       });
     })(req, res, next);
   });
-
-  app.post("/admin/message", function (req, res) {
-    db.Message.create({
-      title: req.body.title,
-      body: req.body.body,
-      receiver: req.body.receiverUuid,
-      StaffUuid: req.body.StaffUuid
-    });
-
-    res.status(200);
-    res.send("Message Sent!");
-
-  });
-
-  app.post("/message", function (req, res) {
-    db.pMessage.create({
-      title: req.body.title,
-      body: req.body.body,
-      receiver: req.body.receiverUuid,
-      PatientUuid: req.body.PatientUuid
-    });
-
-    res.status(200);
-    res.send("Message Sent!");
-  });
-
-  app.post("/record", function (req, res) {
-    db.Record.create({
-      event: req.body.event,
-      description: req.body.description,
-      location_name: req.body.location_name,
-      address: req.body.address,
-      city: req.body.city,
-      state: req.body.state,
-      zip: req.body.zip,
-      PatientUuid: req.body.PatientUuid
-    });
-
-    res.status(200);
-    res.send("Record Uploaded!");
-  });
+  //END OF STAFF POST ROUTES
 
   // Render 404 page for any unmatched routes
   app.get("*", function (req, res) {

@@ -1,84 +1,129 @@
+<h1> Sign up Page</h1>
 <form class="uk-grid-small" uk-grid>
     <div class="uk-width-1-1">
-        <span class="uk-form-icon" uk-icon="icon: mail"></span>
-        <input class="uk-input" type="text">
+        <label class="uk-form-label" for="form-horizontal-select">Email:</label>
+        {{!-- <span class="uk-form-icon" uk-icon="icon: mail"></span> --}}
+        <input class="uk-input" id="emailInput" type="text">
     </div>
     <div class="uk-width-1-2@s">
-        <span class="uk-form-icon" uk-icon="icon: user"></span>
-        <input class="uk-input" type="text">
+        <label class="uk-form-label" for="form-horizontal-select">Username:</label>
+        {{!-- <span class="uk-form-icon" uk-icon="icon: user"></span> --}}
+        <input class="uk-input" id="userName" type="text">
     </div>
     <div class="uk-width-1-4@s">
-        <span class="uk-form-icon" uk-icon="icon: lock"></span>
-        <input class="uk-input" type="text" placeholder="25">
+        <label class="uk-form-label" for="form-horizontal-select">Password:</label>
+        {{!-- <span class="uk-form-icon" uk-icon="icon: lock"></span> --}}
+        <input class="uk-input" id="passwordInput" type="password" placeholder="Password">
     </div>
+
+    <div class="uk-width-1-4@s">
+        <label class="uk-form-label" for="form-horizontal-select">Confirm Password:</label>
+        {{!-- <span class="uk-form-icon" uk-icon="icon: lock"></span> --}}
+        <input class="uk-input" id="passwordInputConfirm" type="password" placeholder="Re-Enter Password">
+    </div>
+    <div class="passwordMatch"></div>
 
     <div class="uk-width-1-2@s">
         <label class="uk-form-label" for="form-horizontal-select">First Name:</label>
-        <input class="uk-input" type="text" placeholder="Johnny">
+        <input class="uk-input" type="text" id="fNameInput" placeholder="Johnny">
     </div>
     <div class="uk-width-1-2@s">
         <label class="uk-form-label" for="form-horizontal-select">Last Name:</label>
-        <input class="uk-input" type="text" placeholder="Appleseed">
+        <input class="uk-input" type="text" id="lNameInput" placeholder="Appleseed">
     </div>
     <div class="uk-width-1-1">
         <label class="uk-form-label" for="form-horizontal-select">Street:</label>
-        <input class="uk-input" type="text" placeholder="Appleseed">
+        <input class="uk-input" type="text" id="addressInput" placeholder="Appleseed">
     </div>
     <div class="uk-width-1-2@s">
         <label class="uk-form-label" for="form-horizontal-select">City:</label>
-        <input class="uk-input" type="text" placeholder="Riverside">
+        <input class="uk-input" type="text" id="cityInput" placeholder="Riverside">
     </div>
+     {{!--   <div class="uk-width-1-4@s">
+        <label class="uk-form-label" for="form-horizontal-select">Phone:</label>
+        <input class="uk-input" type="text" id="phoneInput" placeholder="(909)665-8732">
+    </div> --}}
+
+    <div class="uk-width-1-4@s">
+        <label class="uk-form-label" for="form-horizontal-select">Phone Number:</label>
+        <input class="uk-input phoneInput" type="text" maxlength="3" id="areaCode" placeholder="909">
+        <input class="uk-input phoneInput" type="text" maxlength="3" id="phonePrefix" placeholder="665">
+        <input class="uk-input phoneInput" type="text" maxlength="4" id="phoneLineNumber" placeholder="8732">
+    </div>
+
     <div class="uk-width-1-4@s">
         <div class="uk-margin">
             <label class="uk-form-label" for="form-horizontal-select">State:</label>
             <div class="uk-form-controls">
-                <select class="uk-select" id="form-horizontal-select">
-                    <option value="Alabama">Alabama</option>
-                    <option value="Alaska">Alaska</option>
-                    <option value="Arizona">Arizona</option>
-                    <option value="Arkansas">Arkansas</option>
-                    <option value="California">California</option>
-                    <option value="Colorado">Colorado</option>
-                    <option value="Connecticut">Connecticut</option>
-                    <option value="Delaware">Delaware</option>
-                    <option value="Floria">Florida</option>
-                    <option value="Georgia">Georgia</option>
-                    <option value="Hawaii">Hawaii</option>
-                    <option value="Idaho">Idaho</option>
-                    <option value="Illinois">Illinois</option>
-                    <option value="Indiana">Indiana</option>
-                    <option value="Iowa">Iowa</option>
-                    <option value="Kansas">Kansas</option>
-                    <option value="Kentucky">Kentucky</option>
-                    <option value="Louisiana">Louisiana</option>
-                    <option value="Maine">Maine</option>
-                    <option value="Maryland">Maryland</option>
-                    <option value="Massachusetts">Massachusetts</option>
-                    <option value="Michigan">Michigan</option>
-                    <option value="Minnesota">Minnesota</option>
-                    <option value="Mississippi">Mississippi</option>
-                    <option value="Missouri">Missouri</option>
-                    <option value="Montana">Montana</option>
-                    <option value="Nebraska">Nebraska</option>
-                    <option value="Nevada">Nevada</option>
-                    <option value="New Hampshire">New Hampshire</option>
-                    <option value="New Jersey">New Jersey</option>
-                    <option value="New Mexico">New Mexico</option>
-                    <option value="New York">New York</option>
-                    <option value="North Carolina">North Carolina</option>
-                    <option value="North Dakota">North Dakota</option>
-                    <option value="Ohio">Ohio</option>
-                    <option value="Oklahoma">Oklahoma</option>
-                    <option value="Oregon">Oregon</option>
-                    <option value="Pennsylvania">Pennsylvania</option>
-                    <option value="Rhode Island">Rhode Island</option>
+                <select class="uk-select" id="form-horizontal-select stateInput">
+                    <option value="">Select a State</option>
+                    <option value="AL">Alabama</option>
+                    <option value="AK">Alaska</option>
+                    <option value="AZ">Arizona</option>
+                    <option value="AR">Arkansas</option>
+                    <option value="CA">California</option>
+                    <option value="CO">Colorado</option>
+                    <option value="CT">Connecticut</option>
+                    <option value="DE">Delaware</option>
+                    <option value="FL">Florida</option>
+                    <option value="GA">Georgia</option>
+                    <option value="HI">Hawaii</option>
+                    <option value="ID">Idaho</option>
+                    <option value="IL">Illinois</option>
+                    <option value="IN">Indiana</option>
+                    <option value="IA">Iowa</option>
+                    <option value="KS">Kansas</option>
+                    <option value="KY">Kentucky</option>
+                    <option value="LA">Louisiana</option>
+                    <option value="ME">Maine</option>
+                    <option value="MD">Maryland</option>
+                    <option value="MA">Massachusetts</option>
+                    <option value="MI">Michigan</option>
+                    <option value="MN">Minnesota</option>
+                    <option value="MS">Mississippi</option>
+                    <option value="MO">Missouri</option>
+                    <option value="MT">Montana</option>
+                    <option value="NE">Nebraska</option>
+                    <option value="NV">Nevada</option>
+                    <option value="NH">New Hampshire</option>
+                    <option value="NJ">New Jersey</option>
+                    <option value="NM">New Mexico</option>
+                    <option value="NY">New York</option>
+                    <option value="NC">North Carolina</option>
+                    <option value="ND">North Dakota</option>
+                    <option value="OH">Ohio</option>
+                    <option value="OK">Oklahoma</option>
+                    <option value="OR">Oregon</option>
+                    <option value="PA">Pennsylvania</option>
+                    <option value="RI">Rhode Island</option>
+                    <option value="SC">South Carolina</option>
+                    <option value="SD">South Dakota</option>
+                    <option value="TN">Tennessee</option>
+                    <option value="TX">Texas</option>
+                    <option value="UT">Utah</option>
+                    <option value="VT">Vermont</option>
+                    <option value="VA">Virginia</option>
+                    <option value="WA">Washington</option>
+                    <option value="WV">West Virginia</option>
+                    <option value="WI">Wisconsin</option>
+                    <option value="WY">Wyoming</option>
+                    <option value="">---Commonwealth and Territories---</option>
+                    <option value="AS">American Samoa</option>
+                    <option value="DC">Washington D.C.</option>
+                    <option value="FM">Federated States of Micronesia</option>
+                    <option value="GU">Guam</option>
+                    <option value="MH">Marshall Islands</option>
+                    <option value="MP">Northern Mariana Islands</option>
+                    <option value="PW">Palau</option>
+                    <option value="PR">Puerto Rico</option>
+                    <option value="VI">Virgin Islands</option>
                 </select>
             </div>
         </div>
     </div>
     <div class="uk-width-1-4@s">
         <label class="uk-form-label" for="form-horizontal-select">Zip code:</label>
-        <input class="uk-input" type="text" placeholder="92501">
+        <input class="uk-input" id="zipInput" type="text" placeholder="92501">
     </div>
     <div class="uk-margin">
         <p style="text-align: center;"><button class="uk-button uk-button-primary">Submit</button></p>

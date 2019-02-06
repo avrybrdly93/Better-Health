@@ -2,12 +2,19 @@ var uuidv1 = require("uuid/v1");
 var bcrypt = require("bcrypt");
 
 module.exports=function(sequelize,DataTypes){
-    var User = sequelize.define("User",{
+    var Staff = sequelize.define("Staff",{
         uuid : {
             primaryKey: true,
             type: DataTypes.UUID,
             defaultValue: DataTypes.UUIDV1,
             isUnique: true
+        },
+        username: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [1,10]
+            }
         },
         first_name: {
             type: DataTypes.STRING,
@@ -19,6 +26,20 @@ module.exports=function(sequelize,DataTypes){
         last_name: {
             type: DataTypes.STRING,
             allowNull: false,
+            validate: {
+                len: [1,30]
+            }
+        },
+        title: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate:{
+                len: [1,30]
+            }
+        },
+        specialization: {
+            type: DataTypes.STRING,
+            allowNull: true,
             validate: {
                 len: [1,30]
             }
@@ -55,20 +76,22 @@ module.exports=function(sequelize,DataTypes){
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [1,100],
-                isEmail: true
+                len: [1,100]
             }
         },
         phone: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [10]
+                len: [12]
             }
         },
-        isPatient: {
-            type: DataTypes.BOOLEAN,
+        type: {
+            type: DataTypes.STRING,
             allowNull: false,
+            validate:{
+                len: [1]
+            }
         },
         account_key:{
             type: DataTypes.STRING,
@@ -79,26 +102,26 @@ module.exports=function(sequelize,DataTypes){
         }
     });
 
-    User.generateHash = function(password) {
+    Staff.generateHash = function(password) {
         return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
     };
 
     // checking if password is valid
-    User.prototype.validPassword = function(password) {
+    Staff.prototype.validPassword = function(password) {
         return bcrypt.compareSync(password, this.account_key);
     };
 
-    User.associate = function(models){
-        User.hasMany(models.Message,{
+    Staff.associate = function(models){
+        Staff.hasMany(models.Message,{
             onDelete: "cascade"
         });
     };
 
-    User.associate = function(models){
-        User.hasMany(models.Record,{
-            onDelete: "cascade"
+    Staff.associate = function(models){
+        Staff.hasMany(models.Patient,{
+            onDelete: "no action",
         });
     }
 
-    return User;
+    return Staff;
 }

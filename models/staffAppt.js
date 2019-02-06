@@ -1,59 +1,47 @@
 module.exports = function(sequelize,DataTypes){
-    var Record = sequelize.define("Record",{
-        event: {
+    var staffAppt = sequelize.define("staffAppt",{
+        patient_name: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: [1,100]
             }
         },
-        description: {
+        time: {
             type: DataTypes.TEXT,
             allowNull: false,
             validate: {
                 len: [1]
             }
         },
-        location_name: {
+        date: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: [1,]
             }
         },
-        address: {
+        room: {
             type: DataTypes.STRING,
             validate: {
                 len: [1,35]
             }
         },
-        city: {
+        reason: {
             type: DataTypes.STRING,
             validate: {
                 len: [1,30]
             }
-        },
-        state: {
-            type: DataTypes.STRING,
-            validate: {
-                len: [1,2]
-            }
-        },
-        zip: {
-            type: DataTypes.STRING,
-            validate:{
-                len: [5]
-            }
         }
     });
 
-    Record.associate = function(models){
-        Record.belongsTo(models.Patient,{
+    staffAppt.associate = function(models){
+        staffAppt.belongsTo(models.User,{
             foreignKey: {
                 allowNull: false
             }
         });
     }
 
-    return Record;
+    return staffAppt;
 }

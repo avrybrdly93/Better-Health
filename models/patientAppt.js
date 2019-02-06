@@ -1,33 +1,35 @@
-var uuidv1 = require("uuid/v1");
-
 module.exports = function(sequelize,DataTypes){
-    var Message = sequelize.define("Message",{
-        title:{
+    var patientAppt = sequelize.define("patientAppt",{
+        date: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: [1,100]
             }
         },
-        body: {
+        time: {
             type: DataTypes.TEXT,
             allowNull: false,
             validate: {
                 len: [1]
             }
         },
-        receiver: {
-            type: DataTypes.UUID
+        doctor: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [1,]
+            }
         }
     });
 
-    Message.associate = function(models){
-        Message.belongsTo(models.User,{
+    patientAppt.associate = function(models){
+        patientAppt.belongsTo(models.User,{
             foreignKey: {
                 allowNull: false
             }
         });
     }
 
-    return Message;
+    return patientAppt;
 }

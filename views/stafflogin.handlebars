@@ -1,0 +1,63 @@
+<div id="home">
+    <div class="container">
+        <div class="row">
+            <div class="col-8 offset-2">
+                <form id="loginForm"> 
+                    <div class="form-group">
+                        <label for="emailInput">Email address</label>
+                        <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp"
+                            placeholder="Enter email">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                            else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="passwordInput">Password</label>
+                        <input type="password" class="form-control" id="passwordInput" placeholder="Password">
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
+                    <a href="/signup"><small>Don't have an account?</small></a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#submitBtn").on("click",function(event){
+            event.preventDefault();
+            var tryUsr= {
+                "email": $("#emailInput").val().trim(),
+                "account_key": $("#passwordInput").val().trim()
+            }
+            $.post("/staff/login",tryUsr,function(data,status,xhr){
+                //console.log(data);
+                
+                //console.log(status);
+                //console.log(xhr);
+                $("#loginForm")[0].reset();
+                
+                switch(xhr.status){
+                    case 200:{
+                        window.location.href="/staff/dashboard";
+                        break;
+                    }
+                    case 401:{
+                        window.location.href="/staff/login";
+                        break;
+                    }
+                    case 404:{
+                        window.location.href="*";
+                        break;
+                    }
+                    case 500: {
+                        alert("Refresh Page!");
+                        break;
+                    }
+                }
+            });
+        });
+    });
+</script>

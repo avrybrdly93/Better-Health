@@ -1,0 +1,160 @@
+<div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
+  <nav class="uk-navbar-container uk-margin" uk-navbar>
+    <div class="uk-navbar-left">
+
+      <a class="uk-navbar-item uk-logo" href="/">betterHealth</a>
+
+      <ul class="uk-navbar-nav">
+        <li>
+          <a>
+            <span class="uk-icon uk-margin-small-right" uk-icon="icon: table" uk-toggle="target: #offcanvas-nav"></span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="uk-navbar-right">
+        <form class="uk-search uk-search-default">
+          <span class="uk-search-icon-flip" uk-search-icon></span>
+          <input class="uk-search-input" type="search" placeholder="Search...">
+        </form>
+      </div>
+
+    </div>
+    <div class="uk-navbar-right">
+      <div class="uk-navbar-item">
+        <a href="/profile"><span class="uk-margin-small-right" uk-icon="icon: cog"></span></a>
+        <div class="uk-width-auto">
+          <img class="uk-border-circle" width="40" height="40" src="https://bestoftool.com/wp-content/uploads/2018/06/Anonymous-Whatsapp-profile-picture-1.jpg">
+          <div uk-dropdown>
+            <ul class="uk-nav uk-dropdown-nav">
+              <li class="uk-nav-header">Quick Menu</li>
+              <li><a href="#">View Messages</a></li>
+              <li><a href="#">Holistics</a></li>
+              <li class="uk-nav-divider"></li>
+              <li><a href="/profile">Settings</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+</div>
+
+<div id="offcanvas-nav" uk-offcanvas="overlay: true">
+  <div class="uk-offcanvas-bar">
+
+    <ul class="uk-nav uk-nav-default">
+      <li class="uk-parent">
+      <li class="uk-active"><a href="#">Overview</a></li>
+      <ul class="uk-nav-sub">
+        <li><a href="#">Book Appointment</a></li>
+        <li><a href="#">View Medical Record</a></li>
+      </ul>
+      </li>
+      <li class="uk-nav-header">More</li>
+      <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: heart"></span> Holistics</a></li>
+      <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: commenting"></span> Messages</a></li>
+      <li class="uk-nav-divider"></li>
+      <li><a href="/profile" class="usrNav"><img class="uk-border-circle" width="40" height="40" src="https://bestoftool.com/wp-content/uploads/2018/06/Anonymous-Whatsapp-profile-picture-1.jpg">
+          Profile</a></li>
+    </ul>
+
+  </div>
+</div>
+
+<div class="container-fluid">
+  <!-- Icon Cards-->
+  <div class="row">
+    <div class="col-xl-3 col-sm-6 mb-3">
+      <div class="uk-card uk-card-default">
+        <div class="uk-card-body">
+          <p class="uk-text-warning"><span class="uk-margin-small-right" uk-icon="icon: bolt; ratio: 1.5"></span>Alerts:</p>
+          <p class="uk-text-meta uk-margin-remove-top">You have 1 unread alert!</p>
+        </div>
+        <div class="uk-card-footer">
+          <a href="#" class="uk-button uk-button-text">Read more</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-sm-6 mb-3">
+      <div class="uk-card uk-card-default">
+        <div class="uk-card-body">
+          <p class="uk-text-success"><span class="uk-margin-small-right" uk-icon="icon: heart; ratio: 1.5"></span>Holistics:</p>
+          <p class="uk-text-meta uk-margin-remove-top">View diet plans.</p>
+        </div>
+        <div class="uk-card-footer">
+          <a href="#" class="uk-button uk-button-text">Read more</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-sm-6 mb-3">
+      <div class="uk-card uk-card-default">
+        <div class="uk-card-body">
+          <p class="uk-text-danger"><span class="uk-margin-small-right" uk-icon="icon: calendar; ratio: 1.5"></span>Next Appointment:</p>
+          <p class="uk-text-meta uk-margin-remove-top"><time datetime="2016-04-01T19:00">April 01, 2016</time></p>
+        </div>
+        <div class="uk-card-footer">
+          <a href="#" class="uk-button uk-button-text">Read more</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-sm-6 mb-3">
+      <div class="uk-card uk-card-default">
+        <div class="uk-card-body">
+          <p class="uk-text-primary"><span class="uk-margin-small-right" uk-icon="icon: commenting; ratio: 1.5"></span>Messages:</p>
+          <p class="uk-text-meta uk-margin-remove-top">7 unread messages</p>
+        </div>
+        <div class="uk-card-footer">
+          <a href="/messages" class="uk-button uk-button-text">Read more</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Book appointment -->
+  <div class="row">
+    <div class="col-12">
+      <div class="uk-card uk-card-default uk-card-body" uk-scrollspy="cls: uk-animation-slide-left; repeat: true">
+        <h3 class="uk-card-title">Book Appointment</h3>
+        <p>Fill out the form below to book your next appointment.</p>
+
+        <form class="uk-grid-small" uk-grid>
+          <div class="uk-width-1-1"> 
+           
+                      <!-- Date -->
+                      <label for="date-form">Pick a Date:</label>
+                      <input id="start_dt" class='datepicker' size='11' title='DD-MM-YYYY' />
+                      <!-- Time -->
+                      <label for="time-form">Pick a Time:</label>
+                      <input id="time-form" type="text" name="time-form" value="" aria-live="assertive" autocomplete="off" aria-label="Use up or down arrow keys to change time" required>
+                    
+
+          </div>
+          <div class="uk-margin">
+            <label class="uk-form-label" for="form-horizontal-select">What is your appointment for?</label>
+            <div uk-form-custom="target: > * > span:first-child">
+              <select>
+                <option value="">Please select...</option>
+                <option value="Eye Exam">Eye Exam</option>
+                <option value="Physical">Physical</option>
+                <option value="Blood test">Blood Test</option>
+              </select>
+              <button class="uk-button uk-button-default" type="button" tabindex="-1">
+                <span></span>
+                <span uk-icon="icon: chevron-down"></span>
+              </button>
+            </div>
+          </div>
+          <div class="uk-width-1-1">
+            <textarea class="uk-textarea" rows="5" placeholder="Additional comments"></textarea>
+          </div>
+          <p style="text-align: center;"><button class="uk-button uk-button-primary">Submit</button></p>
+        </form>
+      </div>
+    </div>
+  </div>
+  <a href="/dashboard" uk-totop uk-scroll></a>
+</div>
+</script>
+<script src="/js/dashboard.js"></script>

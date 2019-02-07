@@ -53,6 +53,10 @@ module.exports = function (app) {
     }
   });
 
+  app.get("/profile", function (req, res) {
+    res.render("profile");
+  })
+
   app.get("/dashboard", function (req, res) {
     console.log("%%%%%%%%% is logged in: " + req.isAuthenticated());
 
@@ -161,7 +165,7 @@ module.exports = function (app) {
   });
 
 
-  app.post('/portal', function (req, res, next) {
+  app.post('/login', function (req, res, next) {
     passport.authenticate('local-login-patients', function (err, usr, info) {
       console.log("\n\n\n########userrrr", usr)
       if (err) {

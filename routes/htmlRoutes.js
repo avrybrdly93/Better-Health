@@ -82,7 +82,7 @@ module.exports = function (app) {
   });
 
   app.get ("/holistic", function(req, res) {
-    res.render("choice");
+    res.render("holistic/choice");
   });
   //END OF PATIENT GET ROUTES
 
@@ -161,7 +161,7 @@ module.exports = function (app) {
   });
 
 
-  app.post('/portal', function (req, res, next) {
+  app.post('/login', function (req, res, next) {
     passport.authenticate('local-login-patients', function (err, usr, info) {
       console.log("\n\n\n########userrrr", usr)
       if (err) {

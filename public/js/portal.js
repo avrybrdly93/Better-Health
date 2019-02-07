@@ -52,9 +52,9 @@ $(document).ready(function () {
     selectedState = $(this).children("option:selected").val();
   });
 
-$("#signupBtn").on("click", function (event) {
+$("#signUpBtn").on("click", function (event) {
   event.preventDefault();
-  let username = $("#userName").val().trim() || null;
+  let username = $("#username").val().trim() || null;
   let first_name = $("#fNameInput").val().trim() || null;
   let last_name = $("#lNameInput").val().trim() || null;
   let address = $("#addressInput").val().trim() || null;
@@ -64,7 +64,8 @@ $("#signupBtn").on("click", function (event) {
   let email = $("#emailSignup").val().trim() || null;
   let phone = userPhoneNum || null;
   let account_key = password || null;
-
+  let newUsr;
+  
   var userObj = {
     "username": username,
     "first_name": first_name,
@@ -93,7 +94,7 @@ $("#signupBtn").on("click", function (event) {
 
   function addUserData() {
     if(checkPasswordMatch() && password.length > 7) {
-      var newUsr = {
+      newUsr = {
         "username": username,
         "first_name": first_name,
         "last_name": last_name,
@@ -110,31 +111,31 @@ $("#signupBtn").on("click", function (event) {
     }
   }
   function postSignup() {
-      //console.log(newUsr);
-      // $.post("/signup", newUsr, function (data, status, xhr) {
-      //   console.log(data);
-      //   console.log(status);
-      //   console.log(xhr);
+      console.log(newUsr);
+      $.post("/signup", newUsr, function (data, status, xhr) {
+        console.log(data);
+        console.log(status);
+        console.log(xhr);
         
-      //   switch (xhr.status) {
-      //     case 200: {
-      //       window.location.href = "/dashboard";
-      //       break;
-      //     }
-      //     case 401: {
-      //       window.location.href = "/signup";
-      //       break;
-      //     }
-      //     case 404: {
-      //       window.location.href = "*";
-      //       break;
-      //     }
-      //     case 500: {
-      //       alert("Refresh Page!");
-      //       break;
-      //     }
-      //   }  
-      // });
+        switch (xhr.status) {
+          case 200: {
+            window.location.href = "/dashboard";
+            break;
+          }
+          case 401: {
+            window.location.href = "/signup";
+            break;
+          }
+          case 404: {
+            window.location.href = "*";
+            break;
+          }
+          case 500: {
+            alert("Refresh Page!");
+            break;
+          }
+        }  
+      });
 
   }
 

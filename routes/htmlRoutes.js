@@ -35,7 +35,16 @@ module.exports = function (app) {
   });
 
   //PATIENT GET ROUTES
-  app.get("/signup", function (req, res) {
+  // app.get("/signup", function (req, res) {
+  //   if (req.isAuthenticated()) {
+  //     res.redirect("/dashboard");
+  //   }
+  //   else {
+  //     res.render("signup");
+  //   }
+  // });
+
+  app.get("/portal", function (req, res) {
     if (req.isAuthenticated()) {
 
       if(req.session.passport.user.type==="Staff"){
@@ -46,22 +55,7 @@ module.exports = function (app) {
       }
     }
     else {
-      res.render("signup");
-    }
-  });
-
-  app.get("/login", function (req, res) {
-    if (req.isAuthenticated()) {
-      
-      if(req.session.passport.user.type==="Staff"){
-        res.redirect("/staff/dashboard");
-      }
-      else{
-        res.redirect("/dashboard");
-      }
-    }
-    else {
-      res.render("login");
+      res.render("portal");
     }
   });
 
@@ -99,7 +93,7 @@ module.exports = function (app) {
   });
 
   app.get ("/holistic", function(req, res) {
-    res.render("choice");
+    res.render("holistic/choice");
   });
   //END OF PATIENT GET ROUTES
 

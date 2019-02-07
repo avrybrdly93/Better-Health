@@ -50,6 +50,65 @@
 
 </head>
 
+<style>
+  .gradient {
+    height: 3px;
+
+    animation: colorchange 3s;
+    /* animation-name followed by duration in seconds*/
+    /* you could also use milliseconds (ms) or something like 2.5s */
+    -webkit-animation: colorchange 3s;
+    /* Chrome and Safari */
+  }
+
+  @keyframes colorchange {
+    0% {
+      background: #faa96a;
+    }
+
+    25% {
+      background: #32d296;
+    }
+
+    5% {
+      background: #f15d78;
+    }
+
+    75% {
+      background: #6bb1f5;
+    }
+
+    100% {
+      background: #faa96a;
+    }
+  }
+
+  @-webkit-keyframes colorchange
+
+  /* Safari and Chrome - necessary duplicate */
+    {
+    0% {
+      background: red;
+    }
+
+    25% {
+      background: yellow;
+    }
+
+    50% {
+      background: blue;
+    }
+
+    75% {
+      background: green;
+    }
+
+    100% {
+      background: red;
+    }
+  }
+</style>
+
 <body>
   {{{body}}}
 </body>

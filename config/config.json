@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "passwordHere",
+    "password": "root",
     "database": "medApp",
     "host": "localhost",
     "dialect": "mysql"

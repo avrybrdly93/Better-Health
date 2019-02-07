@@ -1,61 +1,55 @@
 <h1> Sign up Page</h1>
-<form class="uk-grid-small" uk-grid>
+<form class="uk-grid-small" id="signup-form" uk-grid>
     <div class="uk-width-1-1">
         <label class="uk-form-label" for="form-horizontal-select">Email:</label>
-        {{!-- <span class="uk-form-icon" uk-icon="icon: mail"></span> --}}
-        <input class="uk-input" id="emailInput" type="text">
+        <label for="email"></label>
+        <input class="uk-input form-control" type="email" id="emailInput" data-parsley-error-message="Please provide a valid email address" data-parsley-trigger="change" required="">
     </div>
+
     <div class="uk-width-1-2@s">
         <label class="uk-form-label" for="form-horizontal-select">Username:</label>
-        {{!-- <span class="uk-form-icon" uk-icon="icon: user"></span> --}}
-        <input class="uk-input" id="userName" type="text">
+        <input class="uk-input" id="userName" type="text" required="" minlength="4" data-parsley-error-message="Please provide a username of at least four characters" data-parsley-trigger="change">
     </div>
     <div class="uk-width-1-4@s">
         <label class="uk-form-label" for="form-horizontal-select">Password:</label>
-        {{!-- <span class="uk-form-icon" uk-icon="icon: lock"></span> --}}
-        <input class="uk-input" id="passwordInput" type="password" placeholder="Password">
+        <input class="uk-input" id="passwordInput" type="password" placeholder="Password" minlength="8" data-parsley-error-message="Please provide a password of at least eight characters" data-parsley-trigger="change">
     </div>
 
     <div class="uk-width-1-4@s">
         <label class="uk-form-label" for="form-horizontal-select">Confirm Password:</label>
-        {{!-- <span class="uk-form-icon" uk-icon="icon: lock"></span> --}}
-        <input class="uk-input" id="passwordInputConfirm" type="password" placeholder="Re-Enter Password">
+        <input class="uk-input" id="passwordInputConfirm" type="password" placeholder="Re-Enter Password" minlength="8" data-parsley-error-message="Please provide a password of at least eight characters" data-parsley-trigger="change">
     </div>
     <div class="passwordMatch"></div>
 
     <div class="uk-width-1-2@s">
         <label class="uk-form-label" for="form-horizontal-select">First Name:</label>
-        <input class="uk-input" type="text" id="fNameInput" placeholder="Johnny">
+        <input class="uk-input" type="text" id="fNameInput" placeholder="Johnny" required="" data-parsley-trigger="change">
     </div>
     <div class="uk-width-1-2@s">
         <label class="uk-form-label" for="form-horizontal-select">Last Name:</label>
-        <input class="uk-input" type="text" id="lNameInput" placeholder="Appleseed">
+        <input class="uk-input" type="text" id="lNameInput" placeholder="Appleseed" required="" data-parsley-trigger="change"> 
     </div>
     <div class="uk-width-1-1">
         <label class="uk-form-label" for="form-horizontal-select">Street:</label>
-        <input class="uk-input" type="text" id="addressInput" placeholder="Appleseed">
+        <input class="uk-input" type="text" id="addressInput" placeholder="Appleseed" required="" data-parsley-trigger="change">
     </div>
     <div class="uk-width-1-2@s">
         <label class="uk-form-label" for="form-horizontal-select">City:</label>
-        <input class="uk-input" type="text" id="cityInput" placeholder="Riverside">
+        <input class="uk-input" type="text" id="cityInput" placeholder="Riverside" required="" data-parsley-trigger="change">
     </div>
-     {{!--   <div class="uk-width-1-4@s">
-        <label class="uk-form-label" for="form-horizontal-select">Phone:</label>
-        <input class="uk-input" type="text" id="phoneInput" placeholder="(909)665-8732">
-    </div> --}}
 
     <div class="uk-width-1-4@s">
         <label class="uk-form-label" for="form-horizontal-select">Phone Number:</label>
-        <input class="uk-input phoneInput" type="text" maxlength="3" id="areaCode" placeholder="909">
-        <input class="uk-input phoneInput" type="text" maxlength="3" id="phonePrefix" placeholder="665">
-        <input class="uk-input phoneInput" type="text" maxlength="4" id="phoneLineNumber" placeholder="8732">
+        <input class="uk-input phoneInput" type="text" maxlength="3" id="areaCode" placeholder="909" data-parsley-type="number"	data-parsley-error-message="Please enter a valid Area Code" data-parsley-trigger="change">
+        <input class="uk-input phoneInput" type="text" maxlength="3" id="phonePrefix" placeholder="665" data-parsley-type="number" data-parsley-error-message="Please enter the first three number of your phone number"	 required="" data-parsley-trigger="change">
+        <input class="uk-input phoneInput" type="text" maxlength="4" id="phoneLineNumber" placeholder="8732" data-parsley-type="number"	data-parsley-error-message="Please enter the last four numbers of your phone number" required="" data-parsley-trigger="change">
     </div>
 
     <div class="uk-width-1-4@s">
         <div class="uk-margin">
             <label class="uk-form-label" for="form-horizontal-select">State:</label>
             <div class="uk-form-controls">
-                <select class="uk-select" id="form-horizontal-select stateInput">
+                <select class="uk-select" id="form-horizontal-select stateInput" required="" data-parsley-error-message="Please select a state or U.S. Territory" data-parsley-trigger="change">
                     <option value="">Select a State</option>
                     <option value="AL">Alabama</option>
                     <option value="AK">Alaska</option>
@@ -123,32 +117,17 @@
     </div>
     <div class="uk-width-1-4@s">
         <label class="uk-form-label" for="form-horizontal-select">Zip code:</label>
-        <input class="uk-input" id="zipInput" type="text" placeholder="92501">
+        <input class="uk-input" id="zipInput" type="text" placeholder="92501" maxlength="5" minlength="5" data-parsley-type="number" data-parsley-error-message="Please provide a valid ZIP code" data-parsley-trigger="change">
     </div>
-    {{!-- <div class="uk-margin">
-        <label class="uk-form-label" for="form-horizontal-select">What is your appointment for?</label>
-        <div uk-form-custom="target: > * > span:first-child">
-            <select>
-                <option value="">Please select...</option>
-                <option value="1">Checkup</option>
-                <option value="2">Physical</option>
-                <option value="3">Blood Test</option>
-                <option value="4">Pain</option>
-            </select>
-            <button class="uk-button uk-button-default" type="button" tabindex="-1">
-                <span></span>
-                <span uk-icon="icon: chevron-down"></span>
-            </button>
-        </div>
-    </div> --}}
 
     <button class="btn btn-primary" id="submitBtn">
     Submit
     </button>
 </form>
 
-<div class="errorPlace">
-    {{message}}
-</div>
-
+<link rel="stylesheet" href="/styles/parsley.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="https://rawgit.com/guillaumepotier/Parsley.js/2.8.1/bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://rawgit.com/guillaumepotier/Parsley.js/2.8.1/doc/assets/docs.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://rawgit.com/guillaumepotier/Parsley.js/2.8.1/src/parsley.css" />
 <script type="text/javascript" src="js/signup.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.8.1/parsley.min.js"></script>

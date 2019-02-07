@@ -31,7 +31,7 @@ $(document).ready(function () {
   });
 
   function checkPasswordMatch() {
-    password = $("#passwordInput").val();
+    password = $("#passwordSignup").val();
     var confirmPassword = $("#passwordInputConfirm").val();
 
     if (password != confirmPassword) {
@@ -54,6 +54,8 @@ $(document).ready(function () {
 
 $("#signUpBtn").on("click", function (event) {
   event.preventDefault();
+  console.log("connected");
+
   let username = $("#username").val().trim() || null;
   let first_name = $("#fNameInput").val().trim() || null;
   let last_name = $("#lNameInput").val().trim() || null;
@@ -138,13 +140,13 @@ $("#signUpBtn").on("click", function (event) {
       });
 
   }
-
+});
   $("#loginBtn").on("click",function(event){
     event.preventDefault();
-
+    console.log("asdf");
     var tryUsr= {
-        "email": $("#emailInput").val().trim(),
-        "account_key": $("#passwordInput").val().trim()
+        "email": $("#emailLogin").val().trim(),
+        "account_key": $("#passwordLogin").val().trim()
     }
 
     $.post("/login",tryUsr,function(data,status,xhr){
@@ -152,7 +154,7 @@ $("#signUpBtn").on("click", function (event) {
         
         //console.log(status);
         //console.log(xhr);
-        $("#loginForm")[0].reset();
+        //$("#loginForm")[0].reset();
         
         switch(xhr.status){
             case 200:{
@@ -173,7 +175,5 @@ $("#signUpBtn").on("click", function (event) {
             }
         }
     });
-});
-  
 });
 });

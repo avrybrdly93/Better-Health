@@ -67,7 +67,11 @@ module.exports = function (app) {
 
   app.get("/profile", function (req, res) {
     res.render("profile");
-  })
+  });
+
+  app.get("/choice", function (req, res) {
+    res.render("/holistic/choice");
+  });
 
   app.get("/dashboard", function (req, res) {
     console.log("%%%%%%%%% is logged in: " + req.isAuthenticated());
@@ -97,14 +101,11 @@ module.exports = function (app) {
         id: null,
         isloggedin: req.isAuthenticated()
       }
-      res.redirect("/login");
+      res.redirect("/portal");
     }
 
   });
 
-  app.get ("/holistic", function(req, res) {
-    res.render("choice");
-  });
   //END OF PATIENT GET ROUTES
 
   //STAFF GET ROUTES

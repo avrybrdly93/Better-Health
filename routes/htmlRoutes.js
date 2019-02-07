@@ -98,7 +98,6 @@ module.exports = function (app) {
 
   app.get ("/holistic", function(req, res) {
     res.render("holistic/choice");
-<<<<<<< HEAD
   });
     app.get ("/holistic/mornings", function(req, res) {
     res.render("holistic/mornings");
@@ -114,8 +113,6 @@ module.exports = function (app) {
   });
     app.get ("/holistic/bedtime", function(req, res) {
     res.render("holistic/bedtime");
-=======
->>>>>>> master
   });
   //END OF PATIENT GET ROUTES
 

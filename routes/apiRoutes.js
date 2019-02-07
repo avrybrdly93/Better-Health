@@ -90,8 +90,16 @@ module.exports = function (app) {
   });
 
   app.post("/api/appointment", function (req, res) {
+    db.pAppt.create({
+      PatientUuid: req.body.PatientUuid,
+      date: req.body.date,
+      time: req.body.time,
+      doctor_name: req.body.doctor_name,
+      appt_reason: req.body.appt_reason
 
-
+    });
+    res.status(200);
+    res.send("Appointment booked!");
   });
   //END OF PATIENT POST INFO
 
@@ -111,7 +119,18 @@ module.exports = function (app) {
 
   });
 
-  app.post("api/staff/appointment", function (req, res) {
+  app.post("/api/staff/appointment", function (req, res) {
+    db.sAppt.create({
+      StaffUuid: req.body.StaffUuid,
+      date: req.body.date,
+      time: req.body.time,
+      patient_name: req.body.patient_name,
+      visit_reason: req.body.visit_reason,
+      room_number: req.body.room_number
+
+    });
+    res.status(200);
+    res.send("Appointment booked!");
 
   });
   //END OF STAFF POST INFO

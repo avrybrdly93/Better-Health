@@ -98,7 +98,7 @@ module.exports=function(sequelize,DataTypes){
             type: DataTypes.STRING,
             required: true,
             validate: {
-                len: [8,30]
+                len: [8]
             }
         }
     });

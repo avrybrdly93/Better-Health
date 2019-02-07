@@ -2,11 +2,7 @@
   "development": {
     "username": "root",
     "password": "root",
-<<<<<<< HEAD
-    "database": "MedApp",
-=======
     "database": "medApp",
->>>>>>> 34bca6c441e95a92d8cedd8a455a9f5f8f67603b
     "host": "localhost",
     "dialect": "mysql"
   },

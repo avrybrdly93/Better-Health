@@ -82,7 +82,22 @@ module.exports = function (app) {
   });
 
   app.get ("/holistic", function(req, res) {
-    res.render("choice");
+    res.render("holistic/choice");
+  });
+    app.get ("/holistic/mornings", function(req, res) {
+    res.render("holistic/mornings");
+  });
+    app.get ("/holistic/relief", function(req, res) {
+    res.render("holistic/relief");
+  });
+    app.get ("/holistic/health", function(req, res) {
+    res.render("holistic/health");
+  });
+    app.get ("/holistic/affirmation", function(req, res) {
+    res.render("holistic/affirmation");
+  });
+    app.get ("/holistic/bedtime", function(req, res) {
+    res.render("holistic/bedtime");
   });
   //END OF PATIENT GET ROUTES
 

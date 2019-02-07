@@ -1,141 +1,141 @@
 var db = require("../models");
-var passport = require('passport');
+var passport = require("passport");
 
-module.exports = function (app) {
+module.exports = function(app) {
   // Load index/home page
-  app.get("/", function (req, res) {
+  app.get("/", function(req, res) {
     if (req.isAuthenticated()) {
       var user = {
         id: req.session.passport.user,
         isloggedin: req.isAuthenticated(),
         type: req.session.passport.user.type
-      }
+      };
 
-      if(type==="Staff"){
+      if (type === "Staff") {
         res.redirect("/staff/dashboard");
+      } else {
+        res.redirect("/dashboard");
       }
-      else{
-        res.redirect("/dashboard")
-      }
-    }
-    else {
+    } else {
       res.render("index");
     }
   });
 
   //LOGOUT FOR BOTH STAFF - PATIENTS
-  app.get('/logout', function (req, res) {
-    req.session.destroy(function (err) {
+  app.get("/logout", function(req, res) {
+    req.session.destroy(function(err) {
       req.logout();
-      res.clearCookie('user_sid');
-      res.clearCookie('first_name');
-      res.clearCookie('user_id');
-      res.redirect('/');
+      res.clearCookie("user_sid");
+      res.clearCookie("first_name");
+      res.clearCookie("user_id");
+      res.redirect("/");
     });
   });
 
   //PATIENT GET ROUTES
-  app.get("/signup", function (req, res) {
+  app.get("/signup", function(req, res) {
     if (req.isAuthenticated()) {
       res.redirect("/dashboard");
-    }
-    else {
+    } else {
       res.render("signup");
     }
   });
 
-  app.get("/login", function (req, res) {
+  app.get("/login", function(req, res) {
     if (req.isAuthenticated()) {
       res.redirect("/dashboard");
-    }
-    else {
+    } else {
       res.render("login");
     }
   });
+  app.get("/dashboard", function(req, res) {
+    if ((req.session.records = null)) {
+      res.render("create", {
+        Records: req.session.records,
+        firstName: "Nayan",
+        lastName: "Patel",
+        layout: false
+      });
+    } else {
+      res.render("first", { openloginmodal: "no", layout: false });
+    }
+  });
 
-  app.get("/dashboard", function (req, res) {
+  app.get("/dashboard", function(req, res) {
     console.log("%%%%%%%%% is logged in: " + req.isAuthenticated());
 
     if (req.isAuthenticated()) {
-
       db.Patient.findOne({
         where: {
           uuid: req.session.passport.user.uuid
         }
-      }).then(function (dbUser) {
+      }).then(function(dbUser) {
         var user = {
           userInfo: dbUser.dataValues,
           id: req.session.passport.user,
           isloggedin: req.isAuthenticated()
-        }
+        };
         res.render("dashboard");
       });
-    }
-    else {
+    } else {
       var user = {
         id: null,
         isloggedin: req.isAuthenticated()
-      }
+      };
       res.redirect("/login");
     }
-
   });
 
-  app.get ("/holistic", function(req, res) {
+  app.get("/holistic", function(req, res) {
     res.render("choice");
   });
   //END OF PATIENT GET ROUTES
 
   //STAFF GET ROUTES
-  app.get("/staff/signup", function (req, res) {
+  app.get("/staff/signup", function(req, res) {
     if (req.isAuthenticated()) {
       res.redirect("/staff/dashboard");
-    }
-    else {
+    } else {
       res.render("staffsignup");
     }
   });
 
-  app.get("/staff/login", function (req, res) {
+  app.get("/staff/login", function(req, res) {
     if (req.isAuthenticated()) {
       res.redirect("/staff/dashboard");
-    }
-    else {
+    } else {
       res.render("stafflogin");
     }
   });
 
-  app.get("/staff/dashboard", function (req, res) {
+  app.get("/staff/dashboard", function(req, res) {
     console.log("%%%%%%%%% is logged in: " + req.isAuthenticated());
     if (req.isAuthenticated()) {
-
       db.Staff.findOne({
         where: {
           uuid: req.session.passport.user.uuid
         }
-      }).then(function (dbUser) {
+      }).then(function(dbUser) {
         var user = {
           userInfo: dbUser.dataValues,
           id: req.session.passport.user,
           isloggedin: req.isAuthenticated()
-        }
+        };
         res.render("staffdashboard");
       });
-    }
-    else {
+    } else {
       var user = {
         id: null,
         isloggedin: req.isAuthenticated()
-      }
+      };
       res.redirect("/admin/login");
     }
-
   });
   //END OF STAFF GET ROUTES
 
   //PATIENT POST ROUTES
-  app.post("/signup", function (req, res, next) {
-    passport.authenticate('local-signup-patients', function (err, usr, info) {
+  app.post("/signup", function(req, res, next) {
+    passport.authenticate("local-signup-patients", function(err, usr, info) {
       console.log("info", info);
       if (err) {
         console.log("Passport Error: " + err);
@@ -143,7 +143,7 @@ module.exports = function (app) {
       }
       if (!usr) {
         console.log("user error " + usr);
-        return res.send({ success: false, message: 'Authentication Failed' });
+        return res.send({ success: false, message: "Authentication Failed" });
       }
 
       req.login(usr, loginErr => {
@@ -151,26 +151,24 @@ module.exports = function (app) {
           console.log("Login Error " + loginErr);
           return next(loginErr);
         }
-        console.log('redirecting....');
-        res.cookie('first_name', usr.first_name);
-        res.cookie('user_id', usr.uuid);
+        console.log("redirecting....");
+        res.cookie("first_name", usr.first_name);
+        res.cookie("user_id", usr.uuid);
         res.status(200);
         res.send("Signed Up!");
       });
     })(req, res, next);
   });
 
-
-  app.post('/login', function (req, res, next) {
-    passport.authenticate('local-login-patients', function (err, usr, info) {
-      console.log("\n\n\n########userrrr", usr)
+  app.post("/login", function(req, res, next) {
+    passport.authenticate("local-login-patients", function(err, usr, info) {
+      console.log("\n\n\n########userrrr", usr);
       if (err) {
         console.log("passport err", err);
         return next(err); // will generate a 500 error
       }
       if (!usr) {
-
-        return res.send({ success: false, message: 'Authentication Failed' });
+        return res.send({ success: false, message: "Authentication Failed" });
       }
       req.login(usr, loginErr => {
         if (loginErr) {
@@ -178,9 +176,9 @@ module.exports = function (app) {
           return next(loginErr);
         }
 
-        console.log('redirecting....');
-        res.cookie('first_name', usr.first_name);
-        res.cookie('user_id', usr.uuid);
+        console.log("redirecting....");
+        res.cookie("first_name", usr.first_name);
+        res.cookie("user_id", usr.uuid);
 
         res.status(200);
         res.send("Go Ahead");
@@ -190,8 +188,8 @@ module.exports = function (app) {
   //END OF PATIENT POST ROUTES
 
   //STAFF POST ROUTES
-  app.post("/staff/signup", function (req, res, next) {
-    passport.authenticate('local-signup-staff', function (err, usr, info) {
+  app.post("/staff/signup", function(req, res, next) {
+    passport.authenticate("local-signup-staff", function(err, usr, info) {
       console.log("info", info);
       if (err) {
         console.log("Passport Error: " + err);
@@ -199,7 +197,7 @@ module.exports = function (app) {
       }
       if (!usr) {
         console.log("user error " + usr);
-        return res.send({ success: false, message: 'Authentication Failed' });
+        return res.send({ success: false, message: "Authentication Failed" });
       }
 
       req.login(usr, loginErr => {
@@ -207,25 +205,24 @@ module.exports = function (app) {
           console.log("Login Error " + loginErr);
           return next(loginErr);
         }
-        console.log('redirecting....');
-        res.cookie('first_name', usr.first_name);
-        res.cookie('user_id', usr.uuid);
+        console.log("redirecting....");
+        res.cookie("first_name", usr.first_name);
+        res.cookie("user_id", usr.uuid);
         res.status(200);
         res.send("Signed Up!");
       });
     })(req, res, next);
   });
 
-  app.post('/staff/login', function (req, res, next) {
-    passport.authenticate('local-login-staff', function (err, usr, info) {
-      console.log("\n\n\n########userrrr", usr)
+  app.post("/staff/login", function(req, res, next) {
+    passport.authenticate("local-login-staff", function(err, usr, info) {
+      console.log("\n\n\n########userrrr", usr);
       if (err) {
         console.log("passport err", err);
         return next(err); // will generate a 500 error
       }
       if (!usr) {
-
-        return res.send({ success: false, message: 'Authentication Failed' });
+        return res.send({ success: false, message: "Authentication Failed" });
       }
       req.login(usr, loginErr => {
         if (loginErr) {
@@ -233,9 +230,9 @@ module.exports = function (app) {
           return next(loginErr);
         }
 
-        console.log('redirecting....');
-        res.cookie('first_name', usr.first_name);
-        res.cookie('user_id', usr.uuid);
+        console.log("redirecting....");
+        res.cookie("first_name", usr.first_name);
+        res.cookie("user_id", usr.uuid);
 
         res.status(200);
         res.send("Go Ahead");
@@ -245,7 +242,7 @@ module.exports = function (app) {
   //END OF STAFF POST ROUTES
 
   // Render 404 page for any unmatched routes
-  app.get("*", function (req, res) {
+  app.get("*", function(req, res) {
     res.render("404");
   });
-}; 
+};

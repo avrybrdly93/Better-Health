@@ -1,14 +1,13 @@
 require("dotenv").config();
 
 var express = require("express");
-var bodyParse = require("body-parser");
+// var bodyParse = require("body-parser");
 var exphbs = require("express-handlebars");
 
 var passport = require("passport");
 var flash = require("connect-flash");
-var cookieParser = require("cookie-parser");
+// var cookieParser = require("cookie-parser");
 var session = require("express-session");
-
 
 var app = express();
 var PORT = process.env.PORT || 8080;
@@ -32,23 +31,25 @@ app.set("view engine", "handlebars");
 
 app.use(express.static("public"));
 
-app.use(session({
-  key:'key',
-  secret: process.env.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    expires: 600000
-  }
-}));
+app.use(
+  session({
+    key: "key",
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      expires: 600000
+    }
+  })
+);
 
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
 // Routes
-require("./routes/apiRoutes")(app,passport);
-require("./routes/htmlRoutes")(app,passport);
+require("./routes/apiRoutes")(app, passport);
+require("./routes/htmlRoutes")(app, passport);
 
 var syncOptions = { force: false };
 

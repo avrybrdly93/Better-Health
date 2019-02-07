@@ -1,14 +1,14 @@
 {
   "development": {
     "username": "root",
-    "password": "root",
+    "password": "koshatina8",
     "database": "medApp",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "root",
+    "password": "koshatina8",
     "database": "medApp",
     "host": "localhost",
     "dialect": "mysql",

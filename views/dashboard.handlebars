@@ -24,7 +24,8 @@
       <div class="uk-navbar-item">
         <a href="/profile"><span class="uk-margin-small-right" uk-icon="icon: cog"></span></a>
         <div class="uk-width-auto">
-          <img class="uk-border-circle" width="40" height="40" src="https://bestoftool.com/wp-content/uploads/2018/06/Anonymous-Whatsapp-profile-picture-1.jpg">
+          <img class="uk-border-circle" width="40" height="40"
+            src="https://bestoftool.com/wp-content/uploads/2018/06/Anonymous-Whatsapp-profile-picture-1.jpg">
           <div uk-dropdown>
             <ul class="uk-nav uk-dropdown-nav">
               <li class="uk-nav-header">Quick Menu</li>
@@ -49,14 +50,16 @@
       <li class="uk-active"><a href="#">Overview</a></li>
       <ul class="uk-nav-sub">
         <li><a href="#">Book Appointment</a></li>
-        <li><a href="#">View Medical Record</a></li>
+        <li><a href="#" id="modal-template" data-behaviour="modal" data-title="1 title of modal"
+            data-content="1 content goes here">View Medical Record</a></li>
       </ul>
-      </li>
+
       <li class="uk-nav-header">More</li>
       <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: heart"></span> Holistics</a></li>
       <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: commenting"></span> Messages</a></li>
       <li class="uk-nav-divider"></li>
-      <li><a href="/profile" class="usrNav"><img class="uk-border-circle" width="40" height="40" src="https://bestoftool.com/wp-content/uploads/2018/06/Anonymous-Whatsapp-profile-picture-1.jpg">
+      <li><a href="/profile" class="usrNav"><img class="uk-border-circle" width="40" height="40"
+            src="https://bestoftool.com/wp-content/uploads/2018/06/Anonymous-Whatsapp-profile-picture-1.jpg">
           Profile</a></li>
     </ul>
 
@@ -69,7 +72,8 @@
     <div class="col-xl-3 col-sm-6 mb-3">
       <div class="uk-card uk-card-default">
         <div class="uk-card-body">
-          <p class="uk-text-warning"><span class="uk-margin-small-right" uk-icon="icon: bolt; ratio: 1.5"></span>Alerts:</p>
+          <p class="uk-text-warning"><span class="uk-margin-small-right" uk-icon="icon: bolt; ratio: 1.5"></span>Alerts:
+          </p>
           <p class="uk-text-meta uk-margin-remove-top">You have 1 unread alert!</p>
         </div>
         <div class="uk-card-footer">
@@ -80,7 +84,8 @@
     <div class="col-xl-3 col-sm-6 mb-3">
       <div class="uk-card uk-card-default">
         <div class="uk-card-body">
-          <p class="uk-text-success"><span class="uk-margin-small-right" uk-icon="icon: heart; ratio: 1.5"></span>Holistics:</p>
+          <p class="uk-text-success"><span class="uk-margin-small-right"
+              uk-icon="icon: heart; ratio: 1.5"></span>Holistics:</p>
           <p class="uk-text-meta uk-margin-remove-top">View diet plans.</p>
         </div>
         <div class="uk-card-footer">
@@ -91,7 +96,8 @@
     <div class="col-xl-3 col-sm-6 mb-3">
       <div class="uk-card uk-card-default">
         <div class="uk-card-body">
-          <p class="uk-text-danger"><span class="uk-margin-small-right" uk-icon="icon: calendar; ratio: 1.5"></span>Next Appointment:</p>
+          <p class="uk-text-danger"><span class="uk-margin-small-right" uk-icon="icon: calendar; ratio: 1.5"></span>Next
+            Appointment:</p>
           <p class="uk-text-meta uk-margin-remove-top"><time datetime="2016-04-01T19:00">April 01, 2016</time></p>
         </div>
         <div class="uk-card-footer">
@@ -102,7 +108,8 @@
     <div class="col-xl-3 col-sm-6 mb-3">
       <div class="uk-card uk-card-default">
         <div class="uk-card-body">
-          <p class="uk-text-primary"><span class="uk-margin-small-right" uk-icon="icon: commenting; ratio: 1.5"></span>Messages:</p>
+          <p class="uk-text-primary"><span class="uk-margin-small-right"
+              uk-icon="icon: commenting; ratio: 1.5"></span>Messages:</p>
           <p class="uk-text-meta uk-margin-remove-top">7 unread messages</p>
         </div>
         <div class="uk-card-footer">
@@ -120,15 +127,16 @@
         <p>Fill out the form below to book your next appointment.</p>
 
         <form class="uk-grid-small" uk-grid>
-          <div class="uk-width-1-1"> 
-           
-                      <!-- Date -->
-                      <label for="date-form">Pick a Date:</label>
-                      <input id="start_dt" class='datepicker' size='11' title='DD-MM-YYYY' />
-                      <!-- Time -->
-                      <label for="time-form">Pick a Time:</label>
-                      <input id="time-form" type="text" name="time-form" value="" aria-live="assertive" autocomplete="off" aria-label="Use up or down arrow keys to change time" required>
-                    
+          <div class="uk-width-1-1">
+
+            <!-- Date -->
+            <label for="date-form">Pick a Date:</label>
+            <input id="start_dt" class='datepicker' size='11' title='DD-MM-YYYY' />
+            <!-- Time -->
+            <label for="time-form">Pick a Time:</label>
+            <input id="time-form" type="text" name="time-form" value="" aria-live="assertive" autocomplete="off"
+              aria-label="Use up or down arrow keys to change time" required>
+
 
           </div>
           <div class="uk-margin">
@@ -156,5 +164,12 @@
   </div>
   <a href="/dashboard" uk-totop uk-scroll></a>
 </div>
+
+<script src="public/js/dashboard.js"></script>
+{{#if openloginmodal}}
+<script type="text/javascript">
+  $(function () {
+    $("#modal-template").modal('show');
+  });
 </script>
-<script src="/js/dashboard.js"></script>
+{{/if}}

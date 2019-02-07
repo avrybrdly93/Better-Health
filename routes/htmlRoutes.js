@@ -44,12 +44,12 @@ module.exports = function (app) {
     }
   });
 
-  app.get("/login", function (req, res) {
+  app.get("/portal", function (req, res) {
     if (req.isAuthenticated()) {
       res.redirect("/dashboard");
     }
     else {
-      res.render("login");
+      res.render("portal");
     }
   });
 
@@ -161,7 +161,7 @@ module.exports = function (app) {
   });
 
 
-  app.post('/login', function (req, res, next) {
+  app.post('/portal', function (req, res, next) {
     passport.authenticate('local-login-patients', function (err, usr, info) {
       console.log("\n\n\n########userrrr", usr)
       if (err) {

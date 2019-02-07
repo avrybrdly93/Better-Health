@@ -1,6 +1,5 @@
 $(document).ready(function () {
 
-<<<<<<< HEAD
   // Front-End input validation with parsley
   $('#signup-form').parsley().on('field:validate', function() {
     var ok = $('.parsley-error').length === 0;
@@ -10,10 +9,10 @@ $(document).ready(function () {
   .on('form:submit', function() {
     console.log("submittted");
     return false; // Don't submit form for this demo
-=======
+  });
+  
   document.querySelector('.img__btn').addEventListener('click', function () {
     document.querySelector('.cont').classList.toggle('s--signup');
->>>>>>> charles2
   });
 
   let phoneVals = '';
@@ -46,19 +45,13 @@ $(document).ready(function () {
       }
     }
 
-<<<<<<< HEAD
    $("#passwordInputConfirm").keyup(checkPasswordMatch);
-=======
-  }
-  $("#passwordInputConfirm").keyup(checkPasswordMatch);
->>>>>>> charles2
 
 
   $("select.uk-select").change(function () {
     selectedState = $(this).children("option:selected").val();
   });
 
-<<<<<<< HEAD
 $("#signupBtn").on("click", function (event) {
   event.preventDefault();
   let username = $("#userName").val().trim() || null;
@@ -68,7 +61,7 @@ $("#signupBtn").on("click", function (event) {
   let city =  $("#cityInput").val().trim() || null;
   let state = selectedState;
   let zip = $("#zipInput").val().trim() || null;
-  let email = $("#emailInput").val().trim() || null;
+  let email = $("#emailSignup").val().trim() || null;
   let phone = userPhoneNum || null;
   let account_key = password || null;
 
@@ -182,51 +175,4 @@ $("#signupBtn").on("click", function (event) {
 });
   
 });
-=======
-  $("#submitBtn").on("click", function (event) {
-    event.preventDefault();
-
-    if (checkPasswordMatch() && password.length > 7) {
-      var newUsr = {
-        "username": $("#userName").val().trim(),
-        "first_name": $("#fNameInput").val().trim(),
-        "last_name": $("#lNameInput").val().trim(),
-        "address": $("#addressInput").val().trim(),
-        "city": $("#cityInput").val().trim(),
-        "state": selectedState,
-        "zip": $("#zipInput").val().trim(),
-        "email": $("#emailInput").val().trim(),
-        "phone": userPhoneNum,
-        "account_key": password
-      };
-      //console.log(newUsr);
-      $.post("/signup", newUsr, function (data, status, xhr) {
-        console.log(data);
-        console.log(status);
-        console.log(xhr);
-
-        switch (xhr.status) {
-          case 200: {
-            window.location.href = "/dashboard";
-            break;
-          }
-          case 401: {
-            window.location.href = "/signup";
-            break;
-          }
-          case 404: {
-            window.location.href = "*";
-            break;
-          }
-          case 500: {
-            alert("Refresh Page!");
-            break;
-          }
-        }
-      });
-    } else {
-      alert("passwords do not match");
-    }
-  });
->>>>>>> charles2
 });

@@ -11,6 +11,12 @@
   <link rel="canonical" href="https://codepen.io/suez/pen/RpNXOR">
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+
+  <link rel="stylesheet" href="/styles/parsley.css">
+  <link rel="stylesheet" type="text/css" media="screen" href="https://rawgit.com/guillaumepotier/Parsley.js/2.8.1/bower_components/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="https://rawgit.com/guillaumepotier/Parsley.js/2.8.1/doc/assets/docs.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="https://rawgit.com/guillaumepotier/Parsley.js/2.8.1/src/parsley.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.8.1/parsley.min.js"></script>
 </head>
 
 <style class="cp-pen-styles">
@@ -384,11 +390,11 @@
             <h2>Welcome back,</h2>
             <label>
                 <span>Email</span>
-                <input type="email" id="emailInput">
+                <input type="email" id="emailLogin">
             </label>
             <label>
                 <span>Password</span>
-                <input type="password" id="passwordInput">
+                <input type="password" id="passwordLogin">
             </label>
             <p class="forgot-pass">Forgot password?</p>
             <button type="button" class="submit" id="submitBtn">Sign In</button>
@@ -408,42 +414,43 @@
                     <span class="m--in">Sign In</span>
                 </div>
             </div>
-            <div class="form sign-up scroll">
+            <form id="signup-form">
+              <div class="form sign-up scroll">
                 <h2>Time to feel like home,</h2>
                 <label>
                     <span>First Name</span>
-                    <input type="text" id="fNameInput">
+                    <input type="text" id="fNameInput" required="" data-parsley-trigger="change">
                 </label>
                 <label>
                     <span>Last Name</span>
-                    <input type="text" id="lNameInput">
+                    <input type="text" id="lNameInput" required="" data-parsley-trigger="change">
                 </label>
                 <label>
                     <span>Email</span>
-                    <input type="email" id="emailInput">
+                    <input type="email" id="emailSignup" data-parsley-error-message="Please provide a valid email address" data-parsley-trigger="change" required="">
                 </label>
                 <label>
                     <span>Username</span>
-                    <input type="text" id="userN">
+                    <input type="text" id="username" required="" minlength="4" data-parsley-error-message="Please provide a username of at least four characters" data-parsley-trigger="change">
                 </label>
                 <label>
                     <span>Password</span>
-                    <input type="password" id="passwordInput">
+                    <input type="password" id="passwordSignup" minlength="8" data-parsley-error-message="Please provide a password of at least eight characters" data-parsley-trigger="change">
                 </label>
                 <label>
                     <span>Confirm Password</span>
-                    <input type="password" id="passwordInputConfirm">
+                    <input type="password" id="passwordInputConfirm" minlength="8" data-parsley-error-message="Please provide a password of at least eight characters" data-parsley-trigger="change">
                 </label>
                 <label>
                     <span>Street</span>
-                    <input type="text" id="addressInput">
+                    <input type="text" id="addressInput" required="" data-parsley-trigger="change">
                 </label>
                 <label>
                     <span>City</span>
-                    <input type="text" id="cityInput">
+                    <input type="text" id="cityInput" required="" data-parsley-trigger="change">
                 </label>
                 <div class="uk-form-controls">
-                    <select class="uk-select" id="form-horizontal-select stateInput">
+                    <select class="uk-select" id="form-horizontal-select stateInput" required="" data-parsley-error-message="Please select a state or U.S. Territory" data-parsley-trigger="change">
                         <option value="">Select a State</option>
                         <option value="AL">Alabama</option>
                         <option value="AK">Alaska</option>
@@ -509,20 +516,20 @@
                 </div>
                 <label>
                     <span>Zip Code</span>
-                    <input type="text" id="zipInput">
+                    <input type="text" id="zipInput"  maxlength="5" minlength="5" data-parsley-type="number" data-parsley-error-message="Please provide a valid ZIP code" data-parsley-trigger="change">
                 </label>
                 <label>
                     <span>Phone Number</span>
-                    <input type="text" maxlength="3" class="phoneInput" id="areaCode">
-                    <input type="text" maxlength="3" class="phoneInput" id="phonePrefix">
-                    <input type="text" maxlength="4" class="phoneInput" id="phoneLineNumber">
+                    <input type="text" maxlength="3" class="phoneInput" id="areaCode" data-parsley-type="number"	data-parsley-error-message="Please enter a valid Area Code" data-parsley-trigger="change">
+                    <input type="text" maxlength="3" class="phoneInput" id="phonePrefix" data-parsley-type="number" data-parsley-error-message="Please enter the first three number of your phone number"	 required="" data-parsley-trigger="change">
+                    <input type="text" maxlength="4" class="phoneInput" id="phoneLineNumber" data-parsley-type="number"	data-parsley-error-message="Please enter the last four numbers of your phone number" required="" data-parsley-trigger="change">
                 </label>
                 <button type="button" class="submit">Sign Up</button>
             </div>
         </div>
+            </form>
     </div>
 
     <script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>
 
-    <script type="text/javascript" src="/js/login.js"></script>
     <script type="text/javascript" src="/js/signup.js"></script>

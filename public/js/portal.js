@@ -178,3 +178,12 @@ $(document).ready(function () {
     });
   });
 });
+
+// });
+
+// $("#loginBtn").on("click", function (event) {
+//     event.preventDefault();
+
+//     var tryUsr = {
+//         "username": $("#userLogin").val().trim(),
+//         "account_key": $("#passwordLogin").val().trim()

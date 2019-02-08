@@ -114,6 +114,9 @@ module.exports = function (app) {
     app.get ("/holistic/bedtime", function(req, res) {
     res.render("holistic/bedtime");
   });
+  app.get ("/info", function(req, res) {
+    res.render("info");
+  });
   //END OF PATIENT GET ROUTES
 
   //STAFF GET ROUTES

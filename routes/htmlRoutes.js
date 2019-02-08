@@ -22,7 +22,7 @@ module.exports = function (app) {
       res.render("index");
     }
   });
-
+  
   //LOGOUT FOR BOTH STAFF - PATIENTS
   app.get('/logout', function (req, res) {
     req.session.destroy(function (err) {

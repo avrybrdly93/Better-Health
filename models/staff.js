@@ -113,20 +113,8 @@ module.exports=function(sequelize,DataTypes){
     };
 
     Staff.associate = function(models){
-        Staff.hasMany(models.sMessage,{
-            onDelete: "cascade"
-        });
-    };
-
-    Staff.associate = function(models){
         Staff.hasMany(models.Patient,{
             onDelete: "no action",
-        });
-    }
-
-    Staff.associate=function(models){
-        Staff.hasMany(models.sAppt,{
-            onDelete: "cascade"
         });
     }
 

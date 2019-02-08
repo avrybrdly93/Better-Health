@@ -145,7 +145,7 @@ $(document).ready(function () {
         event.preventDefault();
 
         var tryUsr = {
-            "email": $("#emailLogin").val().trim(),
+            "username": $("#userLogin").val().trim(),
             "account_key": $("#passwordLogin").val().trim()
         }
 

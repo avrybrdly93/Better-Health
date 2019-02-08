@@ -143,6 +143,7 @@ $(document).ready(function () {
   });
 
   $("#loginBtn").on("click", function (event) {
+    let hasBeenPosted = false;
     event.preventDefault();
     console.log("asdf");
     var tryUsr = {
@@ -151,10 +152,10 @@ $(document).ready(function () {
     }
 
     $.post("/login", tryUsr, function (data, status, xhr) {
-      //console.log(data);
-
-      //console.log(status);
-      //console.log(xhr);
+      console.log(data);
+      hasBeenPosted = true;
+      console.log(status);
+      console.log(xhr);
       //$("#loginForm")[0].reset();
 
       switch (xhr.status) {
@@ -163,7 +164,7 @@ $(document).ready(function () {
           break;
         }
         case 401: {
-          window.location.href = "/login";
+          window.location.href = "/portal";
           break;
         }
         case 404: {
@@ -176,6 +177,9 @@ $(document).ready(function () {
         }
       }
     });
+    if(hasBeenPosted === false) {
+      alert("incorrect username or password!!!! dummy")
+    }
   });
 });
 

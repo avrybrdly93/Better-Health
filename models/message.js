@@ -3,7 +3,7 @@ var uuidv1 = require("uuid/v1");
 module.exports=function(sequelize,DataTypes){
     var Message=sequelize.define("Message",{
         body:{
-            type: DataTypes.BODY,
+            type: DataTypes.TEXT,
             allowNull: false,
             validate: {
                 len: [1]

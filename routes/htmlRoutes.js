@@ -35,15 +35,6 @@ module.exports = function (app) {
   });
 
   //PATIENT GET ROUTES
-  // app.get("/signup", function (req, res) {
-  //   if (req.isAuthenticated()) {
-  //     res.redirect("/dashboard");
-  //   }
-  //   else {
-  //     res.render("signup");
-  //   }
-  // });
-
   app.get("/portal", function (req, res) {
     if (req.isAuthenticated()) {
 
@@ -99,7 +90,6 @@ module.exports = function (app) {
     }
 
   });
-
   //END OF PATIENT GET ROUTES
 
   //STAFF GET ROUTES

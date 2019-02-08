@@ -61,7 +61,6 @@ module.exports = function(sequelize,DataTypes){
         },
         hasPassed: {
             type: DataTypes.BOOLEAN,
-            allowNull: false,
             defaultValue: 0
         }
 

@@ -13,7 +13,7 @@ module.exports=function(sequelize,DataTypes){
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [1,10]
+                len: [3,15]
             }
         },
         first_name: {
@@ -48,7 +48,7 @@ module.exports=function(sequelize,DataTypes){
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [1,2]
+                len: [2]
             }
         },
         zip: {
@@ -62,14 +62,15 @@ module.exports=function(sequelize,DataTypes){
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [1,100]
+                len: [1,100],
+                isEmail: true
             }
         },
         phone: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [12]
+                len: [10]
             }
         },
         type: {
@@ -82,9 +83,6 @@ module.exports=function(sequelize,DataTypes){
         account_key:{
             type: DataTypes.STRING,
             required: true,
-            validate: {
-                len: [8]
-            }
         }
     });
 
@@ -97,10 +95,8 @@ module.exports=function(sequelize,DataTypes){
         return bcrypt.compareSync(password, this.account_key);
     };
 
-    Patient.prototype.findDoctor=function(){
-        models.Staff.findAll({}).then(function(user){
-            return user[0].uuid;
-        });
+    Patient.findDoctor=function(){
+        
     };
 
     Patient.associate = function(models){
@@ -119,6 +115,12 @@ module.exports=function(sequelize,DataTypes){
 
     Patient.associate = function(models){
         Patient.hasMany(models.Record,{
+            onDelete: "cascade"
+        });
+    }
+
+    Patient.associate = function(models){
+        Patient.hasMany(models.pAppt,{
             onDelete: "cascade"
         });
     }

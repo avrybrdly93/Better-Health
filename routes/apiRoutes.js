@@ -1,28 +1,108 @@
 var db = require("../models");
 var passport = require('passport');
 
-module.exports = function(app) {
+module.exports = function (app) {
 
-  //PATIENT INFO
+  //PATIENT GET INFO
+  app.get("/api/messages", function (req, res) {
+    if (req.isAuthenticated() && req.session.passport.user.type==="Patient") {
+      db.sMessage.findAll({
+        where: {
+          receiver: req.session.passport.user.uuid
+        }
+      }).then(function (result) {
+        res.send(result);
+      });
+    }
+    else{
+      res.send("Access Not Granted.");
+    }
+  });
+
+  app.get("/api/records", function (req, res) {
+    if(req.isAuthenticated() && req.session.passport.user.type==="Patient"){
+      db.Record.findAll({
+        where: {
+          PatientUuid: req.session.passport.user.uuid
+        }
+      }).then(function (result) {
+        res.send(result);
+      });
+    }
+    else{
+      res.send("Access Not Granted.");
+    }
+  });
+
+  app.get("/api/appointments", function (req, res) {
+    if(req.isAuthenticated() && req.session.passport.user.type==="Patient"){
+      db.pAppt.findAll({
+        where: {
+          PatientUuid: req.session.passport.user.uuid
+        }
+      }).then(function (result) {
+        res.send(result);
+      });
+    }
+    else{
+      res.send("Access Not Granted.");
+    }
+  });
+  //END OF PATIENT GET INFO
+
+  //STAFF GET INFO
+  app.get("/api/staff/messages", function (req, res) {
+    if(req.isAuthenticated() && req.session.passport.user.type==="Staff"){
+      db.pMessage.findAll({
+        where: {
+          receiver: req.session.passport.user.uuid
+        }
+      }).then(function (result) {
+        res.send(result);
+      });
+    }
+    else{
+      res.send("Access Not Granted.");
+    }
+  });
+
+  app.get("/api/staff/apointments", function (req, res) {
+    if(req.isAuthenticated() && req.session.passport.user.type==="Staff"){
+      db.sAppt.findAll({
+        where: {
+          StaffUuid: req.session.passport.user.uuid
+        }
+      }).then(function (result) {
+        res.send(result);
+      });
+    }
+    else{
+      res.send("Access Not Granted.");
+    }
+  });
+  //END OF STAFF GET INFO
+
+  //PATIENT POST INFO
   app.post("/api/message", function (req, res) {
-    if(req.isAuthenticated()){
+    if(req.isAuthenticated() && req.session.passport.user.type==="Patient"){
       db.pMessage.create({
         title: req.body.title,
         body: req.body.body,
         receiver: req.body.receiverUuid,
         PatientUuid: req.session.passport.user.uuid
       });
-  
+
       res.status(200);
       res.send("Message Sent!");
     }
     else{
-      res.status(401);
+      res.send("Permission Not Given.");
     }
   });
 
   app.post("/api/record", function (req, res) {
-    if(req.isAuthenticated()){
+
+    if(req.isAuthenticated() && req.session.passport.user.type==="Patient"){
       db.Record.create({
         event: req.body.event,
         description: req.body.description,
@@ -31,127 +111,70 @@ module.exports = function(app) {
         city: req.body.city,
         state: req.body.state,
         zip: req.body.zip,
-        PatientUuid: req.session.passport.user.uuid
+        PatientUuid: req.body.PatientUuid
       });
-  
+
       res.status(200);
       res.send("Record Uploaded!");
     }
     else{
-      res.status(401);
+      res.send("Permission Not Given.");
     }
   });
 
-  app.post("/api/appointment",function(req,res){
-    if(req.isAuthenticated()){
-
+  app.post("/api/appointment", function (req, res) {
+    if(req.isAuthenticated() && req.session.passport.user.type==="Patient"){
+      db.pAppt.create({
+        date: req.body.date,
+        time: req.body.time,
+        doctor_name: req.body.doctor_name,
+        appt_reason: req.body.appt_reason,
+        PatientUuid: req.session.passport.user.uuid
+      });
+      res.status(200);
+      res.send("Appointment booked!");
     }
     else{
-
+      res.send("Permission Not Given.")
     }
-
   });
-  //END OF PATIENT INFO
+  //END OF PATIENT POST INFO
 
-  //STAFF INFO 
+  //STAFF POST INFO 
   app.post("/api/staff/message", function (req, res) {
-    if(req.isAuthenticated()){
+    if(req.isAuthenticated() && req.session.passport.user.type==="Staff"){
       db.sMessage.create({
         title: req.body.title,
         body: req.body.body,
         receiver: req.body.receiverUuid,
         StaffUuid: req.session.passport.user.uuid
       });
-  
+
       res.status(200);
       res.send("Message Sent!");
     }
     else{
-      res.status(401);
+      res.send("Permission Not Given.")
     }
-
   });
 
-  app.post("api/staff/appointment",function(req,res){
+  app.post("api/staff/appointment", function (req, res) {
     if(req.isAuthenticated()){
-
+      db.sAppt.create({
+        StaffUuid: req.body.StaffUuid,
+        date: req.body.date,
+        time: req.body.time,
+        patient_name: req.body.patient_name,
+        visit_reason: req.body.visit_reason,
+        room_number: req.body.room_number
+  
+      });
+      res.status(200);
+      res.send("Appointment booked!");
     }
     else{
-
+      res.send("Permission Not Given.")
     }
   });
-  //END OF STAFF INFO
+  //END OF STAFF POST INFO
 };
-
-// Routes for patients 
-module.exports = function(app) {
-  // GET route for getting all the patients
-  app.get("/api/patient", function(req, res) {
-  
-      db.Patient.findAll({}).then(function(dbPatient) {
-    
-       res.json(dbPatient);
-      });
-  });
-
-  app.post("/api/patient", function(req, res) {
-      console.log(req.body);
- 
-      db.Patient.create({
-          text: req.body.text,
-          complete: req.body.complete
-      }).then(function(dbPatient) {
-   
-          res.json(dbPatient);
-      });
-  });
-
-  app.delete("/api/patient/:id", function(req, res) {
-      db.Patient.destroy({where:{id:req.params.id}})
-  .then(function(dbPatient){
-      res.json(dbPatient);
-  });
-
-  });
-
-  app.put("/api/patient", function(req, res) {
-
-  });
-};
-
-// This is for medstaff
-module.exports = function(app) {
-  // GET route for getting all the patients
-  app.get("/api/medstaff", function(req, res) {
-  
-      db.Medstaff.findAll({}).then(function(dbMedstaff) {
-    
-       res.json(dbMedstaff);
-      });
-  });
-
-  app.post("/api/medstaff", function(req, res) {
-      console.log(req.body);
- 
-      db.Medstaff.create({
-          text: req.body.text,
-          complete: req.body.complete
-      }).then(function(dbMedstaff) {
-   
-          res.json(dbMedstaff);
-      });
-  });
-
-  app.delete("/api/medstaff/:id", function(req, res) {
-      db.Medstaff.destroy({where:{id:req.params.id}})
-  .then(function(dbMedstaff){
-      res.json(dbMedstaff);
-  });
-
-  });
-
-  app.put("/api/medstaff", function(req, res) {
-
-  });
-};
-

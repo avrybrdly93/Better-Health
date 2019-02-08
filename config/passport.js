@@ -71,7 +71,7 @@ module.exports = function (passport) {
                         zip: req.body.zip,
                         email: req.body.email,
                         phone: req.body.phone,
-                        StaffUuid: db.Patient.findDoctor(),
+                        //StaffUuid: db.Patient.findDoctor(),
                         type: "Patient",
                         account_key: db.Patient.generateHash(account_key)
                     }).then(function (dbUser) {

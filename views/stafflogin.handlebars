@@ -32,7 +32,7 @@
                 "email": $("#emailInput").val().trim(),
                 "account_key": $("#passwordInput").val().trim()
             }
-            $.post("/admin/login",tryUsr,function(data,status,xhr){
+            $.post("/staff/login",tryUsr,function(data,status,xhr){
                 //console.log(data);
                 
                 //console.log(status);
@@ -41,11 +41,11 @@
                 
                 switch(xhr.status){
                     case 200:{
-                        window.location.href="/admin/dashboard";
+                        window.location.href="/staff/dashboard";
                         break;
                     }
                     case 401:{
-                        window.location.href="/admin/login";
+                        window.location.href="/staff/login";
                         break;
                     }
                     case 404:{

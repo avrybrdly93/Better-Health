@@ -136,7 +136,7 @@
           <p class="uk-text-meta uk-margin-remove-top">Book your next apppointment!</p>
         </div>
         <div class="uk-card-footer">
-          <a href="#bookApp" uk-toggle class="uk-button uk-button-text">Book now</a>
+          <a href="#bookApp" uk-toggle class="uk-button uk-button-text" id="bookBtn">Book now</a>
         </div>
       </div>
     </div>
@@ -216,17 +216,16 @@
     <button class="uk-modal-close-default" type="button" uk-close></button>
 
     <div class="uk-modal-header">
-      <h2 class="uk-modal-title">Book Appointment</h2>
+      <h2 class="uk-modal-title" id="modalTitle"></h2>
     </div>
 
-    <div class="uk-modal-body">
+    <div class="uk-modal-body" >
       <div class="row">
         <div class="col-12">
-          <div class="uk-card uk-card-default uk-card-body" uk-scrollspy="cls: uk-animation-fade; repeat: true">
-            <h3 class="uk-card-title">Book Appointment</h3>
-            <p>Fill out the form below to book your next appointment.</p>
+          <div class="uk-card uk-card-default uk-card-body" uk-scrollspy="cls: uk-animation-fade; repeat: true" id="modalBody">
+            
 
-            <form class="uk-grid-small" uk-grid>
+            {{!-- <form class="uk-grid-small" uk-grid>
               <div class="uk-width-1-1">
                 <label class="uk-form-label" for="form-horizontal-select">Pick a Date:</label>
                 <form>
@@ -252,7 +251,8 @@
                 <textarea class="uk-textarea" rows="5" placeholder="Additional comments"></textarea>
               </div>
               <p style="text-align: center;"><button class="uk-button uk-button-primary">Submit</button></p>
-            </form>
+            </form> --}}
+
           </div>
         </div>
       </div>

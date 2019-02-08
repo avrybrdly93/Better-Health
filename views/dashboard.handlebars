@@ -63,6 +63,12 @@
   };
 </style>
 
+<script type="text/javascript">
+  $(function () {
+    $('#datetimepicker1').datetimepicker();
+  });
+</script>
+
 <div class="gradient"></div>
 
 <div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
@@ -89,7 +95,7 @@
             <ul class="uk-nav uk-dropdown-nav">
               <li class="uk-nav-header">Quick Menu</li>
               <li><a href="#modal-overflow" uk-toggle>View Messages</a></li>
-              <li><a href="/holistics">Holistics</a></li>
+              <li><a href="/holistic">Holistic</a></li>
               <li class="uk-nav-divider"></li>
               <li><a href="/profile">Settings</a></li>
               <li><a href="/logout">Logout</a></li>
@@ -114,7 +120,7 @@
       </ul>
       </li>
       <li class="uk-nav-header">More</li>
-      <li><a href="/holistics"><span class="uk-margin-small-right" uk-icon="icon: heart"></span> Holistics</a></li>
+      <li><a href="/holistic"><span class="uk-margin-small-right" uk-icon="icon: heart"></span> Holistics</a></li>
       <li><a href="#modal-overflow" uk-toggle><span class="uk-margin-small-right" uk-icon="icon: commenting"></span>
           Messages</a></li>
       <li class="uk-nav-divider"></li>
@@ -147,7 +153,7 @@
           <p class="uk-text-meta uk-margin-remove-top">View diet plans.</p>
         </div>
         <div class="uk-card-footer">
-          <a href="/choice" class="uk-button uk-button-text">Read more</a>
+          <a href="/holistic" class="uk-button uk-button-text">Read more</a>
         </div>
       </div>
     </div>
@@ -226,13 +232,37 @@
             <h3 class="uk-card-title">Book Appointment</h3>
             <p>Fill out the form below to book your next appointment.</p>
 
+            <ul class="uk-slider-items uk-grid">
+              <li>
+                <div class="uk-transition-fade uk-position-cover uk-position-small uk-overlay uk-overlay-default uk-flex uk-flex-center uk-flex-middle">
+                  <p class="uk-h4 uk-margin-remove">Selected</p>
+                </div>
+                <div class="uk-text-center">
+                  <div class="uk-inline-clip uk-transition-toggle" tabindex="0">
+                    <img tabindex="0" width="120" height="120" src="https://www.anthonygold.co.uk/wp-content/uploads/2017/06/Lauren-McKie-BW-3-cropped.jpg">
+                    <div class="uk-transition-fade uk-position-cover uk-position-small uk-overlay uk-overlay-default uk-flex uk-flex-center uk-flex-middle">
+                      <p class="uk-h4 uk-margin-remove">Selected</p>
+                    </div>
+                  </div>
+                  <p class="uk-margin-small-top">Dr. Smith</p>
+                </div>
+              </li>
+              <li>
+                <img class="uk-border-circle" width="120" height="120" src="https://www.faceplusplus.com/images/comparing/left_pic_three.jpg">
+              </li>
+              <li>
+                <img class="uk-border-circle" width="120" height="120" src="https://do7nu6l5erzu3.cloudfront.net/wp-content/uploads/2018/02/06121555/Final_McCarthy.Steve_6170.jpg">
+              </li>
+            </ul>
+
             <form class="uk-grid-small" uk-grid>
               <div class="uk-width-1-1">
                 <label class="uk-form-label" for="form-horizontal-select">Pick a Date:</label>
-                <form>
-                  <input class="uk-input" type="text" placeholder="Datepicker" data-uk-datepicker>
+                <form class="uk-form">
+                  <input type="text" id="datepicker">
                 </form>
               </div>
+
               <div class="uk-margin">
                 <label class="uk-form-label" for="form-horizontal-select">What is your appointment for?</label>
                 <div uk-form-custom="target: > * > span:first-child">
@@ -247,9 +277,10 @@
                     <span uk-icon="icon: chevron-down"></span>
                   </button>
                 </div>
-              </div>
-              <div class="uk-width-1-1">
-                <textarea class="uk-textarea" rows="5" placeholder="Additional comments"></textarea>
+                <br>
+                <div class="uk-width-1-1">
+                  <textarea class="uk-textarea" rows="5" placeholder="Additional comments"></textarea>
+                </div>
               </div>
               <p style="text-align: center;"><button class="uk-button uk-button-primary">Submit</button></p>
             </form>
@@ -426,7 +457,6 @@
     </div>
   </div>
 </div>
-
 
 <!-- Med Record -->
 <div id="medRec" uk-modal>

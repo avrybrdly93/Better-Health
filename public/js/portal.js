@@ -1,19 +1,19 @@
 $(document).ready(function () {
 
   // Front-End input validation with parsley
-  $('#signup-form').parsley().on('field:validate', function () {
-    var ok = $('.parsley-error').length === 0;
-    $('.bs-callout-info').toggleClass('hidden', !ok);
-    $('.bs-callout-warning').toggleClass('hidden', ok);
-  })
-    .on('form:submit', function () {
-      console.log("submittted");
-      return false; // Don't submit form for this demo
-    });
+//   $('#signup-form').parsley().on('field:validate', function () {
+//     var ok = $('.parsley-error').length === 0;
+//     $('.bs-callout-info').toggleClass('hidden', !ok);
+//     $('.bs-callout-warning').toggleClass('hidden', ok);
+//   })
+//     .on('form:submit', function () {
+//       console.log("submittted");
+//       return false; // Don't submit form for this demo
+//     });
 
-  document.querySelector('.img__btn').addEventListener('click', function () {
-    document.querySelector('.cont').classList.toggle('s--signup');
-  });
+//   document.querySelector('.img__btn').addEventListener('click', function () {
+//     document.querySelector('.cont').classList.toggle('s--signup');
+//   });
 
   let phoneVals = '';
   let userPhoneNum = '';
@@ -178,12 +178,3 @@ $(document).ready(function () {
     });
   });
 });
-
-// });
-
-// $("#loginBtn").on("click", function (event) {
-//     event.preventDefault();
-
-//     var tryUsr = {
-//         "username": $("#userLogin").val().trim(),
-//         "account_key": $("#passwordLogin").val().trim()

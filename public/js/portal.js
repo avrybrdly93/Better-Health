@@ -177,9 +177,9 @@ $(document).ready(function () {
         }
       }
     });
-    if(hasBeenPosted === false) {
-      alert("incorrect username or password!!!! dummy")
-    }
+    // if(hasBeenPosted === false) {
+    //   alert("incorrect username or password")
+    // }
   });
 });
 

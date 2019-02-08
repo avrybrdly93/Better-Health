@@ -14,6 +14,13 @@ module.exports = function(sequelize,DataTypes){
                 len: [1]
             }
         },
+        date: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [1,30]
+            }
+        },
         location_name: {
             type: DataTypes.STRING,
             allowNull: false,

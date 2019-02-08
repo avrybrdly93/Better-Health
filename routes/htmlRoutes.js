@@ -35,15 +35,6 @@ module.exports = function (app) {
   });
 
   //PATIENT GET ROUTES
-  // app.get("/signup", function (req, res) {
-  //   if (req.isAuthenticated()) {
-  //     res.redirect("/dashboard");
-  //   }
-  //   else {
-  //     res.render("signup");
-  //   }
-  // });
-
   app.get("/portal", function (req, res) {
     if (req.isAuthenticated()) {
 
@@ -61,7 +52,11 @@ module.exports = function (app) {
 
   app.get("/profile", function (req, res) {
     res.render("profile");
-  })
+  });
+
+  app.get("/choice", function (req, res) {
+    res.render("/holistic/choice");
+  });
 
   app.get("/dashboard", function (req, res) {
     console.log("%%%%%%%%% is logged in: " + req.isAuthenticated());
@@ -91,7 +86,7 @@ module.exports = function (app) {
         id: null,
         isloggedin: req.isAuthenticated()
       }
-      res.redirect("/login");
+      res.redirect("/portal");
     }
 
   });

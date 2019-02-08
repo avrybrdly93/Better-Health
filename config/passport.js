@@ -42,14 +42,14 @@ module.exports = function (passport) {
     });
 
     passport.use('local-signup-patients', new localStrategy({
-        usernameField: 'email',
+        usernameField: 'username',
         passwordField: 'account_key',
         passReqToCallback: true
-    }, function (req, email, account_key, done) {
+    }, function (req,username, account_key, done) {
         process.nextTick(function () {
             db.Patient.findOne({
                 where: {
-                    email: email
+                    username: username
                 }
             }).then(function (user, err) {
                 if (err) {
@@ -57,8 +57,8 @@ module.exports = function (passport) {
                     return done(err);
                 }
                 if (user) {
-                    console.log('signupMessage', 'That email is already taken.');
-                    return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
+                    console.log('signupMessage', 'That username or email is already taken.');
+                    return done(null, false, req.flash('signupMessage', 'That username or email is already taken.'));
                 } 
                 else {
                     db.Patient.create({
@@ -83,13 +83,13 @@ module.exports = function (passport) {
     }));
 
     passport.use('local-login-patients', new localStrategy({
-        usernameField: 'email',
+        usernameField: 'username',
         passwordField : 'account_key',
         passReqToCallback : true 
-    },function(req, email, account_key, done) { 
+    },function(req, username, account_key, done) { 
         db.Patient.findOne({
             where: {
-                email: req.body.email 
+                username: req.body.username 
             }
         }).then(function(user, err) {
             (!user.validPassword(req.body.account_key));
@@ -107,14 +107,14 @@ module.exports = function (passport) {
 
 
     passport.use('local-signup-staff', new localStrategy({
-        usernameField: 'email',
+        usernameField: 'username',
         passwordField: 'account_key',
         passReqToCallback: true
-    }, function (req, email, account_key, done) {
+    }, function (req, username, account_key, done) {
         process.nextTick(function () {
             db.Staff.findOne({
                 where: {
-                    email: email
+                    username: username
                 }
             }).then(function (user, err) {
                 if (err) {
@@ -122,8 +122,8 @@ module.exports = function (passport) {
                     return done(err);
                 }
                 if (user) {
-                    console.log('signupMessage', 'That email is already taken.');
-                    return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
+                    console.log('signupMessage', 'That username or email is already taken.');
+                    return done(null, false, req.flash('signupMessage', 'That username or email is already taken.'));
                 } 
                 else {
                     db.Staff.create({
@@ -149,13 +149,13 @@ module.exports = function (passport) {
     }));
 
     passport.use('local-login-staff', new localStrategy({
-        usernameField: 'email',
+        usernameField: 'username',
         passwordField : 'account_key',
         passReqToCallback : true 
-    },function(req, email, account_key, done) { 
+    },function(req, username, account_key, done) { 
         db.Staff.findOne({
             where: {
-                email: req.body.email 
+                username: req.body.username 
             }
         }).then(function(user, err) {
             (!user.validPassword(req.body.account_key));

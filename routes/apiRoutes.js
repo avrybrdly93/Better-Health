@@ -54,7 +54,7 @@ module.exports = function (app) {
   app.get("/api/staff",function(req,res){
     if(req.isAuthenticated()){
       db.Staff.findAll({
-        attributes: ["uuid","first_name","last_name"],
+        attributes: ["uuid","first_name","last_name","title","specialization"],
         limit: 5
       }).then(function(result){
         res.send(result);

@@ -5,7 +5,65 @@
   .twitter-timeline::-webkit-scrollbar{
       width: 0 !important;
   }
+  .gradient {
+    height: 3px;
+
+    animation: colorchange 1.4s;
+    /* animation-name followed by duration in seconds*/
+    /* you could also use milliseconds (ms) or something like 2.5s */
+    -webkit-animation: colorchange 1.4s;
+    /* Chrome and Safari */
+  }
+
+  @keyframes colorchange {
+    0% {
+      background: #faa96a;
+    }
+
+    25% {
+      background: #32d296;
+    }
+
+    5% {
+      background: #f15d78;
+    }
+
+    75% {
+      background: #6bb1f5;
+    }
+
+    100% {
+      background: #faa96a;
+    }
+  }
+
+  @-webkit-keyframes colorchange
+
+  /* Safari and Chrome - necessary duplicate */
+    {
+    0% {
+      background: red;
+    }
+
+    25% {
+      background: yellow;
+    }
+
+    50% {
+      background: blue;
+    }
+
+    75% {
+      background: green;
+    }
+
+    100% {
+      background: red;
+    }
+  };
 </style>
+
+<div class="gradient"></div>
 
 <div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
   <nav class="uk-navbar-container uk-margin" uk-navbar>
@@ -20,12 +78,6 @@
           </a>
         </li>
       </ul>
-      <div class="uk-navbar-right">
-        <form class="uk-search uk-search-default">
-          <span class="uk-search-icon-flip" uk-search-icon></span>
-          <input class="uk-search-input" type="search" placeholder="Search...">
-        </form>
-      </div>
 
     </div>
     <div class="uk-navbar-right">
@@ -57,8 +109,8 @@
       <li class="uk-parent">
       <li class="uk-active"><a href="/dashboard">Overview</a></li>
       <ul class="uk-nav-sub">
-        <li><a href="#bookApp" uk-toggle >Book Appointment</a></li>
-        <li><a href="#medRec" uk-toggle >View Medical Record</a></li>
+        <li><a href="#bookApp" uk-toggle>Book Appointment</a></li>
+        <li><a href="#medRec" uk-toggle>View Medical Record</a></li>
       </ul>
       </li>
       <li class="uk-nav-header">More</li>
@@ -95,19 +147,19 @@
           <p class="uk-text-meta uk-margin-remove-top">View diet plans.</p>
         </div>
         <div class="uk-card-footer">
-          <a href="#" class="uk-button uk-button-text">Read more</a>
+          <a href="/choice" class="uk-button uk-button-text">Read more</a>
         </div>
       </div>
     </div>
     <div class="col-xl-3 col-sm-6 mb-3">
       <div class="uk-card uk-card-default">
         <div class="uk-card-body">
-          <p class="uk-text-danger"><span class="uk-margin-small-right" uk-icon="icon: calendar; ratio: 1.5"></span>Next
-            Appointment:</p>
+          <p class="uk-text-danger"><span class="uk-margin-small-right" uk-icon="icon: file-text; ratio: 1.5"></span>Medical
+            Record</p>
           <p class="uk-text-meta uk-margin-remove-top"><time datetime="2016-04-01T19:00">April 01, 2016</time></p>
         </div>
         <div class="uk-card-footer">
-          <a href="#" class="uk-button uk-button-text">Read more</a>
+          <a href="#medRec" uk-toggle class="uk-button uk-button-text">View Now</a>
         </div>
       </div>
     </div>
@@ -124,45 +176,8 @@
     </div>
   </div>
 
-
-  <!-- Book appointment -->
-  <div class="row" id="bookApp" uk-toggle="cls: true">
-    <div class="col-12">
-      <div class="uk-card uk-card-default uk-card-body" uk-scrollspy="cls: uk-animation-slide-left; repeat: true">
-        <h3 class="uk-card-title">Book Appointment</h3>
-        <p>Fill out the form below to book your next appointment.</p>
-
-        <form class="uk-grid-small" uk-grid>
-          <div class="uk-width-1-1">
-            <label class="uk-form-label" for="form-horizontal-select">Pick a Date:</label>
-            <input type="text" data-uk-datepicker="{format:'DD.MM.YYYY'}">
-          </div>
-          <div class="uk-margin">
-            <label class="uk-form-label" for="form-horizontal-select">What is your appointment for?</label>
-            <div uk-form-custom="target: > * > span:first-child">
-              <select>
-                <option value="">Please select...</option>
-                <option value="Eye Exam">Eye Exam</option>
-                <option value="Physical">Physical</option>
-                <option value="Blood test">Blood Test</option>
-              </select>
-              <button class="uk-button uk-button-default" type="button" tabindex="-1">
-                <span></span>
-                <span uk-icon="icon: chevron-down"></span>
-              </button>
-            </div>
-          </div>
-          <div class="uk-width-1-1">
-            <textarea class="uk-textarea" rows="5" placeholder="Additional comments"></textarea>
-          </div>
-          <p style="text-align: center;"><button class="uk-button uk-button-primary">Submit</button></p>
-        </form>
-      </div>
-    </div>
-  </div>
-
   <br>
-  <h3 style="text-align: center;">Health Updates from Twitter</h3>
+  <h2 style="text-align: center;">Health Updates from Twitter</h2>
   <br>
 
   <!-- Twitter grid -->
@@ -191,6 +206,57 @@
     <div class="col-1"></div>
     <!-- JavaScript for Twitter -->
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </div>
+</div>
+
+<!-- Book appointment modal -->
+<div id="bookApp" uk-modal>
+  <div class="uk-modal-dialog">
+
+    <button class="uk-modal-close-default" type="button" uk-close></button>
+
+    <div class="uk-modal-header">
+      <h2 class="uk-modal-title">Book Appointment</h2>
+    </div>
+
+    <div class="uk-modal-body">
+      <div class="row">
+        <div class="col-12">
+          <div class="uk-card uk-card-default uk-card-body" uk-scrollspy="cls: uk-animation-fade; repeat: true">
+            <h3 class="uk-card-title">Book Appointment</h3>
+            <p>Fill out the form below to book your next appointment.</p>
+
+            <form class="uk-grid-small" uk-grid>
+              <div class="uk-width-1-1">
+                <label class="uk-form-label" for="form-horizontal-select">Pick a Date:</label>
+                <form>
+                  <input class="uk-input" type="text" placeholder="Datepicker" data-uk-datepicker>
+                </form>
+              </div>
+              <div class="uk-margin">
+                <label class="uk-form-label" for="form-horizontal-select">What is your appointment for?</label>
+                <div uk-form-custom="target: > * > span:first-child">
+                  <select>
+                    <option value="">Please select...</option>
+                    <option value="Eye Exam">Eye Exam</option>
+                    <option value="Physical">Physical</option>
+                    <option value="Blood test">Blood Test</option>
+                  </select>
+                  <button class="uk-button uk-button-default" type="button" tabindex="-1">
+                    <span></span>
+                    <span uk-icon="icon: chevron-down"></span>
+                  </button>
+                </div>
+              </div>
+              <div class="uk-width-1-1">
+                <textarea class="uk-textarea" rows="5" placeholder="Additional comments"></textarea>
+              </div>
+              <p style="text-align: center;"><button class="uk-button uk-button-primary">Submit</button></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -290,7 +356,8 @@
                         </div>
                         <div class="uk-width-expand">
                           <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="#">Me</a></h4>
-                          <p class="uk-comment-meta uk-margin-remove-top"><a class="uk-link-reset" href="#">12 days ago</a></p>
+                          <p class="uk-comment-meta uk-margin-remove-top"><a class="uk-link-reset" href="#">12
+                              days ago</a></p>
                         </div>
                       </div>
                       <div class="uk-position-top-right uk-position-small uk-hidden-hover"><a class="uk-link-muted"
@@ -310,8 +377,10 @@
                             width="80" height="80" alt="">
                         </div>
                         <div class="uk-width-expand">
-                          <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="#">Dr. Smith</a></h4>
-                          <p class="uk-comment-meta uk-margin-remove-top"><a class="uk-link-reset" href="#">12 days ago</a></p>
+                          <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="#">Dr.
+                              Smith</a></h4>
+                          <p class="uk-comment-meta uk-margin-remove-top"><a class="uk-link-reset" href="#">12
+                              days ago</a></p>
                         </div>
                       </div>
                       <div class="uk-position-top-right uk-position-small uk-hidden-hover"><a class="uk-link-muted"
@@ -334,7 +403,8 @@
                         </div>
                         <div class="uk-width-expand">
                           <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="#">Me</a></h4>
-                          <p class="uk-comment-meta uk-margin-remove-top"><a class="uk-link-reset" href="#">12 days ago</a></p>
+                          <p class="uk-comment-meta uk-margin-remove-top"><a class="uk-link-reset" href="#">12
+                              days ago</a></p>
                         </div>
                       </div>
                       <div class="uk-position-top-right uk-position-small uk-hidden-hover"><a class="uk-link-muted"
@@ -359,20 +429,24 @@
 
 
 <!-- Med Record -->
-<div class="container">
-  <div class="row">
-    <div class="ui basic button">Close Records</div>
-  </div>
-  <div class="row">
-    <div class="ui items">
-      <div class="item">
-        <div class="ui tiny image">
-          <img class="image" src="{{patient.image}}">
-        </div>
-        <div class="content">
-          <a class="header">{{patient.first_name}} {{patient.last_name}}</a>
-          <div class="description">
-            <ul>
+<div id="medRec" uk-modal>
+  <div class="uk-modal-dialog">
+
+    <button class="uk-modal-close-default" type="button" uk-close></button>
+
+    <div class="uk-modal-header">
+      <h2 class="uk-modal-title">Medical Record</h2>
+    </div>
+
+    <div class="uk-modal-body">
+      <div class="ui items">
+        <div class="item">
+          <div class="ui tiny image">
+            <img class="uk-border-circle" width="40" height="40" src="{{patient.image}}">
+          </div>
+          <div class="content">
+            <a class="header">{{patient.first_name}} {{patient.last_name}}</a>
+            <ul class="uk-list">
               <li>{{patient.street_address}}</li>
               <li>{{patient.city}}, {{patient.state}}, {{patient.zip}}</li>
               <li>{{patient.phone_number}}</li>
@@ -380,112 +454,108 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
 
-  <div class="row">
-    <div class="col-12" <table class="ui teal celled table">
-      <thead>
-        <tr>
-          <th>Tests taken</th>
-          <th>Status</th>
-          <th>Results</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Blood test</td>
-          <td>Pending</td>
-          <td class="negative"><i class="icon close"></i>Unknown</td>
-        </tr>
-        <tr class="positive">
-          <td>Health test</td>
-          <td>Complete</td>
-          <td class="positive"><i class="icon checkmark"></i>Within Range</td>
-        </tr>
-        <tr class="positive">
-          <td>C-Reactive Protein</td>
-          <td>Complete</td>
-          <td class="negative"><i class="icon close"></i>Negative</td>
-        </tr>
-        <tr>
-          <td>Hemoglobin A1C</td>
-          <td>Scheduled</td>
-          <td>Unknown</td>
-        </tr>
-      </tbody>
-      </table>
-    </div>
-  </div>
+      <div class="row">
+        <table class="uk-table uk-table-striped">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Procedure</th>
+              <th>Reason for Procedure</th>
+              <th>Provider</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>February 22, 2019</td>
+              <td>Eye lasik</td>
+              <td>Vision status</td>
+              <td>Kaiser Permanente</td>
+            </tr>
+            <tr>
+              <td>January 12, 2019</td>
+              <td>X-Ray</td>
+              <td>Pain in the right hand</td>
+              <td>Kaiser Permanente</td>
+            </tr>
+            <tr>
+              <td>May 15, 2018</td>
+              <td>Biopsy</td>
+              <td>Cyst found</td>
+              <td>Kaiser Permanente</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-  <!-- row -->
-  <div class="row">
-    <div class="eight wide column">
-      <table class="ui teal celled table">
-        <thead>
-          <tr>
-            <th>Allergy</th>
-            <th>Severity</th>
-            <th>Notes</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Lactose</td>
-            <td>High</td>
-            <td>None</td>
-          </tr>
-          <tr class="warning">
-            <td>Penicillin</td>
-            <td><i class="attention icon"></i> High</td>
-            <td>None</td>
-          </tr>
-          <tr>
-            <td>Pet Dander</td>
-            <td>Low</td>
-            <td class="warning"><i class="attention icon"></i>Has pets</td>
-          </tr>
-          <tr>
-            <td>Peanuts</td>
-            <td>Moderate</td>
-            <td>None</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+      <div class="row">
+        <table class="uk-table uk-table-striped">
+          <thead>
+            <tr>
+              <th>Tests taken</th>
+              <th>Status</th>
+              <th>Results</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="warning">
+              <td>Blood test</td>
+              <td>Pending</td>
+              <td>Unknown</td>
+            </tr>
+            <tr>
+              <td>Health test</td>
+              <td>Complete</td>
+              <td>Within Range</td>
+            </tr>
+            <tr>
+              <td>C-Reactive Protein</td>
+              <td>Complete</td>
+              <td>Negative</td>
+            </tr>
+            <tr>
+              <td>Hemoglobin A1C</td>
+              <td>Scheduled</td>
+              <td>Unknown</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-    <!--column-->
-    <div class="eight wide column">
-      <table class="ui teal celled table">
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Procedure</th>
-            <th>Reason for Procedure</th>
-            <th>Provider</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>February 22, 2019</td>
-            <td>Eye lasik</td>
-            <td>Vision status</td>
-            <td>Kaiser Permanente</td>
-          </tr>
-          <tr>
-            <td>January 12, 2019</td>
-            <td>X-Ray</td>
-            <td>Pain in the right hand</td>
-            <td>Kaiser Permanente</td>
-          </tr>
-          <tr>
-            <td>May 15, 2018</td>
-            <td>Biopsy</td>
-            <td>Cyst found</td>
-            <td>Kaiser Permanente</td>
-          </tr>
-        </tbody>
-      </table>
+      <!-- row -->
+      <div class="row">
+        <table class="uk-table uk-table-striped">
+          <thead>
+            <tr>
+              <th>Allergy</th>
+              <th>Severity</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Lactose</td>
+              <td>High</td>
+              <td>None</td>
+            </tr>
+            <tr>
+              <td>Penicillin</td>
+              <td>High</td>
+              <td>None</td>
+            </tr>
+            <tr>
+              <td>Pet Dander</td>
+              <td>Low</td>
+              <td>Has pets</td>
+            </tr>
+            <tr>
+              <td>Peanuts</td>
+              <td>Moderate</td>
+              <td>None</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

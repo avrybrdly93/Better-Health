@@ -108,19 +108,7 @@ module.exports=function(sequelize,DataTypes){
     }
 
     Patient.associate = function(models){
-        Patient.hasMany(models.pMessage,{
-            onDelete: "cascade"
-        });
-    };
-
-    Patient.associate = function(models){
         Patient.hasMany(models.Record,{
-            onDelete: "cascade"
-        });
-    }
-
-    Patient.associate = function(models){
-        Patient.hasMany(models.pAppt,{
             onDelete: "cascade"
         });
     }

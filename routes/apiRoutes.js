@@ -28,7 +28,9 @@ module.exports = function (app) {
           PatientUuid: req.session.passport.user.uuid
         }
       }).then(function (result) {
-        res.send(result);
+        var newSheet=[result,req.session.passport.user.first_name,req.session.passport.user.last_name];
+
+        res.send(newSheet);
       });
     }
     else{
@@ -54,8 +56,8 @@ module.exports = function (app) {
   app.get("/api/staff",function(req,res){
     if(req.isAuthenticated()){
       db.Staff.findAll({
-        attributes: ["uuid","first_name","last_name"],
-        limit: 5
+        attributes: ["uuid","first_name","last_name","title","specialization"],
+        limit: 10
       }).then(function(result){
         res.send(result);
       });

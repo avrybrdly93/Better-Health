@@ -1,10 +1,12 @@
 <style>
-  .uk-modal-body::-webkit-scrollbar{
-     width: 0 !important;
+  .uk-modal-body::-webkit-scrollbar {
+    width: 0 !important;
   }
-  .twitter-timeline::-webkit-scrollbar{
-      width: 0 !important;
+
+  .twitter-timeline::-webkit-scrollbar {
+    width: 0 !important;
   }
+
   .gradient {
     height: 3px;
 
@@ -60,7 +62,9 @@
     100% {
       background: red;
     }
-  };
+  }
+
+  ;
 </style>
 
 <div class="gradient"></div>
@@ -84,7 +88,8 @@
       <div class="uk-navbar-item">
         <a href="/profile"><span class="uk-margin-small-right" uk-icon="icon: cog"></span></a>
         <div class="uk-width-auto">
-          <img class="uk-border-circle" width="40" height="40" src="https://bestoftool.com/wp-content/uploads/2018/06/Anonymous-Whatsapp-profile-picture-1.jpg">
+          <img class="uk-border-circle" width="40" height="40"
+            src="https://bestoftool.com/wp-content/uploads/2018/06/Anonymous-Whatsapp-profile-picture-1.jpg">
           <div uk-dropdown>
             <ul class="uk-nav uk-dropdown-nav">
               <li class="uk-nav-header">Quick Menu</li>
@@ -118,7 +123,8 @@
       <li><a href="#modal-overflow" uk-toggle><span class="uk-margin-small-right" uk-icon="icon: commenting"></span>
           Messages</a></li>
       <li class="uk-nav-divider"></li>
-      <li><a href="/profile" class="usrNav"><img class="uk-border-circle" width="40" height="40" src="https://bestoftool.com/wp-content/uploads/2018/06/Anonymous-Whatsapp-profile-picture-1.jpg">
+      <li><a href="/profile" class="usrNav"><img class="uk-border-circle" width="40" height="40"
+            src="https://bestoftool.com/wp-content/uploads/2018/06/Anonymous-Whatsapp-profile-picture-1.jpg">
           Profile</a></li>
     </ul>
 
@@ -136,14 +142,15 @@
           <p class="uk-text-meta uk-margin-remove-top">Book your next apppointment!</p>
         </div>
         <div class="uk-card-footer">
-          <a href="#bookApp" uk-toggle class="uk-button uk-button-text">Book now</a>
+          <a href="#bookApp" uk-toggle class="uk-button uk-button-text" id="bookBtn">Book now</a>
         </div>
       </div>
     </div>
     <div class="col-xl-3 col-sm-6 mb-3">
       <div class="uk-card uk-card-default">
         <div class="uk-card-body">
-          <p class="uk-text-success"><span class="uk-margin-small-right" uk-icon="icon: heart; ratio: 1.5"></span>Holistics:</p>
+          <p class="uk-text-success"><span class="uk-margin-small-right"
+              uk-icon="icon: heart; ratio: 1.5"></span>Holistics:</p>
           <p class="uk-text-meta uk-margin-remove-top">View diet plans.</p>
         </div>
         <div class="uk-card-footer">
@@ -154,23 +161,25 @@
     <div class="col-xl-3 col-sm-6 mb-3">
       <div class="uk-card uk-card-default">
         <div class="uk-card-body">
-          <p class="uk-text-danger"><span class="uk-margin-small-right" uk-icon="icon: file-text; ratio: 1.5"></span>Medical
+          <p class="uk-text-danger"><span class="uk-margin-small-right"
+              uk-icon="icon: file-text; ratio: 1.5"></span>Medical
             Record</p>
           <p class="uk-text-meta uk-margin-remove-top"><time datetime="2016-04-01T19:00">April 01, 2016</time></p>
         </div>
         <div class="uk-card-footer">
-          <a href="#medRec" uk-toggle class="uk-button uk-button-text">View Now</a>
+          <a href="#medRec" uk-toggle class="uk-button uk-button-text" id="records">View Now</a>
         </div>
       </div>
     </div>
     <div class="col-xl-3 col-sm-6 mb-3">
       <div class="uk-card uk-card-default">
         <div class="uk-card-body">
-          <p class="uk-text-primary"><span class="uk-margin-small-right" uk-icon="icon: commenting; ratio: 1.5"></span>Messages:</p>
+          <p class="uk-text-primary"><span class="uk-margin-small-right"
+              uk-icon="icon: commenting; ratio: 1.5"></span>Messages:</p>
           <p class="uk-text-meta uk-margin-remove-top">7 unread messages</p>
         </div>
         <div class="uk-card-footer">
-          <a href="#modal-overflow" uk-toggle class="uk-button uk-button-text">Reply Now</a>
+          <a href="#modal-overflow" uk-toggle class="uk-button uk-button-text" id="msgBtn">Reply Now</a>
         </div>
       </div>
     </div>
@@ -191,12 +200,14 @@
               mnt</a>
           </li>
           <li>
-            <a class="twitter-timeline" data-height="3000" href="https://twitter.com/AmerMedicalAssn?ref_src=twsrc%5Etfw">Tweets
+            <a class="twitter-timeline" data-height="3000"
+              href="https://twitter.com/AmerMedicalAssn?ref_src=twsrc%5Etfw">Tweets
               by
               AmerMedicalAssn</a>
           </li>
           <li>
-            <a class="twitter-timeline" data-height="3000" href="https://twitter.com/CDC_eHealth?ref_src=twsrc%5Etfw">Tweets
+            <a class="twitter-timeline" data-height="3000"
+              href="https://twitter.com/CDC_eHealth?ref_src=twsrc%5Etfw">Tweets
               by
               CDC_eHealth</a>
           </li>
@@ -216,41 +227,14 @@
     <button class="uk-modal-close-default" type="button" uk-close></button>
 
     <div class="uk-modal-header">
-      <h2 class="uk-modal-title">Book Appointment</h2>
+      <h2 class="uk-modal-title" id="modalTitle"></h2>
     </div>
 
     <div class="uk-modal-body">
       <div class="row">
         <div class="col-12">
-          <div class="uk-card uk-card-default uk-card-body" uk-scrollspy="cls: uk-animation-fade; repeat: true">
-            <h3 class="uk-card-title">Book Appointment</h3>
-            <p>Fill out the form below to book your next appointment.</p>
-
-            <form class="uk-grid-small" uk-grid>
-              <div class="uk-width-1-1">
-                <label class="uk-form-label" for="form-horizontal-select">Pick a Date:</label>
-                <input type="text" data-uk-datepicker="{format:'DD.MM.YYYY'}">
-              </div>
-              <div class="uk-margin">
-                <label class="uk-form-label" for="form-horizontal-select">What is your appointment for?</label>
-                <div uk-form-custom="target: > * > span:first-child">
-                  <select>
-                    <option value="">Please select...</option>
-                    <option value="Eye Exam">Eye Exam</option>
-                    <option value="Physical">Physical</option>
-                    <option value="Blood test">Blood Test</option>
-                  </select>
-                  <button class="uk-button uk-button-default" type="button" tabindex="-1">
-                    <span></span>
-                    <span uk-icon="icon: chevron-down"></span>
-                  </button>
-                </div>
-              </div>
-              <div class="uk-width-1-1">
-                <textarea class="uk-textarea" rows="5" placeholder="Additional comments"></textarea>
-              </div>
-              <p style="text-align: center;"><button class="uk-button uk-button-primary">Submit</button></p>
-            </form>
+          <div class="uk-card uk-card-default uk-card-body" uk-scrollspy="cls: uk-animation-fade; repeat: true" id="modalBody">
+            
           </div>
         </div>
       </div>
@@ -274,47 +258,58 @@
 
         <ul class="uk-slider-items uk-grid">
           <li>
-            <a href="" uk-toggle="target: #msg"><img class="uk-border-circle" width="120" height="120" src="https://www.anthonygold.co.uk/wp-content/uploads/2017/06/Lauren-McKie-BW-3-cropped.jpg"></a>
+            <a href="" uk-toggle="target: #msg"><img class="uk-border-circle" width="120" height="120"
+                src="https://www.anthonygold.co.uk/wp-content/uploads/2017/06/Lauren-McKie-BW-3-cropped.jpg"></a>
           </li>
           <li>
-            <a href="" uk-toggle="target: #msg"><img class="uk-border-circle" width="120" height="120" src="https://www.faceplusplus.com/images/comparing/left_pic_three.jpg"></a>
+            <a href="" uk-toggle="target: #msg"><img class="uk-border-circle" width="120" height="120"
+                src="https://www.faceplusplus.com/images/comparing/left_pic_three.jpg"></a>
           </li>
           <li>
-            <a href="" uk-toggle="target: #msg"><img class="uk-border-circle" width="120" height="120" src="https://do7nu6l5erzu3.cloudfront.net/wp-content/uploads/2018/02/06121555/Final_McCarthy.Steve_6170.jpg"></a>
+            <a href="" uk-toggle="target: #msg"><img class="uk-border-circle" width="120" height="120"
+                src="https://do7nu6l5erzu3.cloudfront.net/wp-content/uploads/2018/02/06121555/Final_McCarthy.Steve_6170.jpg"></a>
           </li>
           <li>
-            <a href="" uk-toggle="target: #msg"><img class="uk-border-circle" width="120" height="120" src="https://static1.squarespace.com/static/557ad98ae4b0ab127fdc5578/55db0d53e4b0d2c6e6e49370/55db0d54e4b035628e25ccee/1440419770528/celeb+junot+diaz.jpg?format=500w"></a>
+            <a href="" uk-toggle="target: #msg"><img class="uk-border-circle" width="120" height="120"
+                src="https://static1.squarespace.com/static/557ad98ae4b0ab127fdc5578/55db0d53e4b0d2c6e6e49370/55db0d54e4b035628e25ccee/1440419770528/celeb+junot+diaz.jpg?format=500w"></a>
 
           </li>
           <li>
-            <a href="" uk-toggle="target: #msg"><img class="uk-border-circle" width="120" height="120" src="https://static1.squarespace.com/static/557ad98ae4b0ab127fdc5578/55db0d53e4b0d2c6e6e49370/55db0d54e4b01430023945c0/1440419733335/celeb+aziz+ansari.jpg?format=500w"></a>
+            <a href="" uk-toggle="target: #msg"><img class="uk-border-circle" width="120" height="120"
+                src="https://static1.squarespace.com/static/557ad98ae4b0ab127fdc5578/55db0d53e4b0d2c6e6e49370/55db0d54e4b01430023945c0/1440419733335/celeb+aziz+ansari.jpg?format=500w"></a>
 
           </li>
           <li>
-            <a href="" uk-toggle="target: #msg"><img class="uk-border-circle" width="120" height="120" src="https://content.thriveglobal.com/wp-content/uploads/2018/11/145tjWrgMIkGlCER4qmIbpw.jpeg"></a>
+            <a href="" uk-toggle="target: #msg"><img class="uk-border-circle" width="120" height="120"
+                src="https://content.thriveglobal.com/wp-content/uploads/2018/11/145tjWrgMIkGlCER4qmIbpw.jpeg"></a>
 
           </li>
           <li>
-            <a href="" uk-toggle="target: #msg"><img class="uk-border-circle" width="120" height="120" src="https://www.landfood.ubc.ca/files/2018/04/sumeet-gulati-square-crop.jpg"></a>
+            <a href="" uk-toggle="target: #msg"><img class="uk-border-circle" width="120" height="120"
+                src="https://www.landfood.ubc.ca/files/2018/04/sumeet-gulati-square-crop.jpg"></a>
 
           </li>
           <li>
-            <a href="" uk-toggle="target: #msg"><img class="uk-border-circle" width="120" height="120" src="https://www.thepolyglotgroup.com.au/wp-content/uploads/2018/05/Noemie.jpg"></a>
+            <a href="" uk-toggle="target: #msg"><img class="uk-border-circle" width="120" height="120"
+                src="https://www.thepolyglotgroup.com.au/wp-content/uploads/2018/05/Noemie.jpg"></a>
 
           </li>
           <li>
-            <a href="" uk-toggle="target: #msg"><img class="uk-border-circle" width="120" height="120" src="https://66.media.tumblr.com/2127e50b59be022677be2c64986a2d79/tumblr_inline_oh8lj0LaG81r5wc9c_500.jpg"></a>
+            <a href="" uk-toggle="target: #msg"><img class="uk-border-circle" width="120" height="120"
+                src="https://66.media.tumblr.com/2127e50b59be022677be2c64986a2d79/tumblr_inline_oh8lj0LaG81r5wc9c_500.jpg"></a>
 
           </li>
           <li>
-            <a href="" uk-toggle="target: #msg"><img class="uk-border-circle" width="120" height="120" src="https://www.seattleu.edu/academics/DoQuyenPortrait_500x500.jpg"></a>
+            <a href="" uk-toggle="target: #msg"><img class="uk-border-circle" width="120" height="120"
+                src="https://www.seattleu.edu/academics/DoQuyenPortrait_500x500.jpg"></a>
 
           </li>
         </ul>
 
         <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous
           uk-slider-item="previous"></a>
-        <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>
+        <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next
+          uk-slider-item="next"></a>
 
       </div>
     </div>
@@ -327,7 +322,8 @@
                 <header class="uk-comment-header uk-position-relative">
                   <div class="uk-grid-medium uk-flex-middle" uk-grid>
                     <div class="uk-width-auto">
-                      <img class="uk-comment-avatar" src="https://www.anthonygold.co.uk/wp-content/uploads/2017/06/Lauren-McKie-BW-3-cropped.jpg"
+                      <img class="uk-comment-avatar"
+                        src="https://www.anthonygold.co.uk/wp-content/uploads/2017/06/Lauren-McKie-BW-3-cropped.jpg"
                         width="80" height="80" alt="">
                     </div>
                     <div class="uk-width-expand">
@@ -337,7 +333,8 @@
                           days ago</a></p>
                     </div>
                   </div>
-                  <div class="uk-position-top-right uk-position-small uk-hidden-hover"><a class="uk-link-muted" href="#reply">Reply</a></div>
+                  <div class="uk-position-top-right uk-position-small uk-hidden-hover"><a class="uk-link-muted"
+                      href="#reply">Reply</a></div>
                 </header>
                 <div class="uk-comment-body">
                   <p>What's up?</p>
@@ -349,7 +346,8 @@
                     <header class="uk-comment-header uk-position-relative">
                       <div class="uk-grid-medium uk-flex-middle" uk-grid>
                         <div class="uk-width-auto">
-                          <img class="uk-comment-avatar" src="https://bestoftool.com/wp-content/uploads/2018/06/Anonymous-Whatsapp-profile-picture-1.jpg"
+                          <img class="uk-comment-avatar"
+                            src="https://bestoftool.com/wp-content/uploads/2018/06/Anonymous-Whatsapp-profile-picture-1.jpg"
                             width="80" height="80" alt="">
                         </div>
                         <div class="uk-width-expand">
@@ -371,7 +369,8 @@
                     <header class="uk-comment-header uk-position-relative">
                       <div class="uk-grid-medium uk-flex-middle" uk-grid>
                         <div class="uk-width-auto">
-                          <img class="uk-comment-avatar" src="https://www.anthonygold.co.uk/wp-content/uploads/2017/06/Lauren-McKie-BW-3-cropped.jpg"
+                          <img class="uk-comment-avatar"
+                            src="https://www.anthonygold.co.uk/wp-content/uploads/2017/06/Lauren-McKie-BW-3-cropped.jpg"
                             width="80" height="80" alt="">
                         </div>
                         <div class="uk-width-expand">
@@ -396,7 +395,8 @@
                     <header class="uk-comment-header uk-position-relative">
                       <div class="uk-grid-medium uk-flex-middle" uk-grid>
                         <div class="uk-width-auto">
-                          <img class="uk-comment-avatar" src="https://bestoftool.com/wp-content/uploads/2018/06/Anonymous-Whatsapp-profile-picture-1.jpg"
+                          <img class="uk-comment-avatar"
+                            src="https://bestoftool.com/wp-content/uploads/2018/06/Anonymous-Whatsapp-profile-picture-1.jpg"
                             width="80" height="80" alt="">
                         </div>
                         <div class="uk-width-expand">
@@ -440,122 +440,33 @@
       <div class="ui items">
         <div class="item">
           <div class="ui tiny image">
-            <img class="uk-border-circle" width="40" height="40" src="{{patient.image}}">
+            <p class="patient-records-go-here" id="recordSheetName"></p>
+            <img class="uk-border-circle" width="80" height="80"
+              src="https://content.thriveglobal.com/wp-content/uploads/2018/11/145tjWrgMIkGlCER4qmIbpw.jpeg">
           </div>
-          <div class="content">
-            <a class="header">{{patient.first_name}} {{patient.last_name}}</a>
-            <ul class="uk-list">
-              <li>{{patient.street_address}}</li>
-              <li>{{patient.city}}, {{patient.state}}, {{patient.zip}}</li>
-              <li>{{patient.phone_number}}</li>
-            </ul>
+
+
+
+          <div class="row">
+            <table class="uk-table uk-table-striped">
+              <thead>
+                <tr>
+                  <th>Problem</th>
+                  <th>Patient Concern Details</th>
+                  <th>Hospital</th>
+                  <th>Date registered</th>
+                </tr>
+              </thead>
+              <tbody class="recordHistory">
+
+              </tbody>
+            </table>
+
           </div>
         </div>
-      </div>
-
-      <div class="row">
-        <table class="uk-table uk-table-striped">
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Procedure</th>
-              <th>Reason for Procedure</th>
-              <th>Provider</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>February 22, 2019</td>
-              <td>Eye lasik</td>
-              <td>Vision status</td>
-              <td>Kaiser Permanente</td>
-            </tr>
-            <tr>
-              <td>January 12, 2019</td>
-              <td>X-Ray</td>
-              <td>Pain in the right hand</td>
-              <td>Kaiser Permanente</td>
-            </tr>
-            <tr>
-              <td>May 15, 2018</td>
-              <td>Biopsy</td>
-              <td>Cyst found</td>
-              <td>Kaiser Permanente</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="row">
-        <table class="uk-table uk-table-striped">
-          <thead>
-            <tr>
-              <th>Tests taken</th>
-              <th>Status</th>
-              <th>Results</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="warning">
-              <td>Blood test</td>
-              <td>Pending</td>
-              <td>Unknown</td>
-            </tr>
-            <tr>
-              <td>Health test</td>
-              <td>Complete</td>
-              <td>Within Range</td>
-            </tr>
-            <tr>
-              <td>C-Reactive Protein</td>
-              <td>Complete</td>
-              <td>Negative</td>
-            </tr>
-            <tr>
-              <td>Hemoglobin A1C</td>
-              <td>Scheduled</td>
-              <td>Unknown</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- row -->
-      <div class="row">
-        <table class="uk-table uk-table-striped">
-          <thead>
-            <tr>
-              <th>Allergy</th>
-              <th>Severity</th>
-              <th>Notes</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Lactose</td>
-              <td>High</td>
-              <td>None</td>
-            </tr>
-            <tr>
-              <td>Penicillin</td>
-              <td>High</td>
-              <td>None</td>
-            </tr>
-            <tr>
-              <td>Pet Dander</td>
-              <td>Low</td>
-              <td>Has pets</td>
-            </tr>
-            <tr>
-              <td>Peanuts</td>
-              <td>Moderate</td>
-              <td>None</td>
-            </tr>
-          </tbody>
-        </table>
       </div>
     </div>
   </div>
 </div>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/en-gb.js"></script>
 <script src="/js/dashboard.js"></script>

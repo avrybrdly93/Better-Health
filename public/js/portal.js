@@ -142,6 +142,14 @@ $(document).ready(function () {
     }
   });
 
+  $("#usernameLogin").on("click", function() {
+    $(".wrong-info").text("");
+  });
+
+  $("#passwordLogin").on("click", function() {
+    $(".wrong-info").text("");
+  });
+
   $("#loginBtn").on("click", function (event) {
     event.preventDefault();
     console.log("asdf");
@@ -158,7 +166,7 @@ $(document).ready(function () {
       //$("#loginForm")[0].reset();
 
       if (data.success === false) {
-        alert("Wrong!");
+        $(".wrong-info").text("Incorrect username or password.");
       }
       else {
         switch (xhr.status) {

@@ -91,13 +91,14 @@ module.exports = function (app) {
     }
   });
 
-  app.get("/api/staff/apointments", function (req, res) {
+  app.get("/api/staff/appointments", function (req, res) {
     if (req.isAuthenticated() && req.session.passport.user.type === "Staff") {
       db.Appointment.findAll({
         where: {
           staff_id: req.session.passport.user.uuid
         }
       }).then(function (result) {
+        //console.log("I AM RESULT : "+result);
         res.send(result);
       });
     }

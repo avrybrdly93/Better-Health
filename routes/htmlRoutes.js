@@ -190,7 +190,6 @@ module.exports = function (app) {
         return next(err); // will generate a 500 error
       }
       if (!usr) {
-
         return res.send({ success: false, message: 'Authentication Failed' });
       }
       req.login(usr, loginErr => {

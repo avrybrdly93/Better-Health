@@ -54,8 +54,8 @@ module.exports = function (app) {
     res.render("profile");
   });
 
-  app.get("/choice", function (req, res) {
-    res.render("/holistic/choice");
+  app.get("/holistic", function (req, res) {
+    res.render("holistic/choice");
   });
 
   app.get("/dashboard", function (req, res) {

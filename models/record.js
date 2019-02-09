@@ -16,7 +16,7 @@ module.exports = function(sequelize,DataTypes){
         },
         date: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
             validate: {
                 len: [1,30]
             }

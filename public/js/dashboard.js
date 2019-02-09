@@ -11,10 +11,10 @@ $(document).ready(function () {
       method: "GET",
       url: "/api/staff"
     }).then(function (result) {
-      console.log(result);
+      //console.log(result);
       $("#msgModalBody").empty();
       $("#msgModalTitle").empty();
-      $("#msgModalTitle").append("<h2 class class='uk-modal-title'>Messgae Our Staff</h2>");
+      $("#msgModalTitle").append("<h2 class class='uk-modal-title'>Message Our Staff</h2>");
 
       var someMSpace = $("<div>");
 
@@ -40,7 +40,7 @@ $(document).ready(function () {
         $("#msgModalBody").append(someMSpace);
       }
       else {
-        $("#bookModalBody").append("No Staff Available Right Now. Check Again Soon.");
+        $("#msgModalBody").append("No Staff Available Right Now. Check Again Soon.");
       }
     });
   });
@@ -68,7 +68,7 @@ $(document).ready(function () {
       url: "/api/messages/"+docID
     }).then(function(result){
       $("#msgModalBody").empty();
-      console.log(result);
+      console.log("RESULT: "+result);
       if(result.length>0){
         for(var i=0;i<result.length;i++){
           $("#msgModalBody").append("<p>"+result[i].sender_fName+" - "+result[i].body+"</p>");
@@ -101,7 +101,6 @@ $(document).ready(function () {
       getMessages();
     });
   });
-
   //END OF MESSAGES
 
   //BOOK APPOINTMENT
@@ -110,13 +109,13 @@ $(document).ready(function () {
       method: "GET",
       url: "/api/staff"
     }).then(function (result) {
-      console.log(result);
+      //console.log(result);
       $("#bookModalBody").empty();
       $("#bookModalTitle").text("Choose Appointment Staff");
 
-      var someSpace = $("<div>");
-
       if (result.length > 0) {
+        var someSpace = $("<div>");
+
         for (var i = 0; i < result.length; i++) {
           var someDiv = $("<div>");
           $(someDiv).append("<p>" + result[i].last_name + ", " + result[i].first_name + " - " + result[i].title + " - " + result[i].specialization);
@@ -197,7 +196,7 @@ $(document).ready(function () {
     }).then(function (result) {
       var tableBody = $(".recordHistory");
       $("#recordSheetName").text(result[1] + " " + result[2]);
-      console.log(result);
+      //console.log(result);
       if (result[0].length > 0) {
         for (let i = 0; i < result[0].length; i++) {
           var newRow = $("<tr>");
@@ -224,6 +223,7 @@ $(document).ready(function () {
           tableBody.append(newRow);
         }
       } else {
+        $(tableBody).empty();
         tableBody.append("<p>No Records Found</p>");
       }
     });

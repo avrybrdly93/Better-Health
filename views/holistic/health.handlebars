@@ -1,124 +1,156 @@
 <style>
-   .background {
-    background-image: url(https://images.pexels.com/photos/1327211/pexels-photo-1327211.jpeg?cs=srgb&dl=alone-background-basket-1327211.jpg&fm=jpg);
-    background-position: center;
-   
-   }
+    .background {
+        background-image: url(https://images.pexels.com/photos/1327211/pexels-photo-1327211.jpeg?cs=srgb&dl=alone-background-basket-1327211.jpg&fm=jpg);
+        background-position: center;
+
+    }
+
     .uk-animation-toggle {
-    width: 80%;
-    height: 60%;
-    margin-left: 10%;
-    margin-right: 10%;
-    opacity: 0.8;
-}
-.video-responsive{
-    overflow:hidden;
-    padding-bottom:56.25%;
-    position:relative;
-    height:0;
-}
-.video-responsive iframe{
-    left:0;
-    top:0;
-    height:100%;
-    width:100%;
-    position:absolute;
-}
-.nav {
-    margin: 8px;
-}
+        width: 80%;
+        height: 60%;
+        margin-left: 10%;
+        margin-right: 10%;
+        opacity: 0.8;
+    }
+
+    .video-responsive {
+        overflow: hidden;
+        padding-bottom: 56.25%;
+        position: relative;
+        height: 0;
+    }
+
+    .video-responsive iframe {
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+    }
+
+    .nav {
+        margin: 8px;
+    }
 </style>
-<div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
-<nav class="uk-navbar-container" uk-navbar="dropbar: true;">
-<p class="nav">
-<p class="nav"> <a href="/" uk-icon="icon: home; ratio: 2" ></a> </p>
-<p class="nav"> <a href="/dashboard" uk-icon="icon: list; ratio: 2"></a></p>
-<p class="nav"> <a href="/holistic" uk-icon="icon: heart; ratio: 2"></a></p>
-</p>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" id='logo' href="/">betterHealth</a>
+
+    <a class="nav-link" uk-toggle="target: #offcanvas-nav" uk-icon="table"></a>
+
 </nav>
-</div> 
-<div class="col xl-3 col-dm-6 mb-3">
-<div class="background"> 
-        <div style="text-align:center"> <p> 
-         <div class="uk-animation-toggle" tabindex="0"> 
-<div class="uk-animation-toggle" tabindex="0">
-    <div class="uk-card uk-card-default uk-card-body uk-animation-scale-up uk-transform-origin-top-center">
-        <p class="uk-text-center">
-            <h1>
-                <div style="text-align:center">Remedies & Healthy Recipes</div>
-            </h1>
-        </p>
-    </div> </div>
-    <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
-        <div class="uk-card-media-left uk-cover-container">
-         <div class="video-responsive">
-            <iframe width="495" height="235" src="https://www.youtube.com/embed/L2qMAkn-6K4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
-            <!-- <canvas width="600" height="400"></canvas> -->
-        </div>
-        </div>
-        <div>
-            <div class="uk-card-body">
-                <h3 class="uk-card-title">-My Top 3 Weight Loss Smoothie Recipes | How I Lost 40 Lbs
-                </h3>
-                <p>A healthy tummy is a happy tummy! If you're trying to lose weight check out this video. Many happy comments and you can never go wrong with fruits and vegetables!</p>
-            </div>
-        </div>
-    </div>
-    <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
-        <div class="uk-flex-last@s uk-card-media-right uk-cover-container">
-         <div class="video-responsive">
-            <iframe width="495" height="235" src="https://www.youtube.com/embed/6ajmuRg2o3Q" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
-        </div>
-        </div>
-        <div>
-            <div class="uk-card-body">
-                <h3 class="uk-card-title">HEALTHY HABITS: 10 daily habits that changed my life (science-backed)</h3>
-                <p>A healthy life-style is a journey now-a-days! check out these healthy habits! hope you enjoy!</p>
-            </div>
-        </div>
-    </div>
-    <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
-        <div class="uk-card-media-left uk-cover-container">
-         <div class="video-responsive">
-            <iframe width="495" height="235" src="https://www.youtube.com/embed/mDHGaU_jGrQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
-        </div>
-        </div>
-        <div>
-            <div class="uk-card-body">
-                <h3 class="uk-card-title">6 simple ways to lose a little weight</h3>
-                <p>Time is precious and you should be around to enjoy it! If losing weight is something you're looking for check out these simples ways!</p>
-            </div>
-        </div>
-    </div>
-    <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
-        <div class="uk-flex-last@s uk-card-media-right uk-cover-container">
-         <div class="video-responsive">
-            <iframe width="495" height="235" src="https://www.youtube.com/embed/ttR7XzavmfE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
-        </div>
-        </div>
-        <div>
-            <div class="uk-card-body">
-                <h3 class="uk-card-title">Top 7 Diabetic Friendly Smoothie Recipes Ideas</h3>
-                <p>Dont worry Diabetics theres options for you too out there! Its important to us that you enjoy your life also! CHEERS! </p>
-            </div>
-        </div>
-    </div>
-    <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
-        <div class="uk-card-media-left uk-cover-container">
-         <div class="video-responsive">
-            <iframe width="495" height="235" src="https://www.youtube.com/embed/7UDx1RF9Oho" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
-        </div>
-        </div>
-        <div>
-            <div class="uk-card-body">
-                <h3 class="uk-card-title">HEALTHY EATING HACKS w. PRINTABLE GUIDE</h3>
-                <p>Here is some food sources for the happy tummy! Enjoy the happiness!</p>
-            </div>
-        </div>
+
+<div id="offcanvas-nav" uk-offcanvas="overlay: true">
+    <div class="uk-offcanvas-bar">
+
+        <ul class="uk-nav uk-nav-default">
+            <li class="uk-parent">
+            <li class="uk-active"><a href="/">Home</a></li>
+            </li>
+            <li class="uk-nav-header">More</li>
+            <li><a href="/holistic/mornings"> Morning Rituals</a></li>
+            <li><a href="/holistic/affirmation"> Affirmations & Meditation</a></li>
+            <li><a href="/holistic/health"> Healthy Choices</a></li>
+            <li><a href="/holistic/relief"> Stress Relief</a></li>
+            <li><a href="/holistic/bedtiem"> Before bed</a></li>
+        </ul>
+
     </div>
 </div>
+
+<div class="col xl-3 col-dm-6 mb-3">
+    <div class="background">
+        <div style="text-align:center">
+            <p>
+                <div class="uk-animation-toggle" tabindex="0">
+                    <div class="uk-animation-toggle" tabindex="0">
+                        <div class="uk-card uk-card-default uk-card-body uk-animation-scale-up uk-transform-origin-top-center">
+                            <p class="uk-text-center">
+                                <h1>
+                                    <div style="text-align:center">Remedies & Healthy Recipes</div>
+                                </h1>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+                        <div class="uk-card-media-left uk-cover-container">
+                            <div class="video-responsive">
+                                <iframe width="495" height="235" src="https://www.youtube.com/embed/L2qMAkn-6K4"
+                                    frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+                                <!-- <canvas width="600" height="400"></canvas> -->
+                            </div>
+                        </div>
+                        <div>
+                            <div class="uk-card-body">
+                                <h3 class="uk-card-title">-My Top 3 Weight Loss Smoothie Recipes | How I Lost 40 Lbs
+                                </h3>
+                                <p>A healthy tummy is a happy tummy! If you're trying to lose weight check out this
+                                    video. Many happy comments and you can never go wrong with fruits and vegetables!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+                        <div class="uk-flex-last@s uk-card-media-right uk-cover-container">
+                            <div class="video-responsive">
+                                <iframe width="495" height="235" src="https://www.youtube.com/embed/6ajmuRg2o3Q"
+                                    frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="uk-card-body">
+                                <h3 class="uk-card-title">HEALTHY HABITS: 10 daily habits that changed my life
+                                    (science-backed)</h3>
+                                <p>A healthy life-style is a journey now-a-days! check out these healthy habits! hope
+                                    you enjoy!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+                        <div class="uk-card-media-left uk-cover-container">
+                            <div class="video-responsive">
+                                <iframe width="495" height="235" src="https://www.youtube.com/embed/mDHGaU_jGrQ"
+                                    frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="uk-card-body">
+                                <h3 class="uk-card-title">6 simple ways to lose a little weight</h3>
+                                <p>Time is precious and you should be around to enjoy it! If losing weight is something
+                                    you're looking for check out these simples ways!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+                        <div class="uk-flex-last@s uk-card-media-right uk-cover-container">
+                            <div class="video-responsive">
+                                <iframe width="495" height="235" src="https://www.youtube.com/embed/ttR7XzavmfE"
+                                    frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="uk-card-body">
+                                <h3 class="uk-card-title">Top 7 Diabetic Friendly Smoothie Recipes Ideas</h3>
+                                <p>Dont worry Diabetics theres options for you too out there! Its important to us that
+                                    you enjoy your life also! CHEERS! </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+                        <div class="uk-card-media-left uk-cover-container">
+                            <div class="video-responsive">
+                                <iframe width="495" height="235" src="https://www.youtube.com/embed/7UDx1RF9Oho"
+                                    frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="uk-card-body">
+                                <h3 class="uk-card-title">HEALTHY EATING HACKS w. PRINTABLE GUIDE</h3>
+                                <p>Here is some food sources for the happy tummy! Enjoy the happiness!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>

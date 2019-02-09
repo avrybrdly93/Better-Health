@@ -1,39 +1,9 @@
-<div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
-    <nav class="uk-navbar-container uk-margin" uk-navbar>
-        <div class="uk-navbar-left">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" id='logo' href="/dashboard">betterHealth</a>
 
-            <a class="uk-navbar-item uk-logo" id="logo" href="/dashboard">betterHealth</a>
+  <a class="nav-link" uk-toggle="target: #offcanvas-nav" uk-icon="table"></a>
 
-            <ul class="uk-navbar-nav">
-                <li>
-                    <a>
-                        <span class="uk-icon uk-margin-small-right" uk-icon="icon: table" uk-toggle="target: #offcanvas-nav"></span>
-                    </a>
-                </li>
-            </ul>
-
-        </div>
-        <div class="uk-navbar-right">
-            <div class="uk-navbar-item">
-                <a href="/profile"><span class="uk-margin-small-right" uk-icon="icon: cog"></span></a>
-                <div class="uk-width-auto">
-                    <img class="uk-border-circle" width="40" height="40" src="https://bestoftool.com/wp-content/uploads/2018/06/Anonymous-Whatsapp-profile-picture-1.jpg">
-                    <div uk-dropdown>
-                        <ul class="uk-nav uk-dropdown-nav">
-                            <li class="uk-nav-header">Quick Menu</li>
-                            <li><a href="#modal-overflow" uk-toggle>View Messages</a></li>
-                            <li><a href="/holistic">Holistic</a></li>
-                            <li class="uk-nav-divider"></li>
-                            <li><a href="/profile">Settings</a></li>
-                            <li><a href="/logout">Logout</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </nav>
-</div>
+</nav>
 
 <div id="offcanvas-nav" uk-offcanvas="overlay: true">
     <div class="uk-offcanvas-bar">
@@ -42,7 +12,7 @@
             <li><a href="/dashboard">Dashboard</a></li>
             <li class="uk-nav-header">More</li>
             <li><a href="/holistic"><span class="uk-margin-small-right" uk-icon="icon: heart"></span> Holistics</a></li>
-            <li><a href="#modal-overflow" uk-toggle><span class="uk-margin-small-right" uk-icon="icon: commenting"></span>
+            <li><a href="#modal-overflow" uk-toggle class="msgBtn"><span class="uk-margin-small-right" uk-icon="icon: commenting"></span>
                     Messages</a></li>
             <li class="uk-nav-divider"></li>
             <li><a href="/profile" class="usrNav"><img class="uk-border-circle" width="40" height="40" src="https://bestoftool.com/wp-content/uploads/2018/06/Anonymous-Whatsapp-profile-picture-1.jpg">
@@ -75,7 +45,6 @@
                     <dl class="uk-description-list uk-description-list-divider">
                         <dt>Username:</dt>
                         <dd>@joseed</dd>
-                        <dd>*************</dd>
                         <dt>Email:</dt>
                         <dd>johnnyappleseed@gmail.com</dd>
                         <dt>Phone:</dt>

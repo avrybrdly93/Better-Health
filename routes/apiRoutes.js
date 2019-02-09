@@ -61,15 +61,9 @@ module.exports = function (app) {
   app.get("/api/staff", function (req, res) {
     if (req.isAuthenticated()) {
       db.Staff.findAll({
-<<<<<<< HEAD
-        attributes: ["uuid","first_name","last_name","title","specialization"],
-        limit: 5
-      }).then(function(result){
-=======
         attributes: ["uuid", "first_name", "last_name", "title", "specialization"],
         limit: 10
       }).then(function (result) {
->>>>>>> jvg-branch
         res.send(result);
       });
     }

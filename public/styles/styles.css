@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Dancing+Script');
-
+@import url('https://fonts.googleapis.com/css?family=Raleway');
 .list-group-item {
   line-height: 2.5;
 }
@@ -163,90 +162,89 @@
     font-weight: 600
   }
 }
+
 /* Dashboard.handlebars styles */
-  #nav{
-    background-color: #6bb1f5;
-    color: white;
+
+#logo {
+  font-size: 20px !important;
+  font-family: 'Raleway', sans-serif;
+}
+
+a, p {
+  font-size: 14px !important;
+}
+
+.uk-text-primary, .uk-text-danger, .uk-text-success, .uk-text-warning {
+  font-size: 20px !important;
+}
+
+.uk-nav-header, th, .tableName {
+  font-size: 12px !important;
+}
+
+.uk-modal-body::-webkit-scrollbar {
+  width: 0 !important;
+}
+
+.navbar-toggler{
+  margin: 5px !important;
+}
+.gradient {
+  height: 3px;
+  animation: colorchange 1.4s;
+  /* animation-name followed by duration in seconds*/
+  /* you could also use milliseconds (ms) or something like 2.5s */
+  -webkit-animation: colorchange 1.4s;
+  /* Chrome and Safari */
+}
+
+.bookingBtn {
+  margin: 3px;
+}
+
+@keyframes colorchange {
+  0% {
+    background: #faa96a;
   }
-  #logo{
-    font-size: 28px !important;
-    font-family: 'Dancing Script', cursive;
+  25% {
+    background: #32d296;
   }
-  a, p{
-    font-size: 14px !important;
+  5% {
+    background: #f15d78;
   }
-  .uk-text-primary, .uk-text-danger, .uk-text-success, .uk-text-warning{
-    font-size: 20px !important;
+  75% {
+    background: #6bb1f5;
   }
-  .uk-nav-header, th, .tableName{
-    font-size: 12px !important;
+  100% {
+    background: #faa96a;
   }
-  .uk-modal-body::-webkit-scrollbar{
-    width: 0 !important;
- }
- .twitter-timeline::-webkit-scrollbar{
-     width: 0 !important;
- }
- .gradient {
-   height: 3px;
+}
 
-   animation: colorchange 1.4s;
-   /* animation-name followed by duration in seconds*/
-   /* you could also use milliseconds (ms) or something like 2.5s */
-   -webkit-animation: colorchange 1.4s;
-   /* Chrome and Safari */
- }
- .bookingBtn{
-   margin: 3px;
- }
+@-webkit-keyframes colorchange
+/* Safari and Chrome - necessary duplicate */
 
- @keyframes colorchange {
-   0% {
-     background: #faa96a;
-   }
-
-   25% {
-     background: #32d296;
-   }
-
-   5% {
-     background: #f15d78;
-   }
-
-   75% {
-     background: #6bb1f5;
-   }
-
-   100% {
-     background: #faa96a;
-   }
- }
-
- @-webkit-keyframes colorchange
-
- /* Safari and Chrome - necessary duplicate */
-   {
-   0% {
-     background: red;
-   }
-
-   25% {
-     background: yellow;
-   }
-
-   50% {
-     background: blue;
-   }
-
-   75% {
-     background: green;
-   }
-
-   100% {
-     background: red;
-   }
+  {
+  0% {
+    background: red;
   }
+  25% {
+    background: yellow;
+  }
+  50% {
+    background: blue;
+  }
+  75% {
+    background: green;
+  }
+  100% {
+    background: red;
+  }
+}
+
 /* Profile.handlebars styles */
-  #profile{
-    text-align: center !important;
-  };
+
+#profile {
+  text-align: center !important;
+}
+
+;

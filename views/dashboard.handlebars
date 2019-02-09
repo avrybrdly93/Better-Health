@@ -1,38 +1,9 @@
-<div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
-  <nav class="uk-navbar-container uk-margin" uk-navbar>
-    <div class="uk-navbar-left">
-      <a class="uk-navbar-item uk-logo" id="logo" href="/dashboard">betterHealth</a>
-      <ul class="uk-navbar-nav">
-        <li>
-          <a>
-            <span class="uk-icon uk-margin-small-right" uk-icon="icon: table" uk-toggle="target: #offcanvas-nav"></span>
-          </a>
-        </li>
-      </ul>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" id='logo' href="/dashboard">betterHealth</a>
 
-    </div>
-    <div class="uk-navbar-right">
-      <div class="uk-navbar-item">
-        <a href="/profile"><span class="uk-margin-small-right" uk-icon="icon: cog"></span></a>
-        <div class="uk-width-auto">
-          <img class="uk-border-circle" width="40" height="40"
-            src="https://bestoftool.com/wp-content/uploads/2018/06/Anonymous-Whatsapp-profile-picture-1.jpg">
-          <div uk-dropdown>
-            <ul class="uk-nav uk-dropdown-nav">
-              <li class="uk-nav-header">Quick Menu</li>
-              <li><a href="#modal-overflow" uk-toggle>View Messages</a></li>
-              <li><a href="/holistic">Holistic</a></li>
-              <li class="uk-nav-divider"></li>
-              <li><a href="/profile">Settings</a></li>
-              <li><a href="/logout">Logout</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
+  <a class="nav-link" uk-toggle="target: #offcanvas-nav" uk-icon="table"></a>
 
-    </div>
-  </nav>
-</div>
+</nav>
 
 <div id="offcanvas-nav" uk-offcanvas="overlay: true">
   <div class="uk-offcanvas-bar">
@@ -47,11 +18,10 @@
       </li>
       <li class="uk-nav-header">More</li>
       <li><a href="/holistic"><span class="uk-margin-small-right" uk-icon="icon: heart"></span> Holistics</a></li>
-      <li><a href="#modal-overflow" uk-toggle><span class="uk-margin-small-right" uk-icon="icon: commenting"></span>
+      <li><a href="#modal-overflow" uk-toggle class="msgBtn"><span class="uk-margin-small-right" uk-icon="icon: commenting"></span>
           Messages</a></li>
       <li class="uk-nav-divider"></li>
-      <li><a href="/profile" class="usrNav"><img class="uk-border-circle" width="40" height="40"
-            src="https://bestoftool.com/wp-content/uploads/2018/06/Anonymous-Whatsapp-profile-picture-1.jpg">
+      <li><a href="/profile" class="usrNav"><img class="uk-border-circle" width="40" height="40" src="https://bestoftool.com/wp-content/uploads/2018/06/Anonymous-Whatsapp-profile-picture-1.jpg">
           Profile</a></li>
     </ul>
 
@@ -76,8 +46,7 @@
     <div class="col-xl-3 col-sm-6 mb-3">
       <div class="uk-card uk-card-default">
         <div class="uk-card-body">
-          <p class="uk-text-success"><span class="uk-margin-small-right"
-              uk-icon="icon: heart; ratio: 1.5"></span>Holistics:</p>
+          <p class="uk-text-success"><span class="uk-margin-small-right" uk-icon="icon: heart; ratio: 1.5"></span>Holistics:</p>
           <p class="uk-text-meta uk-margin-remove-top">View diet plans.</p>
         </div>
         <div class="uk-card-footer">
@@ -88,8 +57,7 @@
     <div class="col-xl-3 col-sm-6 mb-3">
       <div class="uk-card uk-card-default">
         <div class="uk-card-body">
-          <p class="uk-text-danger"><span class="uk-margin-small-right"
-              uk-icon="icon: file-text; ratio: 1.5"></span>Medical
+          <p class="uk-text-danger"><span class="uk-margin-small-right" uk-icon="icon: file-text; ratio: 1.5"></span>Medical
             Record</p>
           <p class="uk-text-meta uk-margin-remove-top"><time datetime="2016-04-01T19:00">April 01, 2016</time></p>
         </div>
@@ -101,12 +69,11 @@
     <div class="col-xl-3 col-sm-6 mb-3">
       <div class="uk-card uk-card-default">
         <div class="uk-card-body">
-          <p class="uk-text-primary"><span class="uk-margin-small-right"
-              uk-icon="icon: commenting; ratio: 1.5"></span>Messages:</p>
-          <p class="uk-text-meta uk-margin-remove-top">All Your Messages</p>
+          <p class="uk-text-primary"><span class="uk-margin-small-right" uk-icon="icon: commenting; ratio: 1.5"></span>Messages:</p>
+          <p class="uk-text-meta uk-margin-remove-top">Check your messages</p>
         </div>
         <div class="uk-card-footer">
-          <a href="#modal-overflow" uk-toggle class="uk-button uk-button-text" id="msgBtn">Reply Now</a>
+          <a href="#modal-overflow" uk-toggle class="uk-button uk-button-text" class="msgBtn">Reply Now</a>
         </div>
       </div>
     </div>
@@ -119,8 +86,8 @@
 
   <!-- Twitter grid -->
   <div class="row">
-    <div class="col-1"></div>
-    <div class="col-10">
+    <div class="col-xl-1 col-md-1 col-sm-2"></div>
+    <div class="col-xl-10 col-md-10 col-sm-8">
       <div uk-slider>
         <ul class="uk-slider-items uk-child-width-1-2@s uk-child-width-1-3@m uk-grid">
           <li>
@@ -129,21 +96,19 @@
               mnt</a>
           </li>
           <li>
-            <a class="twitter-timeline" data-height="3000"
-              href="https://twitter.com/AmerMedicalAssn?ref_src=twsrc%5Etfw">Tweets
+            <a class="twitter-timeline" data-height="3000" href="https://twitter.com/AmerMedicalAssn?ref_src=twsrc%5Etfw">Tweets
               by
               AmerMedicalAssn</a>
           </li>
           <li>
-            <a class="twitter-timeline" data-height="3000"
-              href="https://twitter.com/CDC_eHealth?ref_src=twsrc%5Etfw">Tweets
+            <a class="twitter-timeline" data-height="3000" href="https://twitter.com/CDC_eHealth?ref_src=twsrc%5Etfw">Tweets
               by
               CDC_eHealth</a>
           </li>
         </ul>
       </div>
     </div>
-    <div class="col-1"></div>
+    <div class="col-xl-1 col-md-1 col-sm-2"></div>
     <!-- JavaScript for Twitter -->
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   </div>
@@ -179,10 +144,10 @@
   <div class="uk-modal-dialog">
     <button class="uk-modal-close-default" type="button" uk-close></button>
     <div class="uk-modal-header" id="msgModalTitle">
-      
+
     </div>
     <div class="uk-modal-body" id="msgModalBody">
-      <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider> 
+      <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider>
 
       </div>
     </div>
@@ -216,7 +181,7 @@
                   <th>Date registered</th>
                 </tr>
               </thead>
-              <tbody class="recordHistory" >
+              <tbody class="recordHistory">
 
               </tbody>
             </table>
@@ -227,5 +192,6 @@
     </div>
   </div>
 </div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/en-gb.js"></script>
 <script src="/js/dashboard.js"></script>

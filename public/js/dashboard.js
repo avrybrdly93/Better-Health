@@ -6,7 +6,7 @@ $(document).ready(function () {
   var docSP;
 
   //MESSAGES
-  $("#msgBtn").on("click", function () {
+  $(".msgBtn").on("click", function () {
     $.ajax({
       method: "GET",
       url: "/api/staff"
@@ -21,7 +21,7 @@ $(document).ready(function () {
       if (result.length > 0) {
         for (var i = 0; i < result.length; i++) {
           var someMDiv = $("<div>");
-          $(someMDiv).append("<p>" + result[i].last_name + ", " + result[i].first_name + " - " + result[i].title + " - " + result[i].specialization);
+          $(someMDiv).append("<p>" + result[i].title + " " + result[i].last_name + ", " + result[i].first_name + " - " + result[i].specialization);
           var newMBtn = $("<button>Message Me</button>");
 
           $(newMBtn).attr({
@@ -134,7 +134,8 @@ $(document).ready(function () {
             "data-id": result[i].uuid,
             "data-fName": result[i].first_name,
             "data-lName": result[i].last_name,
-            "class": "btn"
+            "class": "btn",
+            "style": "margin: 10px;"
           });
 
           newBtn.addClass("staffBookMe");
@@ -170,7 +171,7 @@ $(document).ready(function () {
     $(newForm).append("Date: <input type='text' id='dateField'>  ");
     $(newForm).append("Time: <input type='text' id='timeField'><br><br>");
     $(newForm).append("Reason: <input type='text' id='reasonField'><br>");
-    $(newForm).append("<br><button id='bookFormSubmit'>Submit</button>");
+    $(newForm).append("<br><button id='bookFormSubmit' class='btn'>Submit</button>");
 
     $("#bookModalBody").append(newForm);
 

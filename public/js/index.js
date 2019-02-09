@@ -257,11 +257,11 @@ $(document).ready(function () {
         $("#createBody").append(createForm);
     });
 
-    $('body').on('click', '.patientCreateBtn', function () {
+    $('body').on('click', '#createRecSubmit', function () {
         var newRecord = {
             event: $("#eventInput").val().trim(),
             description: $("#descInput").val().trim(),
-            location_name: $("#locInput"),
+            location_name: $("#locInput").val().trim(),
             date: $("#dateInput").val().trim(),
             address: $("#addressInput").val().trim(),
             city: $("#cityInput").val().trim(),
@@ -276,11 +276,9 @@ $(document).ready(function () {
             data: newRecord
         }).then(function (result) {
             console.log(result);
-            location.reload();
+            //location.reload();
         });
 
     });
-
-
     //END OF CREATE RECORDS
 });

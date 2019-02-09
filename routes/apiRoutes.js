@@ -107,12 +107,11 @@ module.exports = function (app) {
     }
   });
 
-  app.get("/api/staff/records", function (req, res) {
+  app.get("/api/staff/records/:id", function (req, res) {
     if (req.isAuthenticated() && req.session.passport.user.type === "Staff") {
       db.Record.findAll({
         where: {
-          patient_fName: req.body.fName,
-          patient_lName: req.body.lName
+          PatientUuid: req.params.id
         }
       }).then(function (result) {
         res.send(result);

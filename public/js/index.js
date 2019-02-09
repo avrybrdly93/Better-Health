@@ -131,63 +131,83 @@ $(document).ready(function () {
 
         $("#staffRTitle").append("<h2 class='uk-modal-title'>Search Records</h2>");
 
-        var searchForm = $("<form>");
-
-        $(searchForm).append("<label for='fNameInput'>");
-        $(searchForm).append("<input type='text' placeholder='First Name' id='fNameInput'>");
-        $(searchForm).append("<label for='lNameInput'>");
-        $(searchForm).append("<input type='text' placeholder='Last Name' id='lNameInput'>");
-        $(searchForm).append("<button id='searchSubmit'>Search</button>");
-
-        $("#staffRBody").append(searchForm);
-
-    });
-
-    $('body').on('click', '#searchSubmit', function () {
-        var seachCriteria = {
-            fName: $("#fNameInput").val().trim(),
-            lName: $("#lNameInput").val().trim()
-        }
-        $("#staffRBody").empty();
         $.ajax({
             method: "GET",
-            url: "/api/staff/records",
-            data: searchCriteria
+            url: "/api/patients"
         }).then(function (result) {
-            console.log(result);
+            //console.log(result);
+
             if (result.length > 0) {
                 let table = $("<table>");
                 table.addClass("uk-table uk-table-striped");
-                let tableHeader=$("<thead>");
                 let tableBody = $("<tbody>");
-                $(table).append(tableHeader);
                 $(table).append(tableBody);
 
-                var headerRow = $("<tr>");
-                $(headerRow).append("<th>Event</th>");
-                $(headerRow).append("<th>Description</th>");
-                $(headerRow).append("<th>Patient First Name</th>");
-                $(headerRow).append("<th>Patient Last Name</th>");
-
-                $(tableHeader).append(headerRow)
 
                 for (var i = 0; i < result.length; i++) {
-                    var nexRow = $("<tr>");
+                    let tableRow = $("<tr>");
 
-                    $(nextRow).append("<td>" + result[i].event + "</td>");
-                    $(nextRow).append("<td>" + result[i].event + "</td>");
-                    $(nextRow).append("<td>" + result[i].event + "</td>");
-                    $(nextRow).append("<td>" + result[i].event + "</td>");
+                    $(tableRow).append("<td>" + result[i].last_name + "</td>");
+                    $(tableRow).append("<td>" + result[i].first_name + "</td>");
+                    var newBtn = $("<button>View</button>");
 
-                    $(tableBody).append(nextRow);
+                    newBtn.attr({
+                        "data-id": result[i].uuid,
+                        "data-fName": result[i].first_name,
+                        "data-lName": result[i].last_name,
+                        "class": "btn"
+                    });
+
+                    newBtn.addClass("patientViewBtn");
+                    newBtn.appendTo(tableRow);
+                    $(tableBody).append(tableRow);
                 }
-
-                $("#staffRBody").append(table);
+                table.appendTo($("#staffRBody"));
             }
             else {
-                $("#staffRBody").append("<p>No Records Found</p>");
+                $("#staffRBody").append("No Doctors Available Right Now. Check Again Soon.");
             }
         });
+
+    });
+
+    $('body').on('click', '.patientViewBtn', function () {
+        pID = $(this).attr("data-id");
+        pFName = $(this).attr("data-fName");
+        pLName = $(this).attr("data-lName");
+
+        $("#staffRBody").empty();
+        $("#staffRTitle").empty();
+        $("#staffRTitle").append("<h2 class='uk-modal-title'>"+pLName+", "+pFName+"</h2>");
+
+        $.ajax({
+            method: "GET",
+            url: "/api/staff/records/"+pID
+        }).then(function(result){
+            if (result.length > 0) {
+                let table = $("<table>");
+                table.addClass("uk-table uk-table-striped");
+                let tableBody = $("<tbody>");
+                $(table).append(tableBody);
+
+
+                for (var i = 0; i < result.length; i++) {
+                    let tableRow = $("<tr>");
+
+                    $(tableRow).append("<td>"+result[i].event+"</td>");
+                    $(tableRow).append("<td>"+result[i].description+"</td>");
+                    $(tableRow).append("<td>"+result[i].location_name+"</td>");
+                    $(tableRow).append("<td>"+result[i].date+"</td>");
+
+                    $(tableBody).append(tableRow);
+                }
+                table.appendTo($("#staffRBody"));
+            }
+            else {
+                $("#staffRBody").append("No Doctors Available Right Now. Check Again Soon.");
+            }
+        });
+
     });
     //END OF Search RECORDS
 
@@ -231,7 +251,7 @@ $(document).ready(function () {
                 table.appendTo($("#createBody"));
             }
             else {
-                $("#createBody").append("No Doctors Available Right Now. Check Again Soon.");
+                $("#createBody").append("No Patients Found!");
             }
         });
     });

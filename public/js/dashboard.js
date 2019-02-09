@@ -85,10 +85,12 @@ $(document).ready(function(){
             data: newAppt
         }).then(function(result){
             console.log(result);
-            location.reload();
         });
 
     });
+    
+        location.reload();
+
 
 });
 // (function (global, factory) {

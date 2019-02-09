@@ -1,25 +1,47 @@
-
-<div id="offcanvas-nav" uk-offcanvas="overlay: true">
-    <div class="uk-offcanvas-bar">
-        <ul class="uk-nav uk-nav-default">
-            <li class="uk-active"><a href="#">Active</a></li>
-            <li class="uk-parent">
-                <a href="#">Parent</a>
-                <ul class="uk-nav-sub">
-                    <li><a href="#">Sub item</a></li>
-                    <li><a href="#">Sub item</a></li>
-                </ul>
-            </li>
-            <li class="uk-nav-header">Header</li>
-            <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: table"></span> Item</a></li>
-            <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: thumbnails"></span> Item</a></li>
-            <li class="uk-nav-divider"></li>
-            <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: trash"></span> Item</a></li>
-        </ul>
-    </div>
-</div>
-
-
+ <style>
+   .background {
+    background-image: url(https://images.pexels.com/photos/1028705/pexels-photo-1028705.jpeg?cs=srgb&dl=abstract-agriculture-background-1028705.jpg&fm=jpg);
+    background-position: 50% 50%;
+    
+   }
+    .uk-animation-toggle {
+    width: 80%;
+    height: 60%;
+    margin-left: 10%;
+    margin-right: 10%;
+    opacity: 0.8;
+}
+.video-responsive{
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+}
+.video-responsive iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+}
+.nav {
+    margin: 8px;
+}
+</style>
+<div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
+<nav class="uk-navbar-container" uk-navbar="dropbar: true;">
+<p class="nav">
+<p class="nav"> <a href="/" uk-icon="icon: home; ratio: 2" ></a> </p>
+<p class="nav"> <a href="/dashboard" uk-icon="icon: list; ratio: 2"></a></p>
+<p class="nav"> <a href="/holistic" uk-icon="icon: heart; ratio: 2"></a></p>
+</p>
+</nav>
+</div> 
+<div class=".uk-flex-left@s .uk-flex-center@s .uk-flex-right@s .uk-flex-between@s .uk-flex-around@s">
+    <div></div>
+<div class="background"> 
+        <div style="text-align:center"> <p> 
+         <div class="uk-animation-toggle" tabindex="0"> 
 <div class="uk-animation-toggle" tabindex="0">
     <div class="uk-card uk-card-default uk-card-body uk-animation-scale-up uk-transform-origin-top-center">
         <p class="uk-text-center">
@@ -27,110 +49,117 @@
                 <div style="text-align:center">Stress Reducing</div>
             </h1>
         </p>
-    </div>
-
+    </div> </div>
     <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
         <div class="uk-flex-last@s uk-card-media-right uk-cover-container">
-            <iframe width="460" height="215" src="https://www.youtube.com/embed/v7AYKMP6rOE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
+        <div class="video-responsive">
+            <iframe width="495" height="315" src="https://www.youtube.com/embed/v7AYKMP6rOE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe> </div>
         </div>
         <div>
             <div class="uk-card-body">
                 <h3 class="uk-card-title">Yoga For Complete Beginners - 20 Minute Home Yoga Workout!</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                <p>It is said that just 20 minutes of yoga three times a week can drastically improve your health. This is a fan favorite youtuber! Namaste. </p>
             </div>
         </div>
     </div>
-
     <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
         <div class="uk-card-media-left uk-cover-container">
-            <iframe width="460" height="215" src="https://www.youtube.com/embed/hJbRpHZr_d0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        <div class="video-responsive">
+            <iframe width="495" height="315" src="https://www.youtube.com/embed/hJbRpHZr_d0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>
             <!-- <canvas width="600" height="400"></canvas> -->
+        </div>
         </div>
         <div>
             <div class="uk-card-body">
                 <h3 class="uk-card-title">Yoga For Anxiety and Stress</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                <p>Certain areas of your life can alter your body, so make sure to take care of it! Your body and soul will thank you for taking the time out of your day to show yourself you care.</p>
             </div>
         </div>
     </div>
-
     <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
         <div class="uk-flex-last@s uk-card-media-right uk-cover-container">
-            <iframe width="460" height="215" src="https://www.youtube.com/embed/RiDhzDhsQU8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            <div class="video-responsive">
+            <iframe width="495" height="315" src="https://www.youtube.com/embed/RiDhzDhsQU8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>
+        </div>
         </div>
         <div>
             <div class="uk-card-body">
                 <h3 class="uk-card-title">Yoga For Abdominal Wall | 14 Minute Core Practice |</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                <p>If you want a great core and a great abdominal wall, then this is the video for you! Feel that burn, thats energy running through your body and transforming you!</p>
             </div>
         </div>
     </div>
-
     <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
         <div class="uk-card-media-left uk-cover-container">
-            <iframe width="460" height="215" src="https://www.youtube.com/embed/WpzTtw_doSk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        <div class="video-responsive">
+            <iframe width="495" height="315" src="https://www.youtube.com/embed/WpzTtw_doSk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>
+        </div>
         </div>
         <div>
             <div class="uk-card-body">
                 <h3 class="uk-card-title">Curvy Yoga - Beginners Yoga</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                <p>Dont feel emmbarrassed if you're not thin like most of the people in yoga. We love all shapes and sizes of humans if you're looking to better yourself! Check this video out if you feel more comfortable with this size. :)</p>
             </div>
         </div>
     </div>
-
     <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
         <div class="uk-flex-last@s uk-card-media-right uk-cover-container">
-            <iframe width="460" height="215" src="https://www.youtube.com/embed/z8K3ZnQvjYQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        <div class="video-responsive">
+            <iframe width="495" height="315" src="https://www.youtube.com/embed/z8K3ZnQvjYQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>
+        </div>
         </div>
         <div>
             <div class="uk-card-body">
                 <h3 class="uk-card-title">Full Kundalini Yoga Class For Beginners & Intermediate Students</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                <p>Kundalini yoga is one of many different types of yoga. The are this type of yoga targets is the central energy that gives you "super man" strength! Have you ever heard of mothers lifting cars to save their babies? That is Kundalini, located at the base of spine traveling up. It is the ariasing energy.</p>
             </div>
         </div>
     </div>
-
     <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
         <div class="uk-card-media-left uk-cover-container">
-            <iframe width="460" height="215" src="https://www.youtube.com/embed/FDUUELCGoZU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        <div class="video-responsive">
+            <iframe width="495" height="315" src="https://www.youtube.com/embed/FDUUELCGoZU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>
+        </div>
         </div>
         <div>
             <div class="uk-card-body">
                 <h3 class="uk-card-title">Kundalini Yoga - (Easy Morning Kundalini Yoga Routine)</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                <p>Read above for details, and start with the beginner video, after come back and try this one out! Build your Kundalini, A saying in Kundalini Yoga is "Sat-Nam" meaning thruth is my identity. </p>
             </div>
         </div>
     </div>
-
-
     <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
         <div class="uk-flex-last@s uk-card-media-right uk-cover-container">
-            <iframe width="460" height="215" src="https://www.youtube.com/embed/ZiQh8jA5tVM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        <div class="video-responsive">
+            <iframe width="495" height="315" src="https://www.youtube.com/embed/ZiQh8jA5tVM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>
+        </div>
         </div>
         <div>
             <div class="uk-card-body">
                 <h3 class="uk-card-title">Healthy Body Yoga</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                <p>Enjoy Healthy Body where your entire body is targeted and treated with love and health. Thank you for taking the time to come this far! </p>
             </div>
         </div>
     </div>
-
     <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
         <div class="uk-card-media-left uk-cover-container">
-            <iframe width="460" height="215" src="https://www.youtube.com/embed/v7SN-d4qXx0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        <div class="video-responsive">
+            <iframe width="495" height="315" src="https://www.youtube.com/embed/v7SN-d4qXx0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>
+        </div>
         </div>
         <div>
             <div class="uk-card-body">
                 <h3 class="uk-card-title">Yoga For Bedtime - 20 Minute Practice</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                <p>If you've had a hard day, or a full day and didn't make time for some Yoga in the AM, then make sure to checkout this restful and beautiful bed-time yoga! </p>
             </div>
         </div>
+    </div>
     </div>

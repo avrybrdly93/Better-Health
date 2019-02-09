@@ -55,24 +55,8 @@ module.exports = function (app) {
     res.render("profile");
   });
 
-  //HOLISTIC PAGES GET ROUTES
   app.get("/holistic", function (req, res) {
     res.render("holistic/choice");
-  });
-  app.get("/holistic/mornings", function (req, res) {
-    res.render("holistic/mornings");
-  });
-  app.get("/holistic/relief", function (req, res) {
-    res.render("holistic/relief");
-  });
-  app.get("/holistic/health", function (req, res) {
-    res.render("holistic/health");
-  });
-  app.get("/holistic/affirmation", function (req, res) {
-    res.render("holistic/affirmation");
-  });
-  app.get("/holistic/bedtime", function (req, res) {
-    res.render("holistic/bedtime");
   });
 
   app.get("/dashboard", function (req, res) {
@@ -187,7 +171,7 @@ module.exports = function (app) {
         id: null,
         isloggedin: req.isAuthenticated()
       }
-      res.redirect("/admin/login");
+      res.redirect("/staff/login");
     }
 
   });
@@ -229,7 +213,6 @@ module.exports = function (app) {
         return next(err); // will generate a 500 error
       }
       if (!usr) {
-
         return res.send({ success: false, message: 'Authentication Failed' });
       }
       req.login(usr, loginErr => {

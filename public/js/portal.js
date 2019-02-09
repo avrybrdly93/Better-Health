@@ -142,6 +142,14 @@ $(document).ready(function () {
     }
   });
 
+  $("#usernameLogin").on("click", function() {
+    $(".wrong-info").text("");
+  });
+
+  $("#passwordLogin").on("click", function() {
+    $(".wrong-info").text("");
+  });
+
   $("#loginBtn").on("click", function (event) {
     let hasBeenPosted = false;
     event.preventDefault();
@@ -158,22 +166,27 @@ $(document).ready(function () {
       console.log(xhr);
       //$("#loginForm")[0].reset();
 
-      switch (xhr.status) {
-        case 200: {
-          window.location.href = "/dashboard";
-          break;
-        }
-        case 401: {
-          window.location.href = "/portal";
-          break;
-        }
-        case 404: {
-          window.location.href = "*";
-          break;
-        }
-        case 500: {
-          alert("Refresh Page!");
-          break;
+      if (data.success === false) {
+        $(".wrong-info").text("Incorrect username or password.");
+      }
+      else {
+        switch (xhr.status) {
+          case 200: {
+            window.location.href = "/dashboard";
+            break;
+          }
+          case 401: {
+            window.location.href = "/login";
+            break;
+          }
+          case 404: {
+            window.location.href = "*";
+            break;
+          }
+          case 500: {
+            alert("Refresh Page!");
+            break;
+          }
         }
       }
     });

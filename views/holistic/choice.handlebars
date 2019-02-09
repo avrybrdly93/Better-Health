@@ -1,88 +1,123 @@
-<div style="text-align:center">
-    <p>
-        <div class="uk-column-1-2 uk-column-divider">
+<style>
+    .background {
+        background-image: url(https://images.pexels.com/photos/1056117/pexels-photo-1056117.jpeg?cs=srgb&dl=environment-moss-mossy-rocks-1056117.jpg&fm=jpg);
+    }
 
-            <div class="uk-animation-toggle" tabindex="0">
-                <div class="uk-card uk-card-default uk-card-body uk-animation-slide-scale-up">
-                    <p class="uk-text-center">
-        
-        <div>
-            <a class ="uk-link-muted" href="holistic/mornings">
-                <div class="uk-inline">
-                    <img src="images/morning.jpg" alt="" height="460" width="360">
-                    <div class="uk-overlay uk-overlay-default uk-position-center">
-                        <p>Morning Routines</p>
-                    </div>
-                </div>
-                </a>
-    </p>
-</div>
-</p>
+    .uk-animation-toggle {
+        width: 80%;
+        height: 110%;
+        margin-left: 10%;
+        margin-right: 10%;
+        opacity: 0.8;
+    }
 
-<div class="uk-animation-toggle" tabindex="0">
-    <div class="uk-card uk-card-default uk-card-body uk-animation-slide-bottom-small">
-        <p class="uk-text-center">
-            <div>
-                <div class="uk-inline">
-                    <a class="uk-link-muted" href="holistic/affirmation">
-                        <img src="images/affmed.jpg" alt="" height="440" width="325">
-                        <div class="uk-overlay uk-overlay-default uk-position-center">
-                            <p>Affirmations & Meditations</p>
-                        </div>
-                </div>
-            </div>
-    </div>
-    </a> 
-</div>
+    .video-responsive {
+        overflow: hidden;
+        padding-bottom: 56.25%;
+        position: relative;
+        height: 0;
+    }
 
-<div class="uk-column-1-2 uk-column-divider">
-    <div class="uk-animation-toggle" tabindex="0">
-            <div class="uk-card uk-card-default uk-card-body uk-animation-slide-bottom-small">
-                <p class="uk-text-center">
-        <div>
-            <a class ="uk-link-muted" href="holistic/health">  
-            <div class="uk-inline">
-                    <img src="images/healthy.jpg" alt="" height="460" width="360">
-                    <div class="uk-overlay uk-overlay-default uk-position-center">
-                        <p>Healthy Diets</p>
-                    </div>
-                </div>
-        </div>
-        </a>
+    .video-responsive iframe {
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+    }
+
+    .nav {
+        margin: 8px;
+    }
+</style>
+<div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
+    <nav class="uk-navbar-container" uk-navbar="dropbar: true;">
+        <p class="nav">
+            <p class="nav"> <a href="/" uk-icon="icon: home; ratio: 2"></a> </p>
+            <p class="nav"> <a href="/dashboard" uk-icon="icon: list; ratio: 2"></a></p>
         </p>
-    </div>
+    </nav>
 </div>
-</p>
+<div class="col xl-3 col-dm-6 mb-3">
+    <div class="background">
+        <div style="text-align:center">
+            <p>
+                <div class="uk-animation-toggle" tabindex="0">
+                    {{!-- <div class="uk-column-1-2 uk-column-divider"> --}}
+                    <div class="uk-animation-toggle" tabindex="0">
+                        <div class="uk-card uk-card-default uk-card-body uk-animation-fade">
+                            <p class="uk-text-center">
 
-<div class="uk-animation-toggle" tabindex="0">
-    <div class="uk-card uk-card-default uk-card-body uk-animation-slide-bottom-small">
-        <p class="uk-text-center">
-            <div>
-                <a class="uk-link-muted" href="holistic/relief">
-                    <div class="uk-inline">
-                        <img src="images/yoga.jpg" alt="" height="320" width="260">
-                        <div class="uk-overlay uk-overlay-default uk-position-center">
-                            <p>Stress Relief</p>
+                                <div>
+                                    <a class="uk-link-muted" href="holistic/mornings">
+                                        <div class="uk-inline">
+                                            <img src="images/morning.jpg" alt="" height="460" width="375">
+                                            <div class="uk-overlay uk-overlay-default uk-position-center">
+                                                <p>Morning Rituals</p>
+                                            </div>
+                                        </div>
+                                </div>
+                        </div>
+                        </a>
+                    </div>
+                    <div class="uk-animation-toggle" tabindex="0">
+                        <div class="uk-card uk-card-default uk-card-body uk-animation-fade">
+                            <p class="uk-text-center">
+                                <div>
+                                    <div class="uk-inline">
+                                        <a class="uk-link-muted" href="holistic/affirmation">
+                                            <img src="images/affmed.jpg" alt="" height="460" width="375">
+                                            <div class="uk-overlay uk-overlay-default uk-position-center">
+                                                <p>Affirmations & Meditations</p>
+                                            </div>
+                                    </div>
+                                </div>
+                        </div>
+                        </a>
+                    </div>
+                    <div class="uk-animation-toggle" tabindex="0">
+                        <div class="uk-card uk-card-default uk-card-body uk-animation-fade">
+                            <p class="uk-text-center">
+                                <div>
+                                    <div class="uk-inline">
+                                        <a class="uk-link-muted" href="holistic/health">
+                                            <img src="images/healthy.jpg" alt="" height="440" width="375">
+                                            <div class="uk-overlay uk-overlay-default uk-position-center">
+                                                <p>Healthy Choices</p>
+                                            </div>
+                                    </div>
+                                </div>
+                        </div>
+                        </a>
+                    </div>
+                    <div class="uk-animation-toggle" tabindex="0">
+                        <div class="uk-card uk-card-default uk-card-body uk-animation-fade">
+                            <p class="uk-text-center">
+                                <div>
+                                    <div class="uk-inline">
+                                        <a class="uk-link-muted" href="holistic/relief">
+                                            <img src="images/balance.jpg" alt="" height="440" width="375">
+                                            <div class="uk-overlay uk-overlay-default uk-position-center">
+                                                <p>Stress Relief</p>
+                                            </div>
+                                    </div>
+                                </div>
+                        </div>
+                        </a>
+                    </div>
+                    <div class="uk-animation-toggle" tabindex="0">
+                        <div class="uk-card uk-card-default uk-card-body uk-animation-fade">
+                            <p class="uk-text-center">
+                                <div>
+                                    <div class="uk-inline">
+                                        <a class="uk-link-muted" href="holistic/bedtime">
+                                            <img src="images/bedtime.jpg" alt="" height="660" width="375">
+                                            <div class="uk-overlay uk-overlay-default uk-position-center">
+                                                <p>Before Bed</p>
+                                            </div>
+                                    </div>
+                                </div>
                         </div>
                     </div>
-            </div>
-    </div>
-    </a>
-    </p>
-</div>
-</div>
-
-<div class="uk-animation-toggle" tabindex="0">
-    <div class="uk-card uk-card-default uk-card-body uk-animation-slide-bottom-small">
-        <p class="uk-text-center">
-            <a class="uk-link-muted" href="holistic/bedtime">
-                <div class="uk-inline">
-                    <img src="images/bedtime.jpg" alt="" height="460" width="360">
-                    <div class="uk-overlay uk-overlay-default uk-position-center">
-                        <p>Bedtime</p>
-                    </div>
+                    </a>
                 </div>
-            </a>
-        </p>
-    </div>
-</div>

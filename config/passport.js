@@ -91,9 +91,15 @@ module.exports = function (passport) {
             where: {
                 username: req.body.username
             }
-        }).then(function (user, err) {
-            (!user.validPassword(req.body.account_key));
-            if (!user) {
+        }).then(function(user, err) {
+            try{
+                (!user.validPassword(req.body.account_key));
+            }
+            catch(err){
+                console.log(err);
+            }
+            
+            if (!user){
                 console.log("No User Found");
                 return done(null, false, req.flash('loginMessage', 'No user found.'));
             }
@@ -157,9 +163,14 @@ module.exports = function (passport) {
             where: {
                 username: req.body.username
             }
-        }).then(function (user, err) {
-            (!user.validPassword(req.body.account_key));
-            if (!user) {
+        }).then(function(user, err) {
+            try{
+                (!user.validPassword(req.body.account_key));
+            }
+            catch(err){
+                console.log(err);
+            }
+            if (!user){
                 console.log("No User Found");
                 return done(null, false, req.flash('loginMessage', 'No user found.'));
             }

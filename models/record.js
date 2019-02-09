@@ -16,6 +16,20 @@ module.exports = function(sequelize,DataTypes){
         },
         date: {
             type: DataTypes.STRING,
+            allowNull: true,
+            validate: {
+                len: [1,30]
+            }
+        },
+        patient_fName: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [1,30]
+            }
+        },
+        patient_LName:{
+            type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: [1,30]

@@ -5,8 +5,9 @@ $(document).ready(function () {
   var docTitle;
   var docSP;
 
+  //MESSAGES 
   //MESSAGES
-  $(".msgBtn").on("click", function () {
+  $("#msgBtn").on("click", function () {
     $.ajax({
       method: "GET",
       url: "/api/staff"
@@ -21,7 +22,7 @@ $(document).ready(function () {
       if (result.length > 0) {
         for (var i = 0; i < result.length; i++) {
           var someMDiv = $("<div>");
-          $(someMDiv).append("<p>" + result[i].title + " " + result[i].last_name + ", " + result[i].first_name + " - " + result[i].specialization);
+          $(someMDiv).append("<p>" + result[i].last_name + ", " + result[i].first_name + " - " + result[i].title + " - " + result[i].specialization);
           var newMBtn = $("<button>Message Me</button>");
 
           $(newMBtn).attr({

@@ -1,19 +1,19 @@
 $(document).ready(function () {
 
   // Front-End input validation with parsley
-//   $('#signup-form').parsley().on('field:validate', function () {
-//     var ok = $('.parsley-error').length === 0;
-//     $('.bs-callout-info').toggleClass('hidden', !ok);
-//     $('.bs-callout-warning').toggleClass('hidden', ok);
-//   })
-//     .on('form:submit', function () {
-//       console.log("submittted");
-//       return false; // Don't submit form for this demo
-//     });
+  $('#signup-form').parsley().on('field:validate', function () {
+    var ok = $('.parsley-error').length === 0;
+    $('.bs-callout-info').toggleClass('hidden', !ok);
+    $('.bs-callout-warning').toggleClass('hidden', ok);
+  })
+    .on('form:submit', function () {
+      console.log("submittted");
+      return false; // Don't submit form for this demo
+    });
 
-//   document.querySelector('.img__btn').addEventListener('click', function () {
-//     document.querySelector('.cont').classList.toggle('s--signup');
-//   });
+  document.querySelector('.img__btn').addEventListener('click', function () {
+    document.querySelector('.cont').classList.toggle('s--signup');
+  });
 
   let phoneVals = '';
   let userPhoneNum = '';
@@ -151,7 +151,6 @@ $(document).ready(function () {
   });
 
   $("#loginBtn").on("click", function (event) {
-    let hasBeenPosted = false;
     event.preventDefault();
     console.log("asdf");
     var tryUsr = {
@@ -160,10 +159,10 @@ $(document).ready(function () {
     }
 
     $.post("/login", tryUsr, function (data, status, xhr) {
-      console.log(data);
-      hasBeenPosted = true;
-      console.log(status);
-      console.log(xhr);
+      //console.log(data);
+
+      //console.log(status);
+      //console.log(xhr);
       //$("#loginForm")[0].reset();
 
       if (data.success === false) {
@@ -190,8 +189,5 @@ $(document).ready(function () {
         }
       }
     });
-    // if(hasBeenPosted === false) {
-    //   alert("incorrect username or password")
-    // }
   });
 });

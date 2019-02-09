@@ -15,7 +15,7 @@ module.exports = function (app) {
         } catch (err) {
           x = 42;
         }
-        console.log(x);
+        //console.log(x);
         res.send(x);
       }
 
@@ -76,18 +76,18 @@ module.exports = function (app) {
   //STAFF GET INFO
   app.get("/api/staff/messages/:id", function (req, res) {
     if (req.isAuthenticated() && req.session.passport.user.type === "Staff") {
-      var msgQuery = "SELECT body,created_at,sender_id,receiver_id FROM messages WHERE (sender_id=" + req.session.passport.user.uuid;
-      msgQuery += " OR receiver_id=" + req.params.id + ") AND (sender_id=" + req.params.id + " OR receiver_id=" + req.session.passport.uuid;
-      msgQuery += ") ORDER BY created_at ASC";
+      async function callSMsg() {
+        let y;
+        try {
+          y = await db.Message.searchMsgs(req.session.passport.user.uuid,req.params.id);
+        } catch (err) {
+          y = 42;
+        }
+        //console.log(y);
+        res.send(y);
+      }
 
-      sequelize.query(msgQuery, {
-        type: sequelize.QueryTypes.SELECT
-      }).then(function (result) {
-        res.send(result);
-      });
-    }
-    else {
-      res.send("Access Not Granted.");
+      callSMsg();
     }
   });
 

@@ -148,7 +148,7 @@ module.exports = function (app) {
         id: null,
         isloggedin: req.isAuthenticated()
       }
-      res.redirect("/admin/login");
+      res.redirect("/staff/login");
     }
 
   });

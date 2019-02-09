@@ -32,7 +32,8 @@ $(document).ready(function () {
                       "data-id": result[i].uuid,
                       "data-fName": result[i].first_name,
                       "data-lName": result[i].last_name,
-                       "class": "btn"
+                       "class": "btn",
+                       "style": "margin: 10px"
                   });
   
                   newBtn.addClass("staffBookMe");
@@ -67,7 +68,7 @@ $(document).ready(function () {
         $(newForm).append("Date: <input type='text' id='dateField'>  ");
         $(newForm).append("Time: <input type='text' id='timeField'><br><br>");
         $(newForm).append("Reason: <input type='text' id='reasonField'><br>");
-        $(newForm).append("<br><button id='bookFormSubmit'>Submit</button>");
+        $(newForm).append("<br><button id='bookFormSubmit' class='btn'>Submit</button>");
 
         $("#bookModalBody").append(newForm);
 

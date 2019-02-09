@@ -6,7 +6,7 @@ module.exports = function (app) {
   //PATIENT GET INFO
   app.get("/api/messages/:id", function (req, res) {
     if (req.isAuthenticated() && req.session.passport.user.type==="Patient") {
-      var msgQuery="SELECT body,created_at,sender_id,receiver_id FROM messages WHERE (sender_id="+req.session.passport.user.uuid;
+      var msgQuery="SELECT * FROM messages WHERE (sender_id="+req.session.passport.user.uuid;
       msgQuery+=" OR receiver_id="+req.params.id+") AND (sender_id="+req.params.id+" OR receiver_id="+req.session.passport.uuid;
       msgQuery+=") ORDER BY created_at ASC";
 

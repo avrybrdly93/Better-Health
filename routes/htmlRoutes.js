@@ -54,8 +54,8 @@ module.exports = function (app) {
     res.render("profile");
   });
 
-  app.get("/choice", function (req, res) {
-    res.render("/holistic/choice");
+  app.get("/holistic", function (req, res) {
+    res.render("holistic/choice");
   });
 
   app.get("/dashboard", function (req, res) {
@@ -187,10 +187,13 @@ module.exports = function (app) {
       console.log("\n\n\n########userrrr", usr)
       if (err) {
         console.log("passport err", err);
+        res.send("ERROR");
+        res.status(401);
         return next(err); // will generate a 500 error
       }
       if (!usr) {
-
+        res.send("ERROR");
+        res.status(401);
         return res.send({ success: false, message: 'Authentication Failed' });
       }
       req.login(usr, loginErr => {
@@ -242,6 +245,8 @@ module.exports = function (app) {
       console.log("\n\n\n########userrrr", usr)
       if (err) {
         console.log("passport err", err);
+        res.send("ERROR");
+        res.status(401);
         return next(err); // will generate a 500 error
       }
       if (!usr) {

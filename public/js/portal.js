@@ -151,10 +151,10 @@ $(document).ready(function () {
     }
 
     $.post("/login", tryUsr, function (data, status, xhr) {
-      //console.log(data);
+      // console.log(data);
 
-      //console.log(status);
-      //console.log(xhr);
+      // console.log(status);
+      // console.log(xhr);
       //$("#loginForm")[0].reset();
 
       switch (xhr.status) {

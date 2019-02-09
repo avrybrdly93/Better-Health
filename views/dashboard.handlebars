@@ -65,7 +65,11 @@
 
 
 </style>
-
+<script>
+  $( function() {
+            $( "#datepicker" ).datepicker();
+        } );
+</script>
 <div class="gradient"></div>
 
 <div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
@@ -134,7 +138,7 @@
     <div class="col-xl-3 col-sm-6 mb-3">
       <div class="uk-card uk-card-default">
         <div class="uk-card-body">
-          <p class="uk-text-warning" id = "book-card-title"><span class="uk-margin-small-right" uk-icon="icon: bolt; ratio: 1.5"></span>Book
+          <p class="uk-text-warning" id = "book-card-title"><span class="uk-margin-small-right" id = "icon-div" uk-icon="icon: bolt; ratio: 1.5"></span>Book
             Appointment:</p>
           <p class="uk-text-meta uk-margin-remove-top" id = "book-card-body">Book your next apppointment!</p>
         </div>
@@ -228,16 +232,6 @@
           <div class="uk-card uk-card-default uk-card-body" uk-scrollspy="cls: uk-animation-fade; repeat: true" id="modalBody">
             
 
-        <table class="uk-table uk-table-striped">
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Procedure</th>
-              <th>Reason for Procedure</th>
-              <th>Provider</th>
-            </tr>
-          </thead>
-        </table>  
 
             {{!-- <form class="uk-grid-small" uk-grid>
               <div class="uk-width-1-1">

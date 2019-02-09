@@ -7,40 +7,42 @@ $(document).ready(function () {
         $.ajax({
             method: "GET",
             url: "/api/staff"
-        }).then(function (result) {
+        }).then(function(result){
             console.log(result);
-            $("#modalBody").empty();
-            $("#modalTitle").text("Choose Appointment Staff");
+            $("#bookModalBody").empty();
+            $("#bookModalTitle").text("Choose Appointment Staff");
 
-            var someSpace = $("<div>");
-
-            if (result.length > 0) {
-                for (var i = 0; i < result.length; i++) {
-                    var someDiv = $("<div>");
-                    $(someDiv).append("<p>" + result[i].last_name + ", " + result[i].first_name + " - " + result[i].title + " - " + result[i].specialization);
-                    var newBtn = $("<button>Book Me</button>");
-
-                    $(newBtn).attr({
-                        "data-id": result[i].uuid,
-                        "data-fName": result[i].first_name,
-                        "data-lName": result[i].last_name,
-                        "class": "btn"
-                    });
-
-                    $(newBtn).addClass("staffBookMe");
-
-                    $(someDiv).append(newBtn);
-
-                    $(someSpace).append(someDiv);
-
-                }
-
-                $("#modalBody").append(someSpace);
-            } else {
-                $("#modalBody").append("No Doctors Available Right Now. Check Again Soon.");
+            //var someSpace=$("<div>");
+            // console.log(result.length);
+              if(result.length>0){
+              let table = $("<table>");
+              table.addClass("uk-table uk-table-striped");
+              let tableBody = $("<tbody>");
+              tableBody.appendTo(table);
+              table.appendTo($("#bookModalBody"));
+                for(var i=0;i<result.length;i++){
+                  let tableRow = $("<tr>");
+                  tableRow.appendTo(tableBody);
+                  let tableData = $("<td>");
+                  tableData.appendTo(tableRow);
+                  tableData.append("<p>"+result[i].last_name+", "+result[i].first_name+" - "+result[i].title+" - "+result[i].specialization);
+                  var newBtn = $("<button>Book Me</button>");
+    
+                  newBtn.attr({
+                      "data-id": result[i].uuid,
+                      "data-fName": result[i].first_name,
+                      "data-lName": result[i].last_name,
+                       "class": "btn"
+                  });
+  
+                  newBtn.addClass("staffBookMe");
+                  newBtn.appendTo(tableRow);
+                 } 
+                } else {
+                $("#bookModalBody").append("No Doctors Available Right Now. Check Again Soon.");
             }
 
-            $("modalBody").empty();
+            $("bookModalBody").empty();
         });
     });
 
@@ -53,11 +55,11 @@ $(document).ready(function () {
         console.log(docFName);
         console.log(docLName);
 
-        $("#modalTitle").text("Appointment Details");
+        $("#bookModalTitle").text("Appointment Details");
 
-        $("#modalBody").empty();
+        $("#bookModalBody").empty();
 
-        $("#modalBody").append("<p>Fill out the form below to book your next appointment.</p>");
+        $("#bookModalBody").append("<p>Fill out the form below to book your next appointment.</p>");
 
         var newForm = $("<form>").addClass("uk-grid-small");
 
@@ -67,7 +69,7 @@ $(document).ready(function () {
         $(newForm).append("Reason: <input type='text' id='reasonField'><br>");
         $(newForm).append("<br><button id='bookFormSubmit'>Submit</button>");
 
-        $("#modalBody").append(newForm);
+        $("#bookModalBody").append(newForm);
 
     });
 
@@ -96,16 +98,20 @@ $(document).ready(function () {
 
         });
 
-        $("#modalBody").empty();
+        $("#bookModalBody").empty();
 
-        $("#modalTitle").text("Appointment Confirmation Details");
+        $("#bookModalTitle").text("Appointment Confirmation Details");
 
-        $("#modalBody").append("<h2>Date:</h2><h3>" + dateField + "</h3>");
-        $("#modalBody").append("<h2>Time:</h2><h3>" + timeField + "</h3>");
-        $("#modalBody").append("<h2>Reason:</h2><h3>" + apptReason + "</h3>");
+        $("#bookModalBody").append("<h2>Date:</h2><h3>" + dateField + "</h3>");
+        $("#bookModalBody").append("<h2>Time:</h2><h3>" + timeField + "</h3>");
+        $("#bookModalBody").append("<h2>Reason:</h2><h3>" + apptReason + "</h3>");
 
-        
+      
+    setTimeout(function(){ location.reload(); }, 3000);
+    
+          
     });
+
 
     // Card for Appointment
 
@@ -115,12 +121,12 @@ $(document).ready(function () {
     }).then(function (result) {
         console.log(result);
         if (result.length > 0) {
-            $("#icon-div").append("uk-icon", "icon: bolt; ratio: 1.5")
             $("#book-card-title").text(` Next Appointment`)
             $("#book-card-body").text(`${result[result.length-1].appt_reason} with ${result[result.length-1].staff_fName} ${result[result.length-1].staff_lName} at ${result[result.length-1].time} on ${result[0].date}`)
         }
 
     });
+
 
 
 

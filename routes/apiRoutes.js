@@ -107,12 +107,27 @@ module.exports = function (app) {
     }
   });
 
-  app.get("/api/records/:id", function (req, res) {
+  app.get("/api/staff/records", function (req, res) {
     if (req.isAuthenticated() && req.session.passport.user.type === "Staff") {
       db.Record.findAll({
         where: {
-          PatientUuid: req.params.id
+          patient_fName: req.body.fName,
+          patient_lName: req.body.lName
         }
+      }).then(function (result) {
+        res.send(result);
+      });
+    }
+    else {
+      res.send("Access Not Granted.");
+    }
+  });
+
+  app.get("/api/patients",function(req,res){
+    if (req.isAuthenticated() && req.session.passport.user.type==="Staff") {
+      db.Patient.findAll({
+        attributes: ["uuid", "first_name", "last_name"],
+        limit: 10
       }).then(function (result) {
         res.send(result);
       });
@@ -152,9 +167,12 @@ module.exports = function (app) {
         description: req.body.description,
         location_name: req.body.location_name,
         address: req.body.address,
+        date: req.body.date,
         city: req.body.city,
         state: req.body.state,
         zip: req.body.zip,
+        patient_fName: req.body.patient_fName,
+        patient_LName: req.body.patient_lName,
         PatientUuid: req.params.id
       });
 

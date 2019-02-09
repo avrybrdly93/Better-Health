@@ -1,41 +1,286 @@
-$(document).ready(function(){
+$(document).ready(function () {
+    var pFName;
+    var pLName;
+    var pID;
+
     //STAFF APPOINTMENTS
-    $("#apptsBtn").on("click",function(){
+    $("#apptsBtn").on("click", function () {
         $("#appBody").empty();
 
         $.ajax({
             method: "GET",
             url: "/api/staff/appointments"
-        }).then(function(result){
-            if(result.length>0){
-                for(var i=0;i<result.length;i++){
-                    var newRow=$("<tr>");
+        }).then(function (result) {
+            if (result.length > 0) {
+                for (var i = 0; i < result.length; i++) {
+                    var newRow = $("<tr>");
 
-                    $(newRow).append("<td>"+result[i].patient_fName+"</td>");
-                    $(newRow).append("<td>"+result[i].patient_lName+"</td>");
-                    $(newRow).append("<td>"+result[i].date+"</td>");
-                    $(newRow).append("<td>"+result[i].time+"</td>");
-                    $(newRow).append("<td>"+result[i].appt_reason+"</td>");
+                    $(newRow).append("<td>" + result[i].patient_fName + "</td>");
+                    $(newRow).append("<td>" + result[i].patient_lName + "</td>");
+                    $(newRow).append("<td>" + result[i].date + "</td>");
+                    $(newRow).append("<td>" + result[i].time + "</td>");
+                    $(newRow).append("<td>" + result[i].appt_reason + "</td>");
 
                     $("#appBody").append(newRow);
                 }
             }
-            else{
+            else {
                 $("#appBody").append("<p>No Appointments Right Now.</p>");
             }
-        }); 
+        });
     });
     //END OF STAFF APPOINTMENTS
 
     //STAFF MESSAGES
-    $("#msgsBtn").on("click",function(){
+    $("#msgsBtn").on("click", function () {
+        $.ajax({
+            method: "GET",
+            url: "/api/patients"
+        }).then(function (result) {
+            //console.log(result);
+            $("#staffMsgBody").empty();
+            $("#staffMsgTitle").empty();
+            $("#staffMsgTitle").append("<h2 class class='uk-modal-title'>Messages</h2>");
 
+            var someMSpace = $("<div>");
+
+            if (result.length > 0) {
+                for (var i = 0; i < result.length; i++) {
+                    var someMDiv = $("<div>");
+                    $(someMDiv).append("<p>" + result[i].last_name + ", " + result[i].first_name);
+                    var newMBtn = $("<button>Message</button>");
+
+                    $(newMBtn).attr({
+                        "data-id": result[i].uuid,
+                        "data-fName": result[i].first_name,
+                        "data-lName": result[i].last_name,
+                    });
+
+                    $(newMBtn).addClass("patientMsgMe");
+                    $(someMDiv).append(newMBtn);
+                    $(someMSpace).append(someMDiv);
+                }
+
+                $("#staffMsgBody").append(someMSpace);
+            }
+            else {
+                $("#staffMsgBody").append("No Staff Available Right Now. Check Again Soon.");
+            }
+        });
+    });
+
+    $('body').on('click', '.patientMsgMe', function () {
+        pFName = $(this).attr("data-fName");
+        pLName = $(this).attr("data-lName");
+        pID = $(this).attr("data-id");
+
+        $("#staffMsgBody").empty();
+        $("#staffMsgTitle").empty();
+
+        $("#staffMsgTitle").append("<h2 class='uk-modal-title'>" + pFName + " " + pLName + "</h2>");
+        getMessages();
+
+    });
+
+    function getMessages() {
+        $.ajax({
+            method: "GET",
+            url: "/api/staff/messages/" + pID
+        }).then(function (result) {
+            $("#staffMsgBody").empty();
+            //console.log("RESULT: "+result);
+            if (result.length > 0) {
+                for (var i = 0; i < result.length; i++) {
+                    console.log(result[i]);
+                    $("#staffMsgBody").append("<p>" + result[i].sender_fName + " - " + result[i].body + "</p>");
+                    $("#staffMsgBody").append("<small>Sent at: " + result[i].createdAt + "</small><br>");
+                }
+            }
+            else {
+                $("#staffMsgBody").append("No Message History");
+            }
+
+            var msgForm = $("<form>").addClass("uk-grid-small");
+            $(msgForm).append("<input type='text' id='msgBody' placeholder='Send Message...'>");
+            $(msgForm).append("<button id='msgSubmitBtn'>Send</button>");
+            $("#staffMsgBody").append(msgForm);
+        });
+    }
+
+    $('body').on('click', '#msgSubmitBtn', function () {
+        var newMsg = {
+            "body": $("#msgBody").val().trim(),
+            "receiver_fName": pFName,
+            "receiver_lName": pLName
+        };
+
+        $.ajax("/api/message/" + pID, {
+            type: "POST",
+            data: newMsg
+        }).then(function (result) {
+            //console.log(result);
+            getMessages();
+        });
     });
     //END OF MESSAGES
 
-    //RECORDS
-    $("#recordsBtn").on("click",function(){
+    //Search RECORDS
+    $("#recordsBtn").on("click", function () {
+        $("#staffRTitle").empty();
+        $("#staffRBody").empty();
+
+        $("#staffRTitle").append("<h2 class='uk-modal-title'>Search Records</h2>");
+
+        var searchForm = $("<form>");
+
+        $(searchForm).append("<label for='fNameInput'>");
+        $(searchForm).append("<input type='text' placeholder='First Name' id='fNameInput'>");
+        $(searchForm).append("<label for='lNameInput'>");
+        $(searchForm).append("<input type='text' placeholder='Last Name' id='lNameInput'>");
+        $(searchForm).append("<button id='searchSubmit'>Search</button>");
+
+        $("#staffRBody").append(searchForm);
 
     });
-    //END OF RECORDS
+
+    $('body').on('click', '#searchSubmit', function () {
+        var seachCriteria = {
+            fName: $("#fNameInput").val().trim(),
+            lName: $("#lNameInput").val().trim()
+        }
+        $("#staffRBody").empty();
+        $.ajax({
+            method: "GET",
+            url: "/api/staff/records",
+            data: searchCriteria
+        }).then(function (result) {
+            console.log(result);
+            if (result.length > 0) {
+                let table = $("<table>");
+                table.addClass("uk-table uk-table-striped");
+                let tableHeader=$("<thead>");
+                let tableBody = $("<tbody>");
+                $(table).append(tableHeader);
+                $(table).append(tableBody);
+
+                var headerRow = $("<tr>");
+                $(headerRow).append("<th>Event</th>");
+                $(headerRow).append("<th>Description</th>");
+                $(headerRow).append("<th>Patient First Name</th>");
+                $(headerRow).append("<th>Patient Last Name</th>");
+
+                $(tableHeader).append(headerRow)
+
+                for (var i = 0; i < result.length; i++) {
+                    var nexRow = $("<tr>");
+
+                    $(nextRow).append("<td>" + result[i].event + "</td>");
+                    $(nextRow).append("<td>" + result[i].event + "</td>");
+                    $(nextRow).append("<td>" + result[i].event + "</td>");
+                    $(nextRow).append("<td>" + result[i].event + "</td>");
+
+                    $(tableBody).append(nextRow);
+                }
+
+                $("#staffRBody").append(table);
+            }
+            else {
+                $("#staffRBody").append("<p>No Records Found</p>");
+            }
+        });
+    });
+    //END OF Search RECORDS
+
+    //CREATE RECORDS
+    $("#createBtn").on("click", function () {
+        $("#createBody").empty();
+        $("#createTitle").empty();
+        $("#createTitle").append("<h2 class='uk-modal-title'>Create Record</h2>");
+
+        $.ajax({
+            method: "GET",
+            url: "/api/patients"
+        }).then(function (result) {
+            //console.log(result);
+
+            if (result.length > 0) {
+                let table = $("<table>");
+                table.addClass("uk-table uk-table-striped");
+                let tableBody = $("<tbody>");
+                $(table).append(tableBody);
+
+
+                for (var i = 0; i < result.length; i++) {
+                    let tableRow = $("<tr>");
+
+                    tableRow.append("<td>" + result[i].last_name + "</td>");
+                    tableRow.append("<td>" + result[i].first_name + "</td>");
+                    var newBtn = $("<button>Create</button>");
+
+                    newBtn.attr({
+                        "data-id": result[i].uuid,
+                        "data-fName": result[i].first_name,
+                        "data-lName": result[i].last_name,
+                        "class": "btn"
+                    });
+
+                    newBtn.addClass("patientCreateBtn");
+                    newBtn.appendTo(tableRow);
+                    $(tableBody).append(tableRow);
+                }
+                table.appendTo($("#createBody"));
+            }
+            else {
+                $("#createBody").append("No Doctors Available Right Now. Check Again Soon.");
+            }
+        });
+    });
+
+    $('body').on('click', '.patientCreateBtn', function () {
+        pID = $(this).attr("data-id");
+        pFName = $(this).attr("data-fName");
+        pLName = $(this).attr("data-lName");
+
+        $("#createBody").empty();
+        var createForm = $("<form>");
+
+        $(createForm).append("<input type='text' id='eventInput' placeholder='Medical Record'>");
+        $(createForm).append("<input type='text' id='descInput' placeholder='Description'>");
+        $(createForm).append("<input type='text' id='dateInput' placeholder='Date'>");
+        $(createForm).append("<input type='text' id='locInput' placeholder='Location'>");
+        $(createForm).append("<input type='text' id='addressInput' placeholder='Address'>");
+        $(createForm).append("<input type='text' id='cityInput' placeholder='City'>");
+        $(createForm).append("<input type='text' id='stateInput' placeholder='State'>");
+        $(createForm).append("<input type='text' id='zipInput' placeholder='Zip'><br>");
+        $(createForm).append("<button id='createRecSubmit' class='btn'>Create Record</button>");
+
+        $("#createBody").append(createForm);
+    });
+
+    $('body').on('click', '.patientCreateBtn', function () {
+        var newRecord = {
+            event: $("#eventInput").val().trim(),
+            description: $("#descInput").val().trim(),
+            location_name: $("#locInput"),
+            date: $("#dateInput").val().trim(),
+            address: $("#addressInput").val().trim(),
+            city: $("#cityInput").val().trim(),
+            state: $("#stateInput").val().trim(),
+            zip: $("#zipInput").val().trim(),
+            patient_fName: pFName,
+            patient_lName: pLName,
+        };
+
+        $.ajax("/api/record/" + pID, {
+            type: "POST",
+            data: newRecord
+        }).then(function (result) {
+            console.log(result);
+            location.reload();
+        });
+
+    });
+
+
+    //END OF CREATE RECORDS
 });

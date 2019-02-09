@@ -72,7 +72,7 @@
           <p class="uk-text-meta uk-margin-remove-top">Check your messages</p>
         </div>
         <div class="uk-card-footer">
-          <a href="#modal-overflow" uk-toggle class="uk-button uk-button-text" class="msgBtn">Reply Now</a>
+          <a href="#modal-overflow" uk-toggle class="uk-button uk-button-text" id="msgBtn">Reply Now</a>
         </div>
       </div>
     </div>
@@ -139,19 +139,25 @@
 </div>
 
 <!-- Messaging Modal -->
-<div id="modal-overflow" uk-modal>
-  <div class="uk-modal-dialog">
-    <button class="uk-modal-close-default" type="button" uk-close></button>
-    <div class="uk-modal-header" id="msgModalTitle">
+  <div id="modal-overflow" uk-modal>
+    <div class="uk-modal-dialog">
 
-    </div>
-    <div class="uk-modal-body" id="msgModalBody">
-      <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider>
+      <button class="uk-modal-close-default" type="button" uk-close></button>
 
+      <div class="uk-modal-header" id="msgModalTitle">
+
+      </div>
+
+      <div class="uk-modal-body" id="msgModalBody">
+
+        <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider>
+
+
+        </div>
       </div>
     </div>
   </div>
-</div>
+
 
 <!-- Med Record -->
 <div id="medRec" uk-modal>

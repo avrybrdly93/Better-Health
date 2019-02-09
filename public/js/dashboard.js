@@ -5,7 +5,6 @@ $(document).ready(function () {
   var docTitle;
   var docSP;
 
-  //MESSAGES 
   //MESSAGES
   $("#msgBtn").on("click", function () {
     $.ajax({
@@ -15,22 +14,20 @@ $(document).ready(function () {
       //console.log(result);
       $("#msgModalBody").empty();
       $("#msgModalTitle").empty();
-      $("#msgModalTitle").append("<h2 class class='uk-modal-title'>Message Our Staff</h2>");
+      $("#msgModalTitle").append("<h2 class class='uk-modal-title'>Messages</h2>");
 
       var someMSpace = $("<div>");
 
       if (result.length > 0) {
         for (var i = 0; i < result.length; i++) {
           var someMDiv = $("<div>");
-          $(someMDiv).append("<p>" + result[i].last_name + ", " + result[i].first_name + " - " + result[i].title + " - " + result[i].specialization);
-          var newMBtn = $("<button>Message Me</button>");
+          $(someMDiv).append("<p>" + result[i].last_name + ", " + result[i].first_name);
+          var newMBtn = $("<button>Message</button>");
 
           $(newMBtn).attr({
             "data-id": result[i].uuid,
             "data-fName": result[i].first_name,
             "data-lName": result[i].last_name,
-            "data-title": result[i].title,
-            "data-specialization": result[i].specialization
           });
 
           $(newMBtn).addClass("staffMsgMe");
@@ -50,18 +47,14 @@ $(document).ready(function () {
     docFName = $(this).attr("data-fName");
     docLName = $(this).attr("data-lName");
     docID = $(this).attr("data-id");
-    docTitle = $(this).attr("data-title");
-    // console.log(docID);
-    // console.log(docFName);
-    // console.log(docLName);
+
     $("#msgModalBody").empty();
     $("#msgModalTitle").empty();
 
     $("#msgModalTitle").append("<h2 class='uk-modal-title'>" + docFName + " " + docLName + "</h2>");
-    $("#msgModalTitle").append("<small>" + docTitle + "</small>");
     getMessages();
 
-  });
+});
 
   function getMessages() {
     $.ajax({
@@ -72,7 +65,7 @@ $(document).ready(function () {
       //console.log("RESULT: "+result);
       if (result.length > 0) {
         for (var i = 0; i < result.length; i++) {
-          console.log(result[i]);
+          //console.log(result[i]);
           $("#msgModalBody").append("<p>" + result[i].sender_fName + " - " + result[i].body + "</p>");
           $("#msgModalBody").append("<small>Sent at: " + result[i].createdAt + "</small><br>");
         }

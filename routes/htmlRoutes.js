@@ -208,11 +208,12 @@ module.exports = function (app) {
     passport.authenticate('local-login-patients', function (err, usr, info) {
       console.log("\n\n\n########userrrr", usr)
       if (err) {
+        res.status(401);
         console.log("passport err", err);
         return next(err); // will generate a 500 error
       }
       if (!usr) {
-
+        res.status(401);
         return res.send({ success: false, message: 'Authentication Failed' });
       }
       req.login(usr, loginErr => {
@@ -263,11 +264,12 @@ module.exports = function (app) {
     passport.authenticate('local-login-staff', function (err, usr, info) {
       console.log("\n\n\n########userrrr", usr)
       if (err) {
+        res.status(401);
         console.log("passport err", err);
         return next(err); // will generate a 500 error
       }
       if (!usr) {
-
+        res.status(401);
         return res.send({ success: false, message: 'Authentication Failed' });
       }
       req.login(usr, loginErr => {

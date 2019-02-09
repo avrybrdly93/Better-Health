@@ -32,7 +32,7 @@ $(document).ready(function () {
                       "data-id": result[i].uuid,
                       "data-fName": result[i].first_name,
                       "data-lName": result[i].last_name,
-                       "class": "btn"
+                       "class": " btn uk-button uk-button-primary uk-button-large uk-height-match"
                   });
   
                   newBtn.addClass("staffBookMe");
@@ -59,15 +59,16 @@ $(document).ready(function () {
 
         $("#bookModalBody").empty();
 
-        $("#bookModalBody").append("<p>Fill out the form below to book your next appointment.</p>");
+        $("#bookModalBody").append("<h4>Fill out the form below to book your next appointment.</h4><br>");
 
         var newForm = $("<form>").addClass("uk-grid-small");
 
         // This is for the date-picker
-        $(newForm).append("Date: <input type='text' id='dateField'>  ");
-        $(newForm).append("Time: <input type='text' id='timeField'><br><br>");
-        $(newForm).append("Reason: <input type='text' id='reasonField'><br>");
-        $(newForm).append("<br><button id='bookFormSubmit'>Submit</button>");
+        $(newForm).append("Date:   <input type='text' class='uk-input'   id='dateField'><br><br>");  
+      
+        $(newForm).append("Time:   <input type='text' class='uk-input' id='timeField'><br><br>");
+        $(newForm).append("Reason: <input type='text' class='uk-input' id='reasonField'><br><br>");
+        $(newForm).append("<br><button class='btn uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom' id='bookFormSubmit'>Submit</button>");
 
         $("#bookModalBody").append(newForm);
 

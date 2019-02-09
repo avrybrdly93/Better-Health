@@ -96,7 +96,6 @@ $(document).ready(function () {
             data: newAppt
         }).then(function (result) {
             console.log(result);
-
         });
 
         $("#bookModalBody").empty();
@@ -127,6 +126,9 @@ $(document).ready(function () {
         }
 
     });
+    
+   
+
 
 
 

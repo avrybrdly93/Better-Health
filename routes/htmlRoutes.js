@@ -11,10 +11,10 @@ module.exports = function (app) {
         type: req.session.passport.user.type
       }
 
-      if(req.session.passport.user.type==="Staff"){
+      if (req.session.passport.user.type === "Staff") {
         res.redirect("/staff/dashboard");
       }
-      else{
+      else {
         res.redirect("/dashboard")
       }
     }
@@ -38,7 +38,7 @@ module.exports = function (app) {
   app.get("/portal", function (req, res) {
     if (req.isAuthenticated()) {
 
-      if(req.session.passport.user.type==="Staff"){
+      if (req.session.passport.user.type === "Staff") {
         res.redirect("/staff/dashboard");
       }
       else {
@@ -50,12 +50,29 @@ module.exports = function (app) {
     }
   });
 
+  //PROFILE GET ROUTE
   app.get("/profile", function (req, res) {
     res.render("profile");
   });
 
-  app.get("/choice", function (req, res) {
-    res.render("/holistic/choice");
+  //HOLISTIC PAGES GET ROUTES
+  app.get("/holistic", function (req, res) {
+    res.render("holistic/choice");
+  });
+  app.get("/holistic/mornings", function (req, res) {
+    res.render("holistic/mornings");
+  });
+  app.get("/holistic/relief", function (req, res) {
+    res.render("holistic/relief");
+  });
+  app.get("/holistic/health", function (req, res) {
+    res.render("holistic/health");
+  });
+  app.get("/holistic/affirmation", function (req, res) {
+    res.render("holistic/affirmation");
+  });
+  app.get("/holistic/bedtime", function (req, res) {
+    res.render("holistic/bedtime");
   });
 
   app.get("/dashboard", function (req, res) {
@@ -63,10 +80,10 @@ module.exports = function (app) {
 
     if (req.isAuthenticated()) {
 
-      if(req.session.passport.user.type==="Staff"){
+      if (req.session.passport.user.type === "Staff") {
         res.redirect("/staff/dashboard");
       }
-      else{
+      else {
         db.Patient.findOne({
           where: {
             uuid: req.session.passport.user.uuid
@@ -117,10 +134,10 @@ module.exports = function (app) {
   //STAFF GET ROUTES
   app.get("/staff/signup", function (req, res) {
     if (req.isAuthenticated()) {
-      if(req.session.passport.user.type==="Staff"){
+      if (req.session.passport.user.type === "Staff") {
         res.redirect("/staff/dashboard");
       }
-      else{
+      else {
         res.redirect("/dashboard");
       }
     }
@@ -131,10 +148,10 @@ module.exports = function (app) {
 
   app.get("/staff/login", function (req, res) {
     if (req.isAuthenticated()) {
-      if(req.session.passport.user.type==="Staff"){
+      if (req.session.passport.user.type === "Staff") {
         res.redirect("/staff/dashboard");
       }
-      else{
+      else {
         res.redirect("/dashboard");
       }
     }
@@ -147,7 +164,7 @@ module.exports = function (app) {
     console.log("%%%%%%%%% is logged in: " + req.isAuthenticated());
     if (req.isAuthenticated()) {
 
-      if(req.session.passport.user.type==="Staff"){
+      if (req.session.passport.user.type === "Staff") {
         db.Staff.findOne({
           where: {
             uuid: req.session.passport.user.uuid
@@ -161,7 +178,7 @@ module.exports = function (app) {
           res.render("staffdashboard");
         });
       }
-      else{
+      else {
         res.redirect("/dashboard");
       }
     }

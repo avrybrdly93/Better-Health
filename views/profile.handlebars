@@ -2,7 +2,7 @@
     <nav class="uk-navbar-container uk-margin" uk-navbar>
         <div class="uk-navbar-left">
 
-            <a class="uk-navbar-item uk-logo" href="#">betterHealth</a>
+            <a class="uk-navbar-item uk-logo" id="logo" href="/dashboard">betterHealth</a>
 
             <ul class="uk-navbar-nav">
                 <li>
@@ -11,13 +11,6 @@
                     </a>
                 </li>
             </ul>
-
-            <div class="uk-navbar-right">
-                <form class="uk-search uk-search-default">
-                    <span class="uk-search-icon-flip" uk-search-icon></span>
-                    <input class="uk-search-input" type="search" placeholder="Search...">
-                </form>
-            </div>
 
         </div>
         <div class="uk-navbar-right">
@@ -28,10 +21,11 @@
                     <div uk-dropdown>
                         <ul class="uk-nav uk-dropdown-nav">
                             <li class="uk-nav-header">Quick Menu</li>
-                            <li><a href="#">View Messages</a></li>
-                            <li><a href="#">Holistics</a></li>
+                            <li><a href="#modal-overflow" uk-toggle>View Messages</a></li>
+                            <li><a href="/holistic">Holistic</a></li>
                             <li class="uk-nav-divider"></li>
                             <li><a href="/profile">Settings</a></li>
+                            <li><a href="/logout">Logout</a></li>
                         </ul>
                     </div>
                 </div>
@@ -45,22 +39,20 @@
     <div class="uk-offcanvas-bar">
 
         <ul class="uk-nav uk-nav-default">
-            <li class="uk-parent">
-            <li class="uk-active"><a href="/dashboard">Dashboard</a></li>
-            </li>
+            <li><a href="/dashboard">Dashboard</a></li>
             <li class="uk-nav-header">More</li>
-            <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: heart"></span> Holistics</a></li>
-            <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: commenting"></span> Messages</a></li>
+            <li><a href="/holistic"><span class="uk-margin-small-right" uk-icon="icon: heart"></span> Holistics</a></li>
+            <li><a href="#modal-overflow" uk-toggle><span class="uk-margin-small-right" uk-icon="icon: commenting"></span>
+                    Messages</a></li>
             <li class="uk-nav-divider"></li>
             <li><a href="/profile" class="usrNav"><img class="uk-border-circle" width="40" height="40" src="https://bestoftool.com/wp-content/uploads/2018/06/Anonymous-Whatsapp-profile-picture-1.jpg">
                     Profile</a></li>
         </ul>
-
     </div>
 </div>
 
 <div class="container-fluid">
-    <h1 class="profile">Profile</h1>
+    <h1 id="profile">Profile</h1>
     <div class="row">
         <div class="col-xl-3 col-sm-0 col-md-0"></div>
         <div class="col-xl-6 col-sm-6 col-md-12">
@@ -71,41 +63,9 @@
                             width="80" height="80" alt="">
                     </div>
                     <div class="uk-width-expand">
-                        <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="#">John Appleseed</a></h4>
-                        <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
-                            <li><a href="#" class="userAge">42 Years Old</a></li>
-                            <li><a href="" uk-toggle="target: #update-bio">Edit</a></li>
-                        </ul>
-                        <!-- This is the modal -->
-                        <div id="update-bio" uk-modal>
-                            <div class="uk-modal-dialog uk-modal-body">
-                                <h2 class="uk-modal-title">Bio</h2>
-                                <div class="uk-margin">
-                                    <textarea class="uk-textarea" rows="5" placeholder="Update your bio"></textarea>
-                                </div>
-                                <div class="uk-margin" uk-margin>
-                                    <p>Upload profile picture</p>
-                                    <div uk-form-custom="target: true">
-                                        <input type="file">
-                                        <input class="uk-input uk-form-width-medium" type="text" placeholder="Select file"
-                                            disabled>
-                                    </div>
-                                    <button class="uk-button uk-button-default">Submit</button>
-                                </div>
-                                <p class="uk-text-right">
-                                    <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
-                                    <button class="uk-button uk-button-primary" type="button">Save</button>
-                                </p>
-                            </div>
-                        </div>
+                        <h2 class="uk-margin-remove">John Appleseed</h2>
                     </div>
                 </header>
-                <div class="uk-comment-body">
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
-                        ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
-                        dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
-                        sit amet.</p>
-                </div>
             </article>
 
             <br>
@@ -114,105 +74,207 @@
                 <div class="uk-comment-body">
                     <dl class="uk-description-list uk-description-list-divider">
                         <dt>Username:</dt>
-                        <dd>@joseed
-                            <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
-                                <li><a href="" uk-toggle="target: #update-username">Edit</a></li>
-                            </ul>
-                            <!-- This is the modal -->
-                            <div id="update-username" uk-modal>
-                                <div class="uk-modal-dialog uk-modal-body">
-                                    <h2 class="uk-modal-title">Username</h2>
-                                    <div class="uk-margin">
-                                        <textarea class="uk-textarea" rows="5" placeholder="Update your username"></textarea>
-                                    </div>
-                                    <p class="uk-text-right">
-                                        <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
-                                        <button class="uk-button uk-button-primary" type="button">Save</button>
-                                    </p>
-                                </div>
-                            </div>
-                        </dd>
-                        <dt>Password:</dt>
-                        <dd>*************
-                            <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
-                                <li><a href="" uk-toggle="target: #update-password">Edit</a></li>
-                            </ul>
-                            <!-- This is the modal -->
-                            <div id="update-password" uk-modal>
-                                <div class="uk-modal-dialog uk-modal-body">
-                                    <h2 class="uk-modal-title">Password</h2>
-                                    <div class="uk-margin">
-                                        <textarea class="uk-textarea" rows="5" placeholder="Update your password"></textarea>
-                                    </div>
-                                    <p class="uk-text-right">
-                                        <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
-                                        <button class="uk-button uk-button-primary" type="button">Save</button>
-                                    </p>
-                                </div>
-                            </div>
-                        </dd>
+                        <dd>@joseed</dd>
+                        <dd>*************</dd>
                         <dt>Email:</dt>
-                        <dd>johnnyappleseed@gmail.com
-                            <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
-                                <li><a href="" uk-toggle="target: #update-email">Edit</a></li>
-                            </ul>
-                            <!-- This is the modal -->
-                            <div id="update-email" uk-modal>
-                                <div class="uk-modal-dialog uk-modal-body">
-                                    <h2 class="uk-modal-title">Email</h2>
-                                    <div class="uk-margin">
-                                        <textarea class="uk-textarea" rows="5" placeholder="Update your email"></textarea>
-                                    </div>
-                                    <p class="uk-text-right">
-                                        <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
-                                        <button class="uk-button uk-button-primary" type="button">Save</button>
-                                    </p>
-                                </div>
-                            </div>
-                        </dd>
+                        <dd>johnnyappleseed@gmail.com</dd>
                         <dt>Phone:</dt>
-                        <dd>(909) 555-5555
-                            <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
-                                <li><a href="" uk-toggle="target: #update-phone">Edit</a></li>
-                            </ul>
-                            <!-- This is the modal -->
-                            <div id="update-phone" uk-modal>
-                                <div class="uk-modal-dialog uk-modal-body">
-                                    <h2 class="uk-modal-title">Phone</h2>
-                                    <div class="uk-margin">
-                                        <textarea class="uk-textarea" rows="5" placeholder="Update your phone"></textarea>
-                                    </div>
-                                    <p class="uk-text-right">
-                                        <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
-                                        <button class="uk-button uk-button-primary" type="button">Save</button>
-                                    </p>
-                                </div>
-                            </div>
-                        </dd>
+                        <dd>(909) 555-5555</dd>
                         <dt>Address:</dt>
-                        <dd>123 Medicine Cir., Riverside, CA
-                            <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
-                                <li><a href="" uk-toggle="target: #update-address">Edit</a></li>
-                            </ul>
-                            <!-- This is the modal -->
-                            <div id="update-phone" uk-modal>
-                                <div class="uk-modal-dialog uk-modal-body">
-                                    <h2 class="uk-modal-title">Address</h2>
-                                    <div class="uk-margin">
-                                        <textarea class="uk-textarea" rows="5" placeholder="Update your address"></textarea>
-                                    </div>
-                                    <p class="uk-text-right">
-                                        <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
-                                        <button class="uk-button uk-button-primary" type="button">Save</button>
-                                    </p>
-                                </div>
-                            </div>
-                        </dd>
+                        <dd>123 Medicine Cir., Riverside, CA</dd>
                     </dl>
                 </div>
             </article>
         </div>
         <div class="col-xl-3 col-sm-0 col-md-0"></div>
+    </div>
+
+    <!-- Messaging Modal -->
+    <div id="modal-overflow" uk-modal>
+        <div class="uk-modal-dialog">
+
+            <button class="uk-modal-close-default" type="button" uk-close></button>
+
+            <div class="uk-modal-header">
+                <h2 class="uk-modal-title">Messages</h2>
+            </div>
+
+            <div class="uk-modal-body">
+
+                <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider>
+
+                    <ul class="uk-slider-items uk-grid">
+                        <li>
+                            <a href="" uk-toggle="target: #msg"><img class="uk-border-circle" width="120" height="120"
+                                    src="https://www.anthonygold.co.uk/wp-content/uploads/2017/06/Lauren-McKie-BW-3-cropped.jpg"></a>
+                        </li>
+                        <li>
+                            <a href="" uk-toggle="target: #msg"><img class="uk-border-circle" width="120" height="120"
+                                    src="https://www.faceplusplus.com/images/comparing/left_pic_three.jpg"></a>
+                        </li>
+                        <li>
+                            <a href="" uk-toggle="target: #msg"><img class="uk-border-circle" width="120" height="120"
+                                    src="https://do7nu6l5erzu3.cloudfront.net/wp-content/uploads/2018/02/06121555/Final_McCarthy.Steve_6170.jpg"></a>
+                        </li>
+                        <li>
+                            <a href="" uk-toggle="target: #msg"><img class="uk-border-circle" width="120" height="120"
+                                    src="https://static1.squarespace.com/static/557ad98ae4b0ab127fdc5578/55db0d53e4b0d2c6e6e49370/55db0d54e4b035628e25ccee/1440419770528/celeb+junot+diaz.jpg?format=500w"></a>
+
+                        </li>
+                        <li>
+                            <a href="" uk-toggle="target: #msg"><img class="uk-border-circle" width="120" height="120"
+                                    src="https://static1.squarespace.com/static/557ad98ae4b0ab127fdc5578/55db0d53e4b0d2c6e6e49370/55db0d54e4b01430023945c0/1440419733335/celeb+aziz+ansari.jpg?format=500w"></a>
+
+                        </li>
+                        <li>
+                            <a href="" uk-toggle="target: #msg"><img class="uk-border-circle" width="120" height="120"
+                                    src="https://content.thriveglobal.com/wp-content/uploads/2018/11/145tjWrgMIkGlCER4qmIbpw.jpeg"></a>
+
+                        </li>
+                        <li>
+                            <a href="" uk-toggle="target: #msg"><img class="uk-border-circle" width="120" height="120"
+                                    src="https://www.landfood.ubc.ca/files/2018/04/sumeet-gulati-square-crop.jpg"></a>
+
+                        </li>
+                        <li>
+                            <a href="" uk-toggle="target: #msg"><img class="uk-border-circle" width="120" height="120"
+                                    src="https://www.thepolyglotgroup.com.au/wp-content/uploads/2018/05/Noemie.jpg"></a>
+
+                        </li>
+                        <li>
+                            <a href="" uk-toggle="target: #msg"><img class="uk-border-circle" width="120" height="120"
+                                    src="https://66.media.tumblr.com/2127e50b59be022677be2c64986a2d79/tumblr_inline_oh8lj0LaG81r5wc9c_500.jpg"></a>
+
+                        </li>
+                        <li>
+                            <a href="" uk-toggle="target: #msg"><img class="uk-border-circle" width="120" height="120"
+                                    src="https://www.seattleu.edu/academics/DoQuyenPortrait_500x500.jpg"></a>
+
+                        </li>
+                    </ul>
+
+                    <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous
+                        uk-slider-item="previous"></a>
+                    <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next
+                        uk-slider-item="next"></a>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="uk-modal-body" uk-overflow-auto>
+                    <div class="col-xl-12 col-md-12 col-sm-12">
+                        <ul class="uk-comment-list" id="msg">
+                            <li>
+                                <article class="uk-comment uk-visible-toggle" tabindex="-1">
+                                    <header class="uk-comment-header uk-position-relative">
+                                        <div class="uk-grid-medium uk-flex-middle" uk-grid>
+                                            <div class="uk-width-auto">
+                                                <img class="uk-comment-avatar" src="https://www.anthonygold.co.uk/wp-content/uploads/2017/06/Lauren-McKie-BW-3-cropped.jpg"
+                                                    width="80" height="80" alt="">
+                                            </div>
+                                            <div class="uk-width-expand">
+                                                <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset"
+                                                        href="#">Dr.
+                                                        Smith</a></h4>
+                                                <p class="uk-comment-meta uk-margin-remove-top"><a class="uk-link-reset"
+                                                        href="#">12
+                                                        days ago</a></p>
+                                            </div>
+                                        </div>
+                                        <div class="uk-position-top-right uk-position-small uk-hidden-hover"><a class="uk-link-muted"
+                                                href="#reply">Reply</a></div>
+                                    </header>
+                                    <div class="uk-comment-body">
+                                        <p>What's up?</p>
+                                    </div>
+                                </article>
+                                <ul>
+                                    <li>
+                                        <article class="uk-comment uk-comment-primary uk-visible-toggle" tabindex="-1">
+                                            <header class="uk-comment-header uk-position-relative">
+                                                <div class="uk-grid-medium uk-flex-middle" uk-grid>
+                                                    <div class="uk-width-auto">
+                                                        <img class="uk-comment-avatar" src="https://bestoftool.com/wp-content/uploads/2018/06/Anonymous-Whatsapp-profile-picture-1.jpg"
+                                                            width="80" height="80" alt="">
+                                                    </div>
+                                                    <div class="uk-width-expand">
+                                                        <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset"
+                                                                href="#">Me</a></h4>
+                                                        <p class="uk-comment-meta uk-margin-remove-top"><a class="uk-link-reset"
+                                                                href="#">12
+                                                                days ago</a></p>
+                                                    </div>
+                                                </div>
+                                                <div class="uk-position-top-right uk-position-small uk-hidden-hover"><a
+                                                        class="uk-link-muted" href="#reply">Reply</a></div>
+                                            </header>
+                                            <div class="uk-comment-body">
+                                                <p>Hey, Doc.</p>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                        <article class="uk-comment uk-visible-toggle" tabindex="-1">
+                                            <header class="uk-comment-header uk-position-relative">
+                                                <div class="uk-grid-medium uk-flex-middle" uk-grid>
+                                                    <div class="uk-width-auto">
+                                                        <img class="uk-comment-avatar" src="https://www.anthonygold.co.uk/wp-content/uploads/2017/06/Lauren-McKie-BW-3-cropped.jpg"
+                                                            width="80" height="80" alt="">
+                                                    </div>
+                                                    <div class="uk-width-expand">
+                                                        <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset"
+                                                                href="#">Dr.
+                                                                Smith</a></h4>
+                                                        <p class="uk-comment-meta uk-margin-remove-top"><a class="uk-link-reset"
+                                                                href="#">12
+                                                                days ago</a></p>
+                                                    </div>
+                                                </div>
+                                                <div class="uk-position-top-right uk-position-small uk-hidden-hover"><a
+                                                        class="uk-link-muted" href="#reply">Reply</a></div>
+                                            </header>
+                                            <div class="uk-comment-body">
+                                                <p>Your updated X-Rays came in today. Book an appointment so we can
+                                                    talk
+                                                    more
+                                                    in depth.</p>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                        <article class="uk-comment uk-comment-primary uk-visible-toggle" tabindex="-1">
+                                            <header class="uk-comment-header uk-position-relative">
+                                                <div class="uk-grid-medium uk-flex-middle" uk-grid>
+                                                    <div class="uk-width-auto">
+                                                        <img class="uk-comment-avatar" src="https://bestoftool.com/wp-content/uploads/2018/06/Anonymous-Whatsapp-profile-picture-1.jpg"
+                                                            width="80" height="80" alt="">
+                                                    </div>
+                                                    <div class="uk-width-expand">
+                                                        <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset"
+                                                                href="#">Me</a></h4>
+                                                        <p class="uk-comment-meta uk-margin-remove-top"><a class="uk-link-reset"
+                                                                href="#">12
+                                                                days ago</a></p>
+                                                    </div>
+                                                </div>
+                                                <div class="uk-position-top-right uk-position-small uk-hidden-hover"><a
+                                                        class="uk-link-muted" href="#reply">Reply</a></div>
+                                            </header>
+                                            <div class="uk-comment-body">
+                                                <p>Ok, thank you for the update.</p>
+                                            </div>
+                                        </article>
+                                    </li>
+                                </ul>
+                            </li>
+                            <form class="uk-search uk-search-navbar">
+                                <input class="uk-search-input" type="search" placeholder="Reply...">
+                            </form>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

@@ -10,12 +10,44 @@
     margin-right: 10%;
     opacity: 0.8;
 }
-   </style>
+
+
+.video-responsive{
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+}
+.video-responsive iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+}
+
+.nav {
+    margin: 8px;
+}
+
+</style>
+<div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
+<nav class="uk-navbar-container" uk-navbar="dropbar: true;">
+<p class="nav">
+<p class="nav"> <a href="/" uk-icon="icon: home; ratio: 2" ></a> </p>
+<p class="nav"> <a href="/dashboard" uk-icon="icon: list; ratio: 2"></a></p>
+<p class="nav"> <a href="/holistic" uk-icon="icon: heart; ratio: 2"></a></p>
+</p>
+</nav>
+
+</div> 
+
+   <div class="col xl-3 col-dm-6 mb-3">
     <div class="background">
         <div class="transbox">
         <p>
 
-<div class="uk-animation-toggle" tabindex="0">
+<div class="uk-animation-toggle" tabindex="0"> 
     <div class="uk-card uk-card-default uk-card-body uk-animation-scale-up uk-transform-origin-top-center">
         <p class="uk-text-center">
             <h1>
@@ -23,12 +55,14 @@
             </h1>
         </p>
     </div>
-
+</div>
 
     <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
         <div class="uk-card-media-left uk-cover-container">
-            <iframe width="460" height="215" src="https://www.youtube.com/embed/hylXnJ91O5g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+         <div class="video-responsive">
+            <iframe width="495" height="235" src="https://www.youtube.com/embed/hylXnJ91O5g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>
+        </div>
         </div>
         <div>
             <div class="uk-card-body">
@@ -41,8 +75,10 @@
 
     <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
         <div class="uk-flex-last@s uk-card-media-right uk-cover-container">
-            <iframe width="460" height="215" src="https://www.youtube.com/embed/tEtuqM_skyI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+         <div class="video-responsive">
+            <iframe width="495" height="235" src="https://www.youtube.com/embed/tEtuqM_skyI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>
+        </div>
         </div>
         <div>
             <div class="uk-card-body">
@@ -54,8 +90,10 @@
 
     <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
         <div class="uk-card-media-left uk-cover-container">
-            <iframe width="460" height="255" src="https://www.youtube.com/embed/7QTkBWSQwCM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+         <div class="video-responsive">
+            <iframe width="495" height="235" src="https://www.youtube.com/embed/7QTkBWSQwCM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>
+        </div>
         </div>
         <div>
             <div class="uk-card-body">
@@ -71,8 +109,10 @@
 
     <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
         <div class="uk-flex-last@s uk-card-media-right uk-cover-container">
-            <iframe width="460" height="215" src="https://www.youtube.com/embed/mqVvxSnKBz8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+         <div class="video-responsive">
+            <iframe width="495" height="235" src="https://www.youtube.com/embed/mqVvxSnKBz8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>
+        </div>
         </div>
         <div>
             <div class="uk-card-body">
@@ -85,13 +125,16 @@
 
     <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
         <div class="uk-card-media-left uk-cover-container">
-            <iframe width="460" height="215" src="https://www.youtube.com/embed/KmTXJ7WtC1E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+         <div class="video-responsive">
+            <iframe width="495" height="235" src="https://www.youtube.com/embed/KmTXJ7WtC1E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>
+        </div>
         </div>
         <div>
             <div class="uk-card-body">
                 <h3 class="uk-card-title">Deep Sleep Meditation with Affirmations: Happiness, Self Love & Inner Peace</h3>
                 <p>While you sleep set yourself up with some positive affirmations, we hope that you sow the power and allow yourself to reap the beneifts.</p>
+            </div>
             </div>
         </div>
     </div>

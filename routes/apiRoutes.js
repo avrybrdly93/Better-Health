@@ -7,10 +7,19 @@ module.exports = function (app) {
   //PATIENT GET INFO
   app.get("/api/messages/:id", function (req, res) {
     if (req.isAuthenticated() && req.session.passport.user.type === "Patient") {
+      
+      async function callMsg() {
+        let x;
+        try {
+          x = await db.Message.searchMsgs(req.session.passport.user.uuid,req.params.id);
+        } catch (err) {
+          x = 42;
+        }
+        console.log(x);
+        res.send(x);
+      }
 
-      var x=db.Message.searchMsgs(req.session.passport.user.uuid,req.params.id);
-      console.log(x);
-      res.send(x);
+      callMsg();
     }
     else {
       res.send("Access Not Granted.");

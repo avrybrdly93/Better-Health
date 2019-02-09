@@ -68,9 +68,10 @@ $(document).ready(function () {
       url: "/api/messages/"+docID
     }).then(function(result){
       $("#msgModalBody").empty();
-      console.log("RESULT: "+result);
+      //console.log("RESULT: "+result);
       if(result.length>0){
         for(var i=0;i<result.length;i++){
+          console.log(result[i]);
           $("#msgModalBody").append("<p>"+result[i].sender_fName+" - "+result[i].body+"</p>");
           $("#msgModalBody").append("<small>Sent at: "+result[i].createdAt+"</small><br>");
         } 
@@ -97,7 +98,7 @@ $(document).ready(function () {
       type: "POST",
       data: newMsg
     }).then(function (result) {
-      console.log(result);
+      //console.log(result);
       getMessages();
     });
   });
@@ -176,7 +177,7 @@ $(document).ready(function () {
       staff_lName: docLName,
     };
 
-    console.log(newAppt);
+    //console.log(newAppt);
 
     $.ajax("/api/appointment/" + docID, {
       type: "POST",

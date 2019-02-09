@@ -48,15 +48,19 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     Message.searchMsgs = function (firstID, otherID) {
-        var msgQuery = "SELECT body,createdAt,sender_id,receiver_id FROM messages WHERE (sender_id='" + firstID;
+        var msgQuery = "SELECT * FROM messages WHERE (sender_id='" + firstID;
         msgQuery += "' OR receiver_id='" + firstID + "') AND (sender_id='" + otherID + "' OR receiver_id='" + otherID;
         msgQuery += "') ORDER BY createdAt ASC";
 
-        sequelize.query(msgQuery, { })
-        .then(function(result){
-            //console.log(result[0]);
-            return result[0];
-        });
+        return new Promise(function(resolve, reject) {
+            setTimeout(function() {
+                sequelize.query(msgQuery, { })
+                .then(function(result){
+                    //console.log(result[0]);
+                    resolve(result[0]);
+                });
+            }, 1500);
+        }); 
     }
 
     return Message;

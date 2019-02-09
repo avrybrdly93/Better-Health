@@ -60,7 +60,10 @@
     100% {
       background: red;
     }
-  };
+  }
+
+
+
 </style>
 
 <div class="gradient"></div>
@@ -131,9 +134,9 @@
     <div class="col-xl-3 col-sm-6 mb-3">
       <div class="uk-card uk-card-default">
         <div class="uk-card-body">
-          <p class="uk-text-warning"><span class="uk-margin-small-right" uk-icon="icon: bolt; ratio: 1.5"></span>Book
+          <p class="uk-text-warning" id = "book-card-title"><span class="uk-margin-small-right" uk-icon="icon: bolt; ratio: 1.5"></span>Book
             Appointment:</p>
-          <p class="uk-text-meta uk-margin-remove-top">Book your next apppointment!</p>
+          <p class="uk-text-meta uk-margin-remove-top" id = "book-card-body">Book your next apppointment!</p>
         </div>
         <div class="uk-card-footer">
           <a href="#bookApp" uk-toggle class="uk-button uk-button-text" id="bookBtn">Book now</a>
@@ -224,6 +227,17 @@
         <div class="col-12">
           <div class="uk-card uk-card-default uk-card-body" uk-scrollspy="cls: uk-animation-fade; repeat: true" id="modalBody">
             
+
+        <table class="uk-table uk-table-striped">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Procedure</th>
+              <th>Reason for Procedure</th>
+              <th>Provider</th>
+            </tr>
+          </thead>
+        </table>  
 
             {{!-- <form class="uk-grid-small" uk-grid>
               <div class="uk-width-1-1">

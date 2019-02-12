@@ -73,18 +73,18 @@ $(document).ready(function () {
       //console.log("RESULT: "+result);
       if (result.length > 0) {
         for (var i = 0; i < result.length; i++) {
-          console.log(result[i]);
-          console.log(docID);
+          //console.log(result[i]);
+          //console.log(docID);
           let msgBody = $("<div class='msgBody'>" + "<h5>" + result[i].body + "</h5>" + "</div>");
           $("#msgModalBody").append(msgBody);
           //$("#msgModalBody").append("<small>Sent at: " + result[i].createdAt + "</small><br>");
           if(result[i].receiver_id === docID) {
-            console.log("staff is the receiver" + result[i].body);
+            //console.log("staff is the receiver" + result[i].body);
             msgBody.css({'position': "absolute", 'padding-left': '6px', 'padding-right': '6px', "right": "24px","color": "white", "background-color": "#00FA9A", "border-radius": "4px"});
             $("<br>").appendTo($("#msgModalBody"));
             $("<br>").appendTo($("#msgModalBody"));
            } else {
-             console.log("patient is the receiver " + result[i].body);
+             //console.log("patient is the receiver " + result[i].body);
              msgBody.css({'position':'absolute', 'left':'24px', 'padding-left': '6px', 'padding-right': '6px', "color": 'white', "background-color": "#20B2AA", "border-radius": "4px"});
              $("<br>").appendTo($("#msgModalBody"));
              $("<br>").appendTo($("#msgModalBody"));
@@ -128,7 +128,7 @@ $(document).ready(function () {
       method: "GET",
       url: "/api/staff"
     }).then(function (result) {
-      console.log(result);
+      //console.log(result);
       $("#bookModalBody").empty();
       $("#bookModalTitle").empty();
       $("#bookModalTitle").append("<h2 class class='uk-modal-title'>Select Staff Member</h2>");
@@ -147,14 +147,14 @@ $(document).ready(function () {
           let tableData = $("<td>");
           tableData.appendTo(tableRow);
           tableData.append("<p>" + result[i].last_name + ", " + result[i].first_name + " - " + result[i].title + " - " + result[i].specialization);
-          var newBtn = $("<button>Book Me</button>");
+          var newBtn = $("<button>book</button>");
 
           newBtn.attr({
             "data-id": result[i].uuid,
             "data-fName": result[i].first_name,
             "data-lName": result[i].last_name,
             "class": "btn uk-button uk-button-primary uk-button-large uk-height-match",
-            "style": "margin: 10px;"
+            "style": "margin: 10px; position: absolute; right: 24px; background-color: #a5d6a7"
           });
 
           newBtn.addClass("staffBookMe");
@@ -174,9 +174,9 @@ $(document).ready(function () {
     docLName = $(this).attr("data-lName");
     docID = $(this).attr("data-id");
 
-    console.log(docID);
-    console.log(docFName);
-    console.log(docLName);
+    //console.log(docID);
+    //console.log(docFName);
+    //console.log(docLName);
 
     $("#bookModalTitle").text("Appointment Details");
 
@@ -211,13 +211,13 @@ $(document).ready(function () {
       staff_lName: docLName,
     };
 
-    console.log(newAppt);
+    //console.log(newAppt);
 
     $.ajax("/api/appointment/" + docID, {
       type: "POST",
       data: newAppt
     }).then(function (result) {
-      console.log(result);
+      //console.log(result);
 
     });
 
@@ -242,7 +242,7 @@ $(document).ready(function () {
     method: "GET",
     url: "/api/appointments"
   }).then(function (result) {
-    console.log(result);
+    //console.log(result);
     if (result.length > 0) {
       $("#book-card-title").text(` Next Appointment`)
       $("#book-card-body").text(`${result[result.length - 1].appt_reason} with ${result[result.length - 1].staff_fName} ${result[result.length - 1].staff_lName} at ${result[result.length - 1].time} on ${result[0].date}`)
@@ -257,7 +257,8 @@ $(document).ready(function () {
       url: "/api/records"
     }).then(function (result) {
       var tableBody = $(".recordHistory");
-      $("#recordSheetName").text(result[1] + " " + result[2]);
+      //$("#recordSheetName").text(result[1] + " " + result[2]);
+      //console.log(result);
       //console.log(result);
       if (result[0].length > 0) {
         for (let i = 0; i < result[0].length; i++) {
@@ -286,7 +287,7 @@ $(document).ready(function () {
         }
       } else {
         $(tableBody).empty();
-        tableBody.append("<p>No Records Found</p>");
+        tableBody.append("<i>No Records Found</i>");
       }
     });
   });

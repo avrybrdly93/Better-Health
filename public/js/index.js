@@ -25,7 +25,7 @@ $(document).ready(function () {
                 }
             }
             else {
-                $("#appBody").append("<p>No Appointments Right Now.</p>");
+                $("#appBody").append("<i>No Appointments Right Now.</i>");
             }
         });
     });
@@ -43,29 +43,54 @@ $(document).ready(function () {
             $("#staffMsgTitle").append("<h2 class class='uk-modal-title'>Messages</h2>");
 
             var someMSpace = $("<div>");
-
             if (result.length > 0) {
+                let table = $("<table>");
+                table.addClass("uk-table uk-table-striped");
+                let tableBody = $("<tbody>");
+                tableBody.appendTo(table);
+                table.appendTo($("#staffMsgBody"));
                 for (var i = 0; i < result.length; i++) {
-                    var someMDiv = $("<div>");
-                    $(someMDiv).append("<p>" + result[i].last_name + ", " + result[i].first_name);
-                    var newMBtn = $("<button>Message</button>");
-
-                    $(newMBtn).attr({
-                        "data-id": result[i].uuid,
-                        "data-fName": result[i].first_name,
-                        "data-lName": result[i].last_name,
-                    });
-
-                    $(newMBtn).addClass("patientMsgMe");
-                    $(someMDiv).append(newMBtn);
-                    $(someMSpace).append(someMDiv);
+                  let tableRow = $("<tr>");
+                  tableRow.appendTo(tableBody);
+                  let tableData = $("<td>");
+                  tableData.appendTo(tableRow);
+                  tableData.append("<p>" + result[i].last_name + ", " + result[i].first_name);
+                  var newBtn = $("<button>Message</button>");
+        
+                  newBtn.attr({
+                    "data-id": result[i].uuid,
+                    "data-fName": result[i].first_name,
+                    "data-lName": result[i].last_name,
+                    "class": "patientMsgMe btn uk-button uk-button-primary uk-button-large uk-height-match",
+                    "style": "margin: 10px; position: absolute; right: 24px; background-color: #a5d6a7"
+                  });
+        
+                  newBtn.addClass("staffMsgMe");
+                  newBtn.appendTo(tableRow);
                 }
+              }
+            // if (result.length > 0) {
+            //     for (var i = 0; i < result.length; i++) {
+            //         var someMDiv = $("<div>");
+            //         $(someMDiv).append("<p>" + result[i].last_name + ", " + result[i].first_name);
+            //         var newMBtn = $("<button>Message</button>");
 
-                $("#staffMsgBody").append(someMSpace);
-            }
-            else {
-                $("#staffMsgBody").append("No Staff Available Right Now. Check Again Soon.");
-            }
+            //         $(newMBtn).attr({
+            //             "data-id": result[i].uuid,
+            //             "data-fName": result[i].first_name,
+            //             "data-lName": result[i].last_name,
+            //         });
+
+            //         $(newMBtn).addClass("patientMsgMe");
+            //         $(someMDiv).append(newMBtn);
+            //         $(someMSpace).append(someMDiv);
+            //     }
+
+            //     $("#staffMsgBody").append(someMSpace);
+            // }
+            // else {
+            //     $("#staffMsgBody").append("No Staff Available Right Now. Check Again Soon.");
+            // }
         });
     });
 
@@ -89,21 +114,52 @@ $(document).ready(function () {
         }).then(function (result) {
             $("#staffMsgBody").empty();
             //console.log("RESULT: "+result);
+
+
+
             if (result.length > 0) {
                 for (var i = 0; i < result.length; i++) {
-                    console.log(result[i]);
-                    $("#staffMsgBody").append("<p>" + result[i].sender_fName + " - " + result[i].body + "</p>");
-                    $("#staffMsgBody").append("<small>Sent at: " + result[i].createdAt + "</small><br>");
+                  //console.log(result[i]);
+                  //console.log(pID);
+                  let msgBody = $("<div class='msgBody'>" + "<h5>" + result[i].body + "</h5>" + "</div>");
+                  $("#staffMsgBody").append(msgBody);
+                  //$("#staffMsgBody").append("<small>Sent at: " + result[i].createdAt + "</small><br>");
+                  if(result[i].receiver_id === pID) {
+                    //console.log("staff is the receiver" + result[i].body);
+                    msgBody.css({'position': "absolute", 'padding-left': '6px', 'padding-right': '6px', "right": "24px","color": "white", "background-color": "#00FA9A", "border-radius": "4px"});
+                    $("<br>").appendTo($("#staffMsgBody"));
+                    $("<br>").appendTo($("#staffMsgBody"));
+                   } else {
+                     //console.log("patient is the receiver " + result[i].body);
+                     msgBody.css({'position':'absolute', 'left':'24px', 'padding-left': '6px', 'padding-right': '6px', "color": 'white', "background-color": "#20B2AA", "border-radius": "4px"});
+                     $("<br>").appendTo($("#staffMsgBody"));
+                     $("<br>").appendTo($("#staffMsgBody"));
+                   }
                 }
-            }
-            else {
-                $("#staffMsgBody").append("No Message History");
-            }
+              }
+            // if (result.length > 0) {
+            //     for (var i = 0; i < result.length; i++) {
+            //         console.log(result[i]);
+            //         $("#staffMsgBody").append("<p>" + result[i].sender_fName + " - " + result[i].body + "</p>");
+            //         $("#staffMsgBody").append("<small>Sent at: " + result[i].createdAt + "</small><br>");
+            //     }
+            // }
+            // else {
+            //     $("#staffMsgBody").append("No Message History");
+            // }
 
             var msgForm = $("<form>").addClass("uk-grid-small");
-            $(msgForm).append("<input type='text' id='msgBody' placeholder='Send Message...'>");
-            $(msgForm).append("<button id='msgSubmitBtn'>Send</button>");
+            let msgDiv = $("<div>").addClass("");
+            let msgInput = $("<input type='text' class='uk-input' id='msgBody' placeholder='Send Message...'>");
+            msgForm.append(msgDiv);
+            $(msgDiv).append(msgInput);
+            $(msgDiv).append("<button id='msgSubmitBtn' class='btn uk-align-right'>Send</button>");
             $("#staffMsgBody").append(msgForm);
+
+            // var msgForm = $("<form>").addClass("uk-grid-small");
+            // $(msgForm).append("<input type='text' id='msgBody' placeholder='Send Message...'>");
+            // $(msgForm).append("<button id='msgSubmitBtn'>Send</button>");
+            // $("#staffMsgBody").append(msgForm);
         });
     }
 
@@ -155,7 +211,8 @@ $(document).ready(function () {
                         "data-id": result[i].uuid,
                         "data-fName": result[i].first_name,
                         "data-lName": result[i].last_name,
-                        "class": "btn"
+                        "class": "btn",
+                        "style": "margin: 10px; position: absolute; right: 24px; background-color: #a5d6a7"
                     });
 
                     newBtn.addClass("patientViewBtn");
@@ -204,7 +261,7 @@ $(document).ready(function () {
                 table.appendTo($("#staffRBody"));
             }
             else {
-                $("#staffRBody").append("No Doctors Available Right Now. Check Again Soon.");
+                $("#staffRBody").append("<i>No records have been posted for this patient.</i>");
             }
         });
 
@@ -241,7 +298,8 @@ $(document).ready(function () {
                         "data-id": result[i].uuid,
                         "data-fName": result[i].first_name,
                         "data-lName": result[i].last_name,
-                        "class": "btn"
+                        "class": "btn",
+                        "style": "margin: 10px; position: absolute; right: 24px; background-color: #a5d6a7"
                     });
 
                     newBtn.addClass("patientCreateBtn");
@@ -262,18 +320,17 @@ $(document).ready(function () {
         pLName = $(this).attr("data-lName");
 
         $("#createBody").empty();
-        var createForm = $("<form>");
+        var createForm = $("<form>").addClass("uk-grid-small");
 
-        $(createForm).append("<input type='text' id='eventInput' placeholder='Medical Record'>");
-        $(createForm).append("<input type='text' id='descInput' placeholder='Description'>");
-        $(createForm).append("<input type='text' id='dateInput' placeholder='Date'>");
-        $(createForm).append("<input type='text' id='locInput' placeholder='Location'>");
-        $(createForm).append("<input type='text' id='addressInput' placeholder='Address'>");
-        $(createForm).append("<input type='text' id='cityInput' placeholder='City'>");
-        $(createForm).append("<input type='text' id='stateInput' placeholder='State'>");
-        $(createForm).append("<input type='text' id='zipInput' placeholder='Zip'><br>");
+        $(createForm).append("<input type='text' class='uk-input' id='eventInput' placeholder='Medical Record'><br><br>");
+        $(createForm).append("<input type='text' class='uk-input' id='descInput' placeholder='Description'><br><br>");
+        $(createForm).append("<input type='text' class='uk-input' id='dateInput' placeholder='Date'><br><br>");
+        $(createForm).append("<input type='text' class='uk-input' id='locInput' placeholder='Location'><br><br>");
+        $(createForm).append("<input type='text' class='uk-input' id='addressInput' placeholder='Address'><br><br>");
+        $(createForm).append("<input type='text' class='uk-input' id='cityInput' placeholder='City'><br><br>");
+        $(createForm).append("<input type='text' class='uk-input' id='stateInput' placeholder='State'><br><br>");
+        $(createForm).append("<input type='text' class='uk-input' id='zipInput' placeholder='Zip'><br><br><br>");
         $(createForm).append("<button id='createRecSubmit' class='btn'>Create Record</button>");
-
         $("#createBody").append(createForm);
     });
 
@@ -295,7 +352,7 @@ $(document).ready(function () {
             type: "POST",
             data: newRecord
         }).then(function (result) {
-            console.log(result);
+            //console.log(result);
             //location.reload();
         });
 

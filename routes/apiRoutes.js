@@ -6,6 +6,7 @@ module.exports = function (app) {
 
   //PATIENT GET INFO
   app.get("/api/messages/:id", function (req, res) {
+
     if (req.isAuthenticated() && req.session.passport.user.type === "Patient") {
       
       async function callMsg() {
@@ -217,12 +218,13 @@ module.exports = function (app) {
         receiver_fName: req.body.receiver_fName,
         receiver_lName: req.body.receiver_lName
       });
-
+      console.log("This is the staff's type" + req.session.passport.user.type);
       res.status(200);
       res.send("Message Sent!");
     }
     else {
-      res.send("Permission Not Given.")
+      res.send("Permission Not Given.");
+      console.log("FAAAAAAAAAAAAILED");
     }
   });
   //END OF STAFF POST INFO

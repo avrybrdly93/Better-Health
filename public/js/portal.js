@@ -1,5 +1,17 @@
 $(document).ready(function () {
 
+  $(function() {
+    $("input").keypress(function (e) {
+        if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+            $('#loginBtn').click();
+            return false;
+        } else {
+            return true;
+        }
+    });
+});
+
+
   // Front-End input validation with parsley
   $('#signup-form').parsley().on('field:validate', function () {
     var ok = $('.parsley-error').length === 0;

@@ -104,7 +104,7 @@ $(document).ready(function () {
       method: "GET",
       url: "/api/staff"
     }).then(function (result) {
-      console.log(result);
+      //console.log(result);
       $("#bookModalBody").empty();
       $("#bookModalTitle").text("Choose Appointment Staff");
 
@@ -149,9 +149,9 @@ $(document).ready(function () {
     docLName = $(this).attr("data-lName");
     docID = $(this).attr("data-id");
 
-    console.log(docID);
-    console.log(docFName);
-    console.log(docLName);
+    //console.log(docID);
+    //console.log(docFName);
+    //console.log(docLName);
 
     $("#bookModalTitle").text("Appointment Details");
 
@@ -186,13 +186,13 @@ $(document).ready(function () {
       staff_lName: docLName,
     };
 
-    console.log(newAppt);
+    //console.log(newAppt);
 
     $.ajax("/api/appointment/" + docID, {
       type: "POST",
       data: newAppt
     }).then(function (result) {
-      console.log(result);
+      //console.log(result);
 
     });
 
@@ -217,7 +217,7 @@ $(document).ready(function () {
     method: "GET",
     url: "/api/appointments"
   }).then(function (result) {
-    console.log(result);
+    //console.log(result);
     if (result.length > 0) {
       $("#book-card-title").text(` Next Appointment`)
       $("#book-card-body").text(`${result[result.length - 1].appt_reason} with ${result[result.length - 1].staff_fName} ${result[result.length - 1].staff_lName} at ${result[result.length - 1].time} on ${result[0].date}`)

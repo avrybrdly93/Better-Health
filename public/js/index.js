@@ -91,7 +91,7 @@ $(document).ready(function () {
             //console.log("RESULT: "+result);
             if (result.length > 0) {
                 for (var i = 0; i < result.length; i++) {
-                    console.log(result[i]);
+                    //console.log(result[i]);
                     $("#staffMsgBody").append("<p>" + result[i].sender_fName + " - " + result[i].body + "</p>");
                     $("#staffMsgBody").append("<small>Sent at: " + result[i].createdAt + "</small><br>");
                 }
@@ -295,7 +295,7 @@ $(document).ready(function () {
             type: "POST",
             data: newRecord
         }).then(function (result) {
-            console.log(result);
+            //console.log(result);
             //location.reload();
         });
 

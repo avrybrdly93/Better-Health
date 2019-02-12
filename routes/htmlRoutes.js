@@ -11,10 +11,10 @@ module.exports = function (app) {
         type: req.session.passport.user.type
       }
 
-      if(req.session.passport.user.type==="Staff"){
+      if (req.session.passport.user.type === "Staff") {
         res.redirect("/staff/dashboard");
       }
-      else{
+      else {
         res.redirect("/dashboard")
       }
     }
@@ -22,7 +22,7 @@ module.exports = function (app) {
       res.render("index");
     }
   });
-
+  
   //LOGOUT FOR BOTH STAFF - PATIENTS
   app.get('/logout', function (req, res) {
     req.session.destroy(function (err) {
@@ -35,19 +35,10 @@ module.exports = function (app) {
   });
 
   //PATIENT GET ROUTES
-  // app.get("/signup", function (req, res) {
-  //   if (req.isAuthenticated()) {
-  //     res.redirect("/dashboard");
-  //   }
-  //   else {
-  //     res.render("signup");
-  //   }
-  // });
-
   app.get("/portal", function (req, res) {
     if (req.isAuthenticated()) {
 
-      if(req.session.passport.user.type==="Staff"){
+      if (req.session.passport.user.type === "Staff") {
         res.redirect("/staff/dashboard");
       }
       else {
@@ -59,19 +50,24 @@ module.exports = function (app) {
     }
   });
 
+  //PROFILE GET ROUTE
   app.get("/profile", function (req, res) {
     res.render("profile");
-  })
+  });
+
+  app.get("/holistic", function (req, res) {
+    res.render("holistic/choice");
+  });
 
   app.get("/dashboard", function (req, res) {
     console.log("%%%%%%%%% is logged in: " + req.isAuthenticated());
 
     if (req.isAuthenticated()) {
 
-      if(req.session.passport.user.type==="Staff"){
+      if (req.session.passport.user.type === "Staff") {
         res.redirect("/staff/dashboard");
       }
-      else{
+      else {
         db.Patient.findOne({
           where: {
             uuid: req.session.passport.user.uuid
@@ -91,7 +87,7 @@ module.exports = function (app) {
         id: null,
         isloggedin: req.isAuthenticated()
       }
-      res.redirect("/login");
+      res.redirect("/portal");
     }
 
   });
@@ -114,15 +110,18 @@ module.exports = function (app) {
     app.get ("/holistic/bedtime", function(req, res) {
     res.render("holistic/bedtime");
   });
+  app.get ("/info", function(req, res) {
+    res.render("info");
+  });
   //END OF PATIENT GET ROUTES
 
   //STAFF GET ROUTES
   app.get("/staff/signup", function (req, res) {
     if (req.isAuthenticated()) {
-      if(req.session.passport.user.type==="Staff"){
+      if (req.session.passport.user.type === "Staff") {
         res.redirect("/staff/dashboard");
       }
-      else{
+      else {
         res.redirect("/dashboard");
       }
     }
@@ -133,10 +132,10 @@ module.exports = function (app) {
 
   app.get("/staff/login", function (req, res) {
     if (req.isAuthenticated()) {
-      if(req.session.passport.user.type==="Staff"){
+      if (req.session.passport.user.type === "Staff") {
         res.redirect("/staff/dashboard");
       }
-      else{
+      else {
         res.redirect("/dashboard");
       }
     }
@@ -149,7 +148,7 @@ module.exports = function (app) {
     console.log("%%%%%%%%% is logged in: " + req.isAuthenticated());
     if (req.isAuthenticated()) {
 
-      if(req.session.passport.user.type==="Staff"){
+      if (req.session.passport.user.type === "Staff") {
         db.Staff.findOne({
           where: {
             uuid: req.session.passport.user.uuid
@@ -163,7 +162,7 @@ module.exports = function (app) {
           res.render("staffdashboard");
         });
       }
-      else{
+      else {
         res.redirect("/dashboard");
       }
     }
@@ -172,7 +171,7 @@ module.exports = function (app) {
         id: null,
         isloggedin: req.isAuthenticated()
       }
-      res.redirect("/admin/login");
+      res.redirect("/staff/login");
     }
 
   });
@@ -214,7 +213,6 @@ module.exports = function (app) {
         return next(err); // will generate a 500 error
       }
       if (!usr) {
-
         return res.send({ success: false, message: 'Authentication Failed' });
       }
       req.login(usr, loginErr => {

@@ -98,7 +98,7 @@ module.exports=function(sequelize,DataTypes){
             type: DataTypes.STRING,
             required: true,
             validate: {
-                len: [8,30]
+                len: [8]
             }
         }
     });
@@ -113,20 +113,8 @@ module.exports=function(sequelize,DataTypes){
     };
 
     Staff.associate = function(models){
-        Staff.hasMany(models.sMessage,{
-            onDelete: "cascade"
-        });
-    };
-
-    Staff.associate = function(models){
         Staff.hasMany(models.Patient,{
             onDelete: "no action",
-        });
-    }
-
-    Staff.associate=function(models){
-        Staff.hasMany(models.sAppt,{
-            onDelete: "cascade"
         });
     }
 

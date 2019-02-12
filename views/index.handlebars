@@ -7,40 +7,71 @@
     background-color: #EBEBEB;
   }
 
+  body::-webkit-scrollbar {
+    width: 0px !important;
+  }
+
   .accent {
-    color: orange;
+    color: orange !important;
   }
 
   .accent:hover {
-    color: grey;
-    text-decoration: transparent;
+    color: #222 !important;
+    text-decoration: transparent !important;
   }
 
-  .link {
+  #portal {
     background-color: orange !important;
     color: white !important;
+  }
+
+  #portal::hover {
+    color: grey !important;
+  }
+
+  #Health {
+    color: #222 !important;
+  }
+
+  #holistic-bg {
+    background-image: url(https://images.pexels.com/photos/66997/pexels-photo-66997.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+    width: 100%;
+    height: 100%;
+    background-position: center bottom;
+  }
+
+  #header {}
+
+  .uk-section {
+    height: 400px !important;
+    font-size: 20px;
+  }
+
+  .footerLinks {
+    float: left !important;
+    margin: 10px !important;
+    text-decoration: transparent !important;
+    color: #222;
   }
 </style>
 
 <div class="uk-position-relative">
-  <img src="https://happytoothnc.com/wp-content/uploads/2017/11/Happy-Tooth-Dental.jpg" alt="">
+  <img src="/images/bg.jpeg" alt="" id='header'>
   <div class="uk-position-top">
     <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
       <div class="uk-navbar-left">
         <ul class="uk-navbar-nav">
-          <li class="uk-active"><a href="/">LOGO_HERE</a></li>
-          <li><a href="#">Item</a></li>
+          <li class="uk-active"><a id='logo' href="/">betterHealth</a></li>
           <li>
-            <a href="#">Parent</a>
+            <a href="#">Menu</a>
             <div class="uk-navbar-dropdown">
               <ul class="uk-nav uk-navbar-dropdown-nav">
-                <li class="uk-active"><a href="#">Active</a></li>
-                <li><a href="#">Item</a></li>
-                <li class="uk-nav-header">Header</li>
-                <li><a href="#">Item</a></li>
-                <li><a href="#">Item</a></li>
+                <li><a href="#About">About betterHealth</a></li>
+                <li class="uk-nav-header">CATEGORIES</li>
+                <li><a href="/holistic">Holistics</a></li>
+                <li><a href="#Health">Features</a></li>
                 <li class="uk-nav-divider"></li>
-                <li><a href="#">Item</a></li>
+                <li><a href="/portal">Sign in</a></li>
               </ul>
             </div>
           </li>
@@ -48,8 +79,8 @@
       </div>
       <div class="uk-navbar-right">
         <ul class="uk-navbar-nav">
-          <li><a class="uk-button uk-button-secondary link" href="/portal">Get Started</a></li>
-          <li><a class="login" href="/portal">Login</a></li>
+          <li><a class="uk-button uk-button-secondary" id="portal" href="/portal">Get Started</a></li>
+          <li><a class="accent" href="/portal">Login</a></li>
         </ul>
       </div>
     </nav>
@@ -58,130 +89,143 @@
 
 <br><br>
 
-<div class="container-fluid">
+<div class="container-fluid About" id="About">
   <div class="row">
-    <div class="col-xl-1"></div>
-    <div class="col-xl-5">
-      <h2>Do more of what you love...</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus euismod velit enim, in tincidunt libero
-        iaculis finibus. Nam id rutrum tortor, in tristique eros. In tristique eros augue, nec ornare felis
-        suscipit a. Sed efficitur tellus eget sapien eleifend aliquam. Cras blandit commodo leo. Curabitur sed
-        imperdiet purus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-        Praesent lobortis eu mi in tempus. Curabitur sed finibus mauris. Fusce aliquet dictum iaculis. Fusce
-        feugiat nec leo nec bibendum.</p>
-      <a href="" class="accent">> look further</a>
-    </div>
-    <div class="col-xl-5">
-      <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="center: true">
-
-        <ul class="uk-slider-items uk-grid">
-          <li class="uk-width-3-4">
-            <div class="uk-panel">
-              <img src="https://images.pexels.com/photos/346885/pexels-photo-346885.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                alt="">
-              <div class="uk-position-center uk-panel">
-                <h1>Explore</h1>
-              </div>
-            </div>
-          </li>
-          <li class="uk-width-3-4">
-            <div class="uk-panel">
-              <img src="https://images.pexels.com/photos/368893/pexels-photo-368893.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                alt="">
-              <div class="uk-position-center uk-panel">
-                <h1>Photography</h1>
-              </div>
-            </div>
-          </li>
-          <li class="uk-width-3-4">
-            <div class="uk-panel">
-              <img src="https://images.pexels.com/photos/1268558/pexels-photo-1268558.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                alt="">
-              <div class="uk-position-center uk-panel">
-                <h1>Food</h1>
-              </div>
-            </div>
-          </li>
-          <li class="uk-width-3-4">
-            <div class="uk-panel">
-              <img src="https://images.pexels.com/photos/219014/pexels-photo-219014.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                alt="">
-              <div class="uk-position-center uk-panel">
-                <h1>Travel</h1>
-              </div>
-            </div>
-          </li>
-          <li class="uk-width-3-4">
-            <div class="uk-panel">
-              <img src="https://images.pexels.com/photos/1257110/pexels-photo-1257110.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                alt="">
-              <div class="uk-position-center uk-panel">
-                <h1>Family</h1>
-              </div>
-            </div>
-          </li>
-        </ul>
-
-        <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous
-          uk-slider-item="previous"></a>
-        <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>
-
+    <div class="col-xl-1 col-md-0 col-sm-0"></div>
+    <div class="col-xl-5 col-md-12 col-sm-12">
+      <div data-aos="fade-right">
+        <h2>Do more of what you love...</h2>
+        <p>betterHealth was designed from the mindful people at Legends of Tomorrow. Intergrating patient with
+          medical
+          staff unique, yet robust way to get the most out of simple yet powerful functionality. Spend less time at
+          the
+          doctors office and more time doing what you love. </p>
+        <a href="/info" class="accent">> look further</a>
       </div>
     </div>
 
-    <div class="col-xl-1"></div>
+    <div class="col-xl-5 col-md-12 col-sm-12">
+      <div data-aos="fade-left">
+        <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="center: true">
+
+          <ul class="uk-slider-items uk-grid">
+            <li class="uk-width-3-4">
+              <div class="uk-panel">
+                <img src="https://images.pexels.com/photos/346885/pexels-photo-346885.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                  alt="">
+                <div class="uk-position-center uk-panel">
+                  <h1>Explore</h1>
+                </div>
+              </div>
+            </li>
+            <li class="uk-width-3-4">
+              <div class="uk-panel">
+                <img src="https://images.pexels.com/photos/368893/pexels-photo-368893.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                  alt="">
+                <div class="uk-position-center uk-panel">
+                  <h1>Photography</h1>
+                </div>
+              </div>
+            </li>
+            <li class="uk-width-3-4">
+              <div class="uk-panel">
+                <img src="https://images.pexels.com/photos/1268558/pexels-photo-1268558.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                  alt="">
+                <div class="uk-position-center uk-panel">
+                  <h1>Food</h1>
+                </div>
+              </div>
+            </li>
+            <li class="uk-width-3-4">
+              <div class="uk-panel">
+                <img src="https://images.pexels.com/photos/219014/pexels-photo-219014.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                  alt="">
+                <div class="uk-position-center uk-panel">
+                  <h1>Travel</h1>
+                </div>
+              </div>
+            </li>
+            <li class="uk-width-3-4">
+              <div class="uk-panel">
+                <img src="https://images.pexels.com/photos/1257110/pexels-photo-1257110.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                  alt="">
+                <div class="uk-position-center uk-panel">
+                  <h1>Family</h1>
+                </div>
+              </div>
+            </li>
+          </ul>
+
+          <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous
+            uk-slider-item="previous"></a>
+          <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next
+            uk-slider-item="next"></a>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-1 col-md-0 col-sm-0"></div>
   </div>
 
   <br><br>
 
-  <h3 class="uk-heading-primary" style="text-align: center;">Better Health Starts Here.</h3>
+  <h3 class="uk-heading-primary health" id="Health" style="text-align: center;">Better Health Starts Here.</h3>
 
   <br><br>
 
   <div class="row">
-    <div class="col-4">
-      <div class="uk-child-width-1-1@m" uk-grid>
-        <div>
-          <div class="uk-card uk-card-default">
-            <div class="uk-card-media-top">
-              <img src="https://images.pexels.com/photos/721166/pexels-photo-721166.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                alt="">
-            </div>
-            <div class="uk-card-body">
-              <h3 class="uk-card-title">Alerts</h3>
-              <p>View instant updates in your medical record, no longer wait until your next visit.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-4">
-      <div class="uk-child-width-1-1@m" uk-grid>
-        <div>
-          <div class="uk-card uk-card-default">
-            <div class="uk-card-body">
-              <h3 class="uk-card-title">Private Messaging</h3>
-              <p>Contact your Physician and Nurse's instantly with our user friendly private messaging.</p>
-            </div>
-            <div class="uk-card-media-bottom">
-              <img src="https://images.pexels.com/photos/1549001/pexels-photo-1549001.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                alt="">
+    <div class="col-xl-4 col-sm-12 col-m-4 col-l-4">
+      <div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1000">
+        <div class="uk-child-width-1-1@m" uk-grid>
+          <div>
+            <div class="uk-card uk-card-default">
+              <div class="uk-card-media-top">
+                <img src="https://images.pexels.com/photos/721166/pexels-photo-721166.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                  alt="">
+              </div>
+              <div class="uk-card-body">
+                <h3 class="uk-card-title">Medical Record</h3>
+                <p>Instantly view updates in your medical record, say goodbye to waiting until your next visit.</p>
+              </div>
             </div>
           </div>
         </div>
+        <br>
       </div>
     </div>
-    <div class="col-4">
-      <div class="uk-child-width-1-1@m" uk-grid>
-        <div>
-          <div class="uk-card uk-card-default">
-            <div class="uk-card-media-top">
-              <img src="https://images.pexels.com/photos/1020323/pexels-photo-1020323.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                alt="">
+    <div class="col-xl-4 col-sm-12 col-m-4 col-l-4">
+      <div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
+        <div class="uk-child-width-1-1@m" uk-grid>
+          <div>
+            <div class="uk-card uk-card-default">
+              <div class="uk-card-body">
+                <h3 class="uk-card-title">Private Messaging</h3>
+                <p>Contact your Physician and Nurse's instantly with our user friendly private messaging.</p>
+              </div>
+              <div class="uk-card-media-bottom">
+                <img src="https://images.pexels.com/photos/1549001/pexels-photo-1549001.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                  alt="">
+              </div>
             </div>
-            <div class="uk-card-body">
-              <h3 class="uk-card-title">Book Appointments</h3>
-              <p>Feeling under the weather? Book your next visit with a few easy clicks.</p>
+          </div>
+        </div>
+        <br>
+      </div>
+    </div>
+    <div class="col-xl-4 col-sm-12 col-m-4 col-l-4">
+      <div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="2000">
+        <div class="uk-child-width-1-1@m" uk-grid>
+          <div>
+            <div class="uk-card uk-card-default">
+              <div class="uk-card-media-top">
+                <img src="https://images.pexels.com/photos/1020323/pexels-photo-1020323.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                  alt="">
+              </div>
+              <div class="uk-card-body">
+                <h3 class="uk-card-title">Book Appointments</h3>
+                <p>Feeling under the weather? Book your next visit with a few easy clicks.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -189,180 +233,79 @@
     </div>
   </div>
 
-  <br>
+  <br><br>
 
   <div class="uk-section-default">
-    <div class="uk-section uk-light uk-background-cover" style="background-image: url(https://images.pexels.com/photos/1313807/pexels-photo-1313807.jpeg?cs=srgb&dl=branch-bright-color-1313807.jpg&fm=jpg)">
-      <div class="uk-container">/
+    <div class="uk-section uk-light uk-background-cover" id='holistic-bg' uk-parallax="bgy: -100">
+      <div class="uk-container holistic">
 
-        <h3>Section with Images</h3>
+        <h2>Explore Holistics</h2>
 
         <div class="uk-grid-match uk-child-width-1-3@m" uk-grid>
           <div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+            <p>betterHealth is all about the you and your well being, explore our holistic
+              site to find Meditation,
+              Healthy Diets, and more.</p>
+            <p uk-margin>
+              <button class="uk-button uk-button-default uk-button-large">Go now!</button>
+            </p>
           </div>
         </div>
 
       </div>
     </div>
   </div>
-  <div class="Team">
-    <h2>Team</h2>
-  </div>
-  <div class="info">
-    <div class="row">
-      <div class="col-3">
-        <div class="uk-child-width-1-1@m" uk-grid>
-          <div>
-            <div class="uk-card uk-card-default">
-              <div class="uk-card-media-top">
-                <img src="../public/images/malePlace.jpg"
-                  alt="">
-              </div>
-              <div class="uk-card-body">
-                <h3 class="uk-card-title">Avery Bradley</h3>
-                <p>Team Leader/ Back End</p>
-              </div>
-            </div>
-          </div>
+  <!-- Site footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-6">
+          <h6>About Legends of Tomorrow</h6>
+          <p class="text-justify"><i>Legends of Tomorrow </i> is a team of bright and determined young programmers
+            ready to get their big break into the coding world. Founded in Riverside, Ca @ UC Riverside Bootcamp
+            Program.
+            We focus on created robust, unique, real world solutions.</p>
+        </div>
+
+        <div class="col-xs-6 col-md-3">
+          <h6>Categories</h6>
+          <ul class="footer-links">
+            <li><a href="#About">About betterHealth</a></li>
+            <li><a href="/holistic">Holistics</a></li>
+            <li><a href="#Health">Features</a></li>
+            <li><a href="/portal">Sign in</a></li>
+          </ul>
+        </div>
+
+        <div class="col-xs-6 col-md-3">
+          <h6>Quick Links</h6>
+          <ul class="footer-links">
+            <li><a href="/info">About Us</a></li>
+            <li><a href="https://privacypolicies.com/privacy/view/01f82c2d5dbd3321526a3538bef28f23">Privacy Policy</a></li>
+          </ul>
         </div>
       </div>
-      <div class="col-3">
-        <div class="uk-child-width-1-1@m" uk-grid>
-          <div>
-            <div class="uk-card uk-card-default">
-              <div class="uk-card-media-top">
-                <img src="../public/images/malePlace.jpg"
-                  alt="">
-              </div>
-              <div class="uk-card-body">
-                <h3 class="uk-card-title">Javier Ventura</h3>
-                <p>Back End Leader.</p>
-              </div>
-            </div>
-          </div>
+      <hr>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-sm-6 col-xs-12">
+          <p class="copyright-text">Copyright &copy; 2019 All Rights Reserved by
+            <a href="mailto: legendsoftomorrowUCR@gmail.com">Legends of Tomorrow</a>.
+          </p>
         </div>
-      </div>
-      <div class="col-3">
-        <div class="uk-child-width-1-1@m" uk-grid>
-          <div>
-            <div class="uk-card uk-card-default">
-              <div class="uk-card-media-top">
-                <img src="https://images.pexels.com/photos/1758144/pexels-photo-1758144.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-                  alt="">
-              </div>
-              <div class="uk-card-body">
-                <h3 class="uk-card-title">Kasey Fillipot</h3>
-                <p>Back End.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-3">
-        <div class="uk-child-width-1-1@m" uk-grid>
-          <div>
-            <div class="uk-card uk-card-default">
-              <div class="uk-card-media-top">
-                <img src="..public/images/femalePlace.jpg"
-                  alt="">
-              </div>
-              <div class="uk-card-body">
-                <h3 class="uk-card-title">Lidia Davidson</h3>
-                <p>Back End.</p>
-              </div>
-            </div>
-          </div>
+
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <ul class="social-icons">
+            <li><a class="linkedin" href="mailto: legendsoftomorrowUCR@gmail.com"><i class="fas fa-envelope"></i></a></li>
+          </ul>
         </div>
       </div>
     </div>
-    <br><br>
-    <div class="row">
-      <div class="col-4">
-        <div class="uk-child-width-1-1@m" uk-grid>
-          <div>
-            <div class="uk-card uk-card-default">
-              <div class="uk-card-media-top">
-                <img src="../public/images/malePlace.jpg"
-                  alt="">
-              </div>
-              <div class="uk-card-body">
-                <h3 class="uk-card-title">Charles Duncan</h3>
-                <p>Front End Leader.</p>
-              </div>
-            </div>
-  </div>
-
-  <!-- Book appointment -->
-  <div class="row">
-    <div class="col-12">
-      <div class="uk-card uk-card-default uk-card-body" uk-scrollspy="cls: uk-animation-slide-left; repeat: true">
-        <h3 class="uk-card-title">Book Appointment</h3>
-        <p>Fill out the form below to book your next appointment.</p>
-
-        <form class="uk-grid-small" uk-grid>
-          <div class="uk-width-1-1">
-            
-          <!-- Date -->
-          <label for="date-form">Pick a Date:</label>
-          <input id="start_dt" class='datepicker' size='11' title='DD-MM-YYYY' />
-          <!-- Time -->
-          <label for="time-form">Pick a Time:</label>
-          <input id="time-form" type="text" name="time-form" value="" aria-live="assertive" autocomplete="off" aria-label="Use up or down arrow keys to change time" required>
-                    
-
-          </div>
-        </div>
-      </div>
-      <div class="col-4">
-        <div class="uk-child-width-1-1@m" uk-grid>
-          <div>
-            <div class="uk-card uk-card-default">
-              <div class="uk-card-media-top">
-                <img src="..public/images/femalePlace.jpg"
-                  alt="">
-              </div>
-              <div class="uk-card-body">
-                <h3 class="uk-card-title">Jazmin Torres</h3>
-                <p>Front End.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-4">
-        <div class="uk-child-width-1-1@m" uk-grid>
-          <div>
-            <div class="uk-card uk-card-default">
-              <div class="uk-card-media-top">
-                <img src="../public/images/malePlace.jpg"
-                  alt="">
-              </div>
-              <div class="uk-card-body">
-                <h3 class="uk-card-title">Ian Campbell</h3>
-                <p>Front End.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="uk-grid-divider uk-child-width-expand@s" uk-grid>
-    <div>
-      Solutions
-      </div>
-    <div>
-      Company
-      </div>
-    <div>
-      Team
-      </div>
-      <div>
-        Support
-      </div>
-</div>
+  </footer>
 </div>
 
-<script src="/js/index.js"></script>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>

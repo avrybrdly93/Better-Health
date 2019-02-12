@@ -8,8 +8,8 @@ module.exports = function (passport) {
     });
 
     passport.deserializeUser(function (obj, done) {
-        switch(obj.type){
-            case "Patient":{
+        switch (obj.type) {
+            case "Patient": {
                 db.Patient.findById(obj.uuid).then(function (user) {
                     if (user) {
                         done(null, user.get());
@@ -21,7 +21,7 @@ module.exports = function (passport) {
 
                 break;
             }
-            case "Staff":{
+            case "Staff": {
                 db.Staff.findById(obj.uuid).then(function (user) {
                     if (user) {
                         done(null, user.get());
@@ -33,23 +33,23 @@ module.exports = function (passport) {
 
                 break;
             }
-            default:{
+            default: {
                 done(new Error('no entity type:', obj.type), null);
                 break;
             }
-            
+
         }
     });
 
     passport.use('local-signup-patients', new localStrategy({
-        usernameField: 'email',
+        usernameField: 'username',
         passwordField: 'account_key',
         passReqToCallback: true
-    }, function (req, email, account_key, done) {
+    }, function (req, username, account_key, done) {
         process.nextTick(function () {
             db.Patient.findOne({
                 where: {
-                    email: email
+                    username: username
                 }
             }).then(function (user, err) {
                 if (err) {
@@ -57,9 +57,9 @@ module.exports = function (passport) {
                     return done(err);
                 }
                 if (user) {
-                    console.log('signupMessage', 'That email is already taken.');
-                    return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
-                } 
+                    console.log('signupMessage', 'That username or email is already taken.');
+                    return done(null, false, req.flash('signupMessage', 'That username or email is already taken.'));
+                }
                 else {
                     db.Patient.create({
                         username: req.body.username,
@@ -83,38 +83,44 @@ module.exports = function (passport) {
     }));
 
     passport.use('local-login-patients', new localStrategy({
-        usernameField: 'email',
-        passwordField : 'account_key',
-        passReqToCallback : true 
-    },function(req, email, account_key, done) { 
+        usernameField: 'username',
+        passwordField: 'account_key',
+        passReqToCallback: true
+    }, function (req, username, account_key, done) {
         db.Patient.findOne({
             where: {
-                email: req.body.email 
+                username: req.body.username
             }
         }).then(function(user, err) {
-            (!user.validPassword(req.body.account_key));
-            if (!user){
-                console.log("No User Found");
-                return done(null, false, req.flash('loginMessage', 'No user found.')); 
+            try{
+                (!user.validPassword(req.body.account_key));
             }
-            if (user && !user.validPassword(req.body.account_key)){
-                return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.')); 
+            catch(err){
+                console.log(err);
             }
             
+            if (!user){
+                console.log("No User Found");
+                return done(null, false, req.flash('loginMessage', 'No user found.'));
+            }
+            if (user && !user.validPassword(req.body.account_key)) {
+                return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.'));
+            }
+
             return done(null, user);
         });
     }));
 
 
     passport.use('local-signup-staff', new localStrategy({
-        usernameField: 'email',
+        usernameField: 'username',
         passwordField: 'account_key',
         passReqToCallback: true
-    }, function (req, email, account_key, done) {
+    }, function (req, username, account_key, done) {
         process.nextTick(function () {
             db.Staff.findOne({
                 where: {
-                    email: email
+                    username: username
                 }
             }).then(function (user, err) {
                 if (err) {
@@ -122,9 +128,9 @@ module.exports = function (passport) {
                     return done(err);
                 }
                 if (user) {
-                    console.log('signupMessage', 'That email is already taken.');
-                    return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
-                } 
+                    console.log('signupMessage', 'That username or email is already taken.');
+                    return done(null, false, req.flash('signupMessage', 'That username or email is already taken.'));
+                }
                 else {
                     db.Staff.create({
                         username: req.body.username,
@@ -149,24 +155,29 @@ module.exports = function (passport) {
     }));
 
     passport.use('local-login-staff', new localStrategy({
-        usernameField: 'email',
-        passwordField : 'account_key',
-        passReqToCallback : true 
-    },function(req, email, account_key, done) { 
+        usernameField: 'username',
+        passwordField: 'account_key',
+        passReqToCallback: true
+    }, function (req, username, account_key, done) {
         db.Staff.findOne({
             where: {
-                email: req.body.email 
+                username: req.body.username
             }
         }).then(function(user, err) {
-            (!user.validPassword(req.body.account_key));
+            try{
+                (!user.validPassword(req.body.account_key));
+            }
+            catch(err){
+                console.log(err);
+            }
             if (!user){
                 console.log("No User Found");
-                return done(null, false, req.flash('loginMessage', 'No user found.')); 
+                return done(null, false, req.flash('loginMessage', 'No user found.'));
             }
-            if (user && !user.validPassword(req.body.account_key)){
-                return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.')); 
+            if (user && !user.validPassword(req.body.account_key)) {
+                return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.'));
             }
-            
+
             return done(null, user);
         });
     }));

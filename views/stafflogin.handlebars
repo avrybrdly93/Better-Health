@@ -4,9 +4,9 @@
             <div class="col-8 offset-2">
                 <form id="loginForm"> 
                     <div class="form-group">
-                        <label for="emailInput">Email address</label>
-                        <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp"
-                            placeholder="Enter email">
+                        <label for="usernameInput">Username</label>
+                        <input type="email" class="form-control" id="usernameInput" aria-describedby="emailHelp"
+                            placeholder="Enter Username">
                         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
                             else.</small>
                     </div>
@@ -15,7 +15,6 @@
                         <input type="password" class="form-control" id="passwordInput" placeholder="Password">
                     </div>
                     <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
-                    <a href="/signup"><small>Don't have an account?</small></a>
                 </form>
             </div>
         </div>
@@ -29,7 +28,7 @@
         $("#submitBtn").on("click",function(event){
             event.preventDefault();
             var tryUsr= {
-                "email": $("#emailInput").val().trim(),
+                "username": $("#usernameInput").val().trim(),
                 "account_key": $("#passwordInput").val().trim()
             }
             $.post("/staff/login",tryUsr,function(data,status,xhr){

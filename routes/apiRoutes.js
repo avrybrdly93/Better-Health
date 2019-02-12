@@ -1,178 +1,227 @@
 var db = require("../models");
-var passport = require('passport');
+var passport = require("passport");
+var sequelize = require("sequelize");
 
 module.exports = function (app) {
 
   //PATIENT GET INFO
-  app.get("/api/messages", function (req, res) {
-    if (req.isAuthenticated() && req.session.passport.user.type==="Patient") {
-      db.sMessage.findAll({
-        where: {
-          receiver: req.session.passport.user.uuid
+  app.get("/api/messages/:id", function (req, res) {
+    if (req.isAuthenticated() && req.session.passport.user.type === "Patient") {
+      
+      async function callMsg() {
+        let x;
+        try {
+          x = await db.Message.searchMsgs(req.session.passport.user.uuid,req.params.id);
+        } catch (err) {
+          x = 42;
         }
-      }).then(function (result) {
-        res.send(result);
-      });
+        //console.log(x);
+        res.send(x);
+      }
+
+      callMsg();
     }
-    else{
+    else {
       res.send("Access Not Granted.");
     }
   });
 
   app.get("/api/records", function (req, res) {
-    if(req.isAuthenticated() && req.session.passport.user.type==="Patient"){
+    if (req.isAuthenticated() && req.session.passport.user.type === "Patient") {
       db.Record.findAll({
         where: {
           PatientUuid: req.session.passport.user.uuid
         }
       }).then(function (result) {
-        res.send(result);
+        var newSheet = [result, req.session.passport.user.first_name, req.session.passport.user.last_name];
+
+        res.send(newSheet);
       });
     }
-    else{
+    else {
       res.send("Access Not Granted.");
     }
   });
 
   app.get("/api/appointments", function (req, res) {
-    if(req.isAuthenticated() && req.session.passport.user.type==="Patient"){
-      db.pAppt.findAll({
+    if (req.isAuthenticated() && req.session.passport.user.type === "Patient") {
+      db.Appointment.findAll({
         where: {
-          PatientUuid: req.session.passport.user.uuid
+          patient_id: req.session.passport.user.uuid
         }
       }).then(function (result) {
         res.send(result);
       });
     }
-    else{
+    else {
+      res.send("Access Not Granted.");
+    }
+  });
+
+  app.get("/api/staff", function (req, res) {
+    if (req.isAuthenticated()) {
+      db.Staff.findAll({
+        attributes: ["uuid", "first_name", "last_name", "title", "specialization"],
+        limit: 10
+      }).then(function (result) {
+        res.send(result);
+      });
+    }
+    else {
       res.send("Access Not Granted.");
     }
   });
   //END OF PATIENT GET INFO
 
   //STAFF GET INFO
-  app.get("/api/staff/messages", function (req, res) {
-    if(req.isAuthenticated() && req.session.passport.user.type==="Staff"){
-      db.pMessage.findAll({
+  app.get("/api/staff/messages/:id", function (req, res) {
+    if (req.isAuthenticated() && req.session.passport.user.type === "Staff") {
+      async function callSMsg() {
+        let y;
+        try {
+          y = await db.Message.searchMsgs(req.session.passport.user.uuid,req.params.id);
+        } catch (err) {
+          y = 42;
+        }
+        //console.log(y);
+        res.send(y);
+      }
+
+      callSMsg();
+    }
+  });
+
+  app.get("/api/staff/appointments", function (req, res) {
+    if (req.isAuthenticated() && req.session.passport.user.type === "Staff") {
+      db.Appointment.findAll({
         where: {
-          receiver: req.session.passport.user.uuid
+          staff_id: req.session.passport.user.uuid
         }
       }).then(function (result) {
+        //console.log("I AM RESULT : "+result);
         res.send(result);
       });
     }
-    else{
+    else {
       res.send("Access Not Granted.");
     }
   });
 
-  app.get("/api/staff/apointments", function (req, res) {
-    if(req.isAuthenticated() && req.session.passport.user.type==="Staff"){
-      db.sAppt.findAll({
+  app.get("/api/staff/records/:id", function (req, res) {
+    if (req.isAuthenticated() && req.session.passport.user.type === "Staff") {
+      db.Record.findAll({
         where: {
-          StaffUuid: req.session.passport.user.uuid
+          PatientUuid: req.params.id
         }
       }).then(function (result) {
         res.send(result);
       });
     }
-    else{
+    else {
+      res.send("Access Not Granted.");
+    }
+  });
+
+  app.get("/api/patients",function(req,res){
+    if (req.isAuthenticated() && req.session.passport.user.type==="Staff") {
+      db.Patient.findAll({
+        attributes: ["uuid", "first_name", "last_name"],
+        limit: 10
+      }).then(function (result) {
+        res.send(result);
+      });
+    }
+    else {
       res.send("Access Not Granted.");
     }
   });
   //END OF STAFF GET INFO
 
   //PATIENT POST INFO
-  app.post("/api/message", function (req, res) {
-    if(req.isAuthenticated() && req.session.passport.user.type==="Patient"){
-      db.pMessage.create({
-        title: req.body.title,
+  app.post("/api/message/:id", function (req, res) {
+    if (req.isAuthenticated() && req.session.passport.user.type === "Patient") {
+      db.Message.create({
         body: req.body.body,
-        receiver: req.body.receiverUuid,
-        PatientUuid: req.session.passport.user.uuid
+        sender_id: req.session.passport.user.uuid,
+        sender_fName: req.session.passport.user.first_name,
+        sender_lName: req.session.passport.user.last_name,
+        receiver_id: req.params.id,
+        receiver_fName: req.body.receiver_fName,
+        receiver_lName: req.body.receiver_lName
       });
 
       res.status(200);
       res.send("Message Sent!");
     }
-    else{
+    else {
       res.send("Permission Not Given.");
     }
   });
 
-  app.post("/api/record", function (req, res) {
+  app.post("/api/record/:id", function (req, res) {
 
-    if(req.isAuthenticated() && req.session.passport.user.type==="Patient"){
+    if (req.isAuthenticated() && req.session.passport.user.type === "Staff") {
       db.Record.create({
         event: req.body.event,
         description: req.body.description,
         location_name: req.body.location_name,
         address: req.body.address,
+        date: req.body.date,
         city: req.body.city,
         state: req.body.state,
         zip: req.body.zip,
-        PatientUuid: req.body.PatientUuid
+        patient_fName: req.body.patient_fName,
+        patient_LName: req.body.patient_lName,
+        PatientUuid: req.params.id
       });
 
       res.status(200);
       res.send("Record Uploaded!");
     }
-    else{
+    else {
       res.send("Permission Not Given.");
     }
   });
 
-  app.post("/api/appointment", function (req, res) {
-    if(req.isAuthenticated() && req.session.passport.user.type==="Patient"){
-      db.pAppt.create({
+  app.post("/api/appointment/:id", function (req, res) {
+    if (req.isAuthenticated() && req.session.passport.user.type === "Patient") {
+      db.Appointment.create({
         date: req.body.date,
         time: req.body.time,
-        doctor_name: req.body.doctor_name,
         appt_reason: req.body.appt_reason,
-        PatientUuid: req.session.passport.user.uuid
+        staff_id: req.params.id,
+        staff_fName: req.body.staff_fName,
+        staff_lName: req.body.staff_lName,
+        patient_id: req.session.passport.user.uuid,
+        patient_fName: req.session.passport.user.first_name,
+        patient_lName: req.session.passport.user.last_name
       });
       res.status(200);
       res.send("Appointment booked!");
     }
-    else{
+    else {
       res.send("Permission Not Given.")
     }
   });
   //END OF PATIENT POST INFO
 
   //STAFF POST INFO 
-  app.post("/api/staff/message", function (req, res) {
-    if(req.isAuthenticated() && req.session.passport.user.type==="Staff"){
-      db.sMessage.create({
-        title: req.body.title,
+  app.post("/api/staff/message/:id", function (req, res) {
+    if (req.isAuthenticated() && req.session.passport.user.type === "Staff") {
+      db.Message.create({
         body: req.body.body,
-        receiver: req.body.receiverUuid,
-        StaffUuid: req.session.passport.user.uuid
+        sender_id: req.session.passport.user.uuid,
+        sender_fName: req.session.passport.user.first_name,
+        sender_lName: req.session.passport.user.last_name,
+        receiver_id: req.params.id,
+        receiver_fName: req.body.receiver_fName,
+        receiver_lName: req.body.receiver_lName
       });
 
       res.status(200);
       res.send("Message Sent!");
     }
-    else{
-      res.send("Permission Not Given.")
-    }
-  });
-
-  app.post("api/staff/appointment", function (req, res) {
-    if(req.isAuthenticated()){
-      db.sAppt.create({
-        StaffUuid: req.body.StaffUuid,
-        date: req.body.date,
-        time: req.body.time,
-        patient_name: req.body.patient_name,
-        visit_reason: req.body.visit_reason,
-        room_number: req.body.room_number
-  
-      });
-      res.status(200);
-      res.send("Appointment booked!");
-    }
-    else{
+    else {
       res.send("Permission Not Given.")
     }
   });

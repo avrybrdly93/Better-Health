@@ -114,7 +114,7 @@ $(document).ready(function () {
             "receiver_lName": pLName
         };
 
-        $.ajax("/api/message/" + pID, {
+        $.ajax("/api/staff/message/" + pID, {
             type: "POST",
             data: newMsg
         }).then(function (result) {
@@ -165,7 +165,7 @@ $(document).ready(function () {
                 table.appendTo($("#staffRBody"));
             }
             else {
-                $("#staffRBody").append("No Doctors Available Right Now. Check Again Soon.");
+                $("#staffRBody").append("<i>No Patients Available Right Now. Check Again Soon.</i>");
             }
         });
 

@@ -59,7 +59,7 @@ module.exports = function (sequelize, DataTypes) {
                     //console.log(result[0]);
                     resolve(result[0]);
                 });
-            }, 1500);
+            }, 100);
         }); 
     }
 

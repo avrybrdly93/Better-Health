@@ -18,27 +18,35 @@ $(document).ready(function () {
 
       var someMSpace = $("<div>");
 
-      if (result.length > 0) {
-        for (var i = 0; i < result.length; i++) {
-          var someMDiv = $("<div>");
-          $(someMDiv).append("<p>" + result[i].last_name + ", " + result[i].first_name);
-          var newMBtn = $("<button>Message</button>");
 
-          $(newMBtn).attr({
+      if (result.length > 0) {
+        let table = $("<table>");
+        table.addClass("uk-table uk-table-striped");
+        let tableBody = $("<tbody>");
+        tableBody.appendTo(table);
+        table.appendTo($("#msgModalBody"));
+        for (var i = 0; i < result.length; i++) {
+          let tableRow = $("<tr>");
+          tableRow.appendTo(tableBody);
+          let tableData = $("<td>");
+          tableData.appendTo(tableRow);
+          tableData.append("<p>" + result[i].last_name + ", " + result[i].first_name + " - " + result[i].title + " - " + result[i].specialization);
+          var newBtn = $("<button>Message</button>");
+
+          newBtn.attr({
             "data-id": result[i].uuid,
             "data-fName": result[i].first_name,
             "data-lName": result[i].last_name,
+            "class": "btn uk-button uk-button-primary uk-button-large uk-height-match",
+            "style": "margin: 10px; position: absolute; right: 24px; background-color: #a5d6a7"
           });
 
-          $(newMBtn).addClass("staffMsgMe");
-          $(someMDiv).append(newMBtn);
-          $(someMSpace).append(someMDiv);
+          newBtn.addClass("staffMsgMe");
+          newBtn.appendTo(tableRow);
         }
-
-        $("#msgModalBody").append(someMSpace);
       }
       else {
-        $("#msgModalBody").append("No Staff Available Right Now. Check Again Soon.");
+        $("#msgModalBody").append("<i>No Staff Available Right Now. Check Again Soon.</i>");
       }
     });
   });
@@ -52,11 +60,11 @@ $(document).ready(function () {
     $("#msgModalTitle").empty();
 
     $("#msgModalTitle").append("<h2 class='uk-modal-title'>" + docFName + " " + docLName + "</h2>");
-    getMessages();
+    getMessages(docFName);
 
 });
 
-  function getMessages() {
+  function getMessages(docFName) {
     $.ajax({
       method: "GET",
       url: "/api/messages/" + docID
@@ -65,9 +73,22 @@ $(document).ready(function () {
       //console.log("RESULT: "+result);
       if (result.length > 0) {
         for (var i = 0; i < result.length; i++) {
-          //console.log(result[i]);
-          $("#msgModalBody").append("<p>" + result[i].sender_fName + " - " + result[i].body + "</p>");
-          $("#msgModalBody").append("<small>Sent at: " + result[i].createdAt + "</small><br>");
+          console.log(result[i]);
+          console.log(docID);
+          let msgBody = $("<div class='msgBody'>" + "<h5>" + result[i].body + "</h5>" + "</div>");
+          $("#msgModalBody").append(msgBody);
+          //$("#msgModalBody").append("<small>Sent at: " + result[i].createdAt + "</small><br>");
+          if(result[i].receiver_id === docID) {
+            console.log("staff is the receiver" + result[i].body);
+            msgBody.css({'position': "absolute", 'padding-left': '6px', 'padding-right': '6px', "right": "24px","color": "white", "background-color": "#00FA9A", "border-radius": "4px"});
+            $("<br>").appendTo($("#msgModalBody"));
+            $("<br>").appendTo($("#msgModalBody"));
+           } else {
+             console.log("patient is the receiver " + result[i].body);
+             msgBody.css({'position':'absolute', 'left':'24px', 'padding-left': '6px', 'padding-right': '6px', "color": 'white', "background-color": "#20B2AA", "border-radius": "4px"});
+             $("<br>").appendTo($("#msgModalBody"));
+             $("<br>").appendTo($("#msgModalBody"));
+           }
         }
       }
       else {
@@ -75,8 +96,11 @@ $(document).ready(function () {
       }
 
       var msgForm = $("<form>").addClass("uk-grid-small");
-      $(msgForm).append("<input type='text' id='msgBody' placeholder='Send Message...'>");
-      $(msgForm).append("<button id='msgSubmitBtn'>Send</button>");
+      let msgDiv = $("<div>").addClass("");
+      let msgInput = $("<input type='text' class='uk-input' id='msgBody' placeholder='Send Message...'>");
+      msgForm.append(msgDiv);
+      $(msgDiv).append(msgInput);
+      $(msgDiv).append("<button id='msgSubmitBtn' class='btn uk-align-right'>Send</button>");
       $("#msgModalBody").append(msgForm);
     });
   }
@@ -106,7 +130,8 @@ $(document).ready(function () {
     }).then(function (result) {
       console.log(result);
       $("#bookModalBody").empty();
-      $("#bookModalTitle").text("Choose Appointment Staff");
+      $("#bookModalTitle").empty();
+      $("#bookModalTitle").append("<h2 class class='uk-modal-title'>Select Staff Member</h2>");
 
       //var someSpace=$("<div>");
       // console.log(result.length);
@@ -128,7 +153,7 @@ $(document).ready(function () {
             "data-id": result[i].uuid,
             "data-fName": result[i].first_name,
             "data-lName": result[i].last_name,
-            "class": "btn",
+            "class": "btn uk-button uk-button-primary uk-button-large uk-height-match",
             "style": "margin: 10px;"
           });
 
@@ -137,7 +162,7 @@ $(document).ready(function () {
         }
       }
       else {
-        $("#bookModalBody").append("No Doctors Available Right Now. Check Again Soon.");
+        $("#bookModalBody").append("<i>No Doctors Available Right Now. Check Again Soon.</i>");
       }
 
       $("bookModalBody").empty();
@@ -157,15 +182,15 @@ $(document).ready(function () {
 
     $("#bookModalBody").empty();
 
-    $("#bookModalBody").append("<p>Fill out the form below to book your next appointment.</p>");
+    $("#bookModalBody").append("<h4>Fill out the form below to book your next appointment.</h4><br>");
 
     var newForm = $("<form>").addClass("uk-grid-small");
 
     // This is for the date-picker
-    $(newForm).append("Date: <input type='text' id='dateField'>  ");
-    $(newForm).append("Time: <input type='text' id='timeField'><br><br>");
-    $(newForm).append("Reason: <input type='text' id='reasonField'><br>");
-    $(newForm).append("<br><button id='bookFormSubmit' class='btn'>Submit</button>");
+    $(newForm).append("Date:   <input type='text' class='uk-input'   id='dateField'><br><br>");  
+    $(newForm).append("Time:   <input type='text' class='uk-input' id='timeField'><br><br>");
+    $(newForm).append("Reason: <input type='text' class='uk-input' id='reasonField'><br><br>");
+    $(newForm).append("<br><button class='btn uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom' id='bookFormSubmit'>Submit</button>");
 
     $("#bookModalBody").append(newForm);
 

@@ -52,7 +52,12 @@ module.exports = function (app) {
 
   //PROFILE GET ROUTE
   app.get("/profile", function (req, res) {
-    res.render("profile");
+    if(req.isAuthenticated() && req.session.passport.user.type==="Patient"){
+      res.render("profile",req.session.passport.user)
+    }
+    else{
+      res.redirect("/");
+    }
   });
 
   app.get("/holistic", function (req, res) {

@@ -13,3 +13,5 @@
 4) Run node server.js in bash (or nodemon if you prefer)
 5) The application should be available via ```localhost:8080```
 6) Create an account and test it out!
+
+Web-page to the project better-health.herokuapp.com
